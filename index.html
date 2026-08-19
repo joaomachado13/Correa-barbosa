@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Corrêa Barbosa Engenharia (CBE) — Fabricação e montagem de quadros elétricos sob medida em Uberlândia/MG: QGBT, QDF, CCM, Quadros de Comando e Acionamentos. Conformidade com NBR 5410, NR-10 e IEC 61439-1/2.">
+  <title>CBE — Corrêa Barbosa Engenharia | Quadros Elétricos Sob Medida</title>
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos da CBE -->
+  <link rel="stylesheet" href="css/tokens.css?v=6.1">
+  <link rel="stylesheet" href="css/main.css?v=6.1">
+</head>
+<body>
+
+  <!-- Splash Screen "Olá" -->
+  <div class="splash-overlay" id="cbe-splash-screen">
+    <svg id="ola-svg" viewBox="0 0 1600 1356" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(40, 1024) scale(1, -1)">
+        <path id="letter-0" class="letter-stroke" d="M338 -14Q206 -14 128.0 58.5Q50 131 50 266V434Q50 569 128.0 641.5Q206 714 338 714Q470 714 548.0 641.5Q626 569 626 434V266Q626 131 548.0 58.5Q470 -14 338 -14ZM338 104Q412 104 453.0 147.0Q494 190 494 262V438Q494 510 453.0 553.0Q412 596 338 596Q265 596 223.5 553.0Q182 510 182 438V262Q182 190 223.5 147.0Q265 104 338 104Z"/>
+        <path id="letter-1" class="letter-stroke" d="M746 0V700H872V0Z"/>
+        <path id="letter-2" class="letter-stroke" d="M1166 -14Q1113 -14 1071.0 4.5Q1029 23 1004.5 58.5Q980 94 980 145Q980 196 1004.5 230.5Q1029 265 1072.5 282.5Q1116 300 1172 300H1308V328Q1308 363 1286.0 385.5Q1264 408 1216 408Q1169 408 1146.0 386.5Q1123 365 1116 331L1000 370Q1012 408 1038.5 439.5Q1065 471 1109.5 490.5Q1154 510 1218 510Q1316 510 1373.0 461.0Q1430 412 1430 319V134Q1430 104 1458 104H1498V0H1414Q1377 0 1353.0 18.0Q1329 36 1329 66V67H1310Q1306 55 1292.0 35.5Q1278 16 1248.0 1.0Q1218 -14 1166 -14ZM1188 88Q1241 88 1274.5 117.5Q1308 147 1308 196V206H1181Q1146 206 1126.0 191.0Q1106 176 1106 149Q1106 122 1127.0 105.0Q1148 88 1188 88ZM1147 552 1221 700H1363L1257 552Z"/>
+        <path id="fill-0" class="letter-fill" d="M338 -14Q206 -14 128.0 58.5Q50 131 50 266V434Q50 569 128.0 641.5Q206 714 338 714Q470 714 548.0 641.5Q626 569 626 434V266Q626 131 548.0 58.5Q470 -14 338 -14ZM338 104Q412 104 453.0 147.0Q494 190 494 262V438Q494 510 453.0 553.0Q412 596 338 596Q265 596 223.5 553.0Q182 510 182 438V262Q182 190 223.5 147.0Q265 104 338 104Z"/>
+        <path id="fill-1" class="letter-fill" d="M746 0V700H872V0Z"/>
+        <path id="fill-2" class="letter-fill" d="M1166 -14Q1113 -14 1071.0 4.5Q1029 23 1004.5 58.5Q980 94 980 145Q980 196 1004.5 230.5Q1029 265 1072.5 282.5Q1116 300 1172 300H1308V328Q1308 363 1286.0 385.5Q1264 408 1216 408Q1169 408 1146.0 386.5Q1123 365 1116 331L1000 370Q1012 408 1038.5 439.5Q1065 471 1109.5 490.5Q1154 510 1218 510Q1316 510 1373.0 461.0Q1430 412 1430 319V134Q1430 104 1458 104H1498V0H1414Q1377 0 1353.0 18.0Q1329 36 1329 66V67H1310Q1306 55 1292.0 35.5Q1278 16 1248.0 1.0Q1218 -14 1166 -14ZM1188 88Q1241 88 1274.5 117.5Q1308 147 1308 196V206H1181Q1146 206 1126.0 191.0Q1106 176 1106 149Q1106 122 1127.0 105.0Q1148 88 1188 88ZM1147 552 1221 700H1363L1257 552Z"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Header Institucional -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo" title="CBE - Corrêa Barbosa Engenharia" data-swup-animation="circle">
+        <img src="assets/logo/logo-cbe-principal.png" alt="Corrêa Barbosa Engenharia" width="180" height="52">
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="main-nav-menu">
+          <li><a href="index.html" class="nav-link active" data-swup-animation="circle">Início</a></li>
+          <li><a href="quadros-eletricos.html" class="nav-link" data-swup-animation="square">Quadros Elétricos</a></li>
+          <li><a href="sobre.html" class="nav-link" data-swup-animation="gradient">Sobre Nós</a></li>
+          <li><a href="contato.html" class="nav-link" data-swup-animation="circle">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="orcamento.html" class="cbe-btn cbe-btn-red" data-swup-animation="square">
+          <span>Solicitar Orçamento</span>
+          <span class="icon-wrap">
+            <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+            </svg>
+          </span>
+        </a>
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Abrir Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="swup" class="transition-reveal">
+    <!-- 1. Hero da Home (Fotografia 100% na Seção) -->
+    <section class="hero-section">
+      <!-- A fotografia ocupa 100% de toda a seção Hero -->
+      <div class="hero-bg-photo-wrap">
+        <picture>
+          <source type="image/webp" srcset="contents/images/hero-cbe-final-768.webp 768w, contents/images/hero-cbe-final-1440.webp 1440w, contents/images/hero-cbe-final-1920.webp 1920w" sizes="100vw">
+          <img id="hero-main-img" class="hero-bg-photo" src="contents/images/hero-cbe-final.png" alt="Quadro elétrico sob medida CBE com porta aberta mostrando fiação interna organizada" width="1024" height="576" loading="eager" fetchpriority="high">
+        </picture>
+      </div>
+
+      <div class="container hero-container-content">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Engenharia e montagem de quadros elétricos.
+          </h1>
+          <p class="hero-description">
+            Dimensionamento rigoroso em conformidade com as normas NBR 5410 e IEC 61439.
+          </p>
+          <div class="hero-actions">
+            <a href="orcamento.html" class="cbe-btn cbe-btn-red" data-swup-animation="square">
+              <span>Solicitar Orçamento</span>
+              <span class="icon-wrap">
+                <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Bloco Sólido de Credibilidade Técnica (Azul CBE) -->
+    <section class="section-solid-blue">
+      <div class="container solid-blue-grid">
+        <div class="solid-blue-content">
+          <span class="section-subtitle section-subtitle-white">Processo de Engenharia</span>
+          <h2>
+            Cálculo de corrente de curto-circuito e regime de partida antes do corte e conformação de barramentos.
+          </h2>
+          <p>
+            O dimensionamento prévio evita sobreaquecimento de conexões, não conformidades com a concessionária e necessidade de substituição de disjuntores em campo. Cada quadro elétrico é submetido a ensaios dielétricos e de continuidade de condutor de proteção (PE) na bancada da CBE em Uberlândia antes da liberação.
+          </p>
+
+          <div class="tech-facts-list">
+            <div class="tech-fact-item">
+              <div class="tech-fact-header">
+                <span class="fact-index">01</span>
+                <span class="fact-num">Ensaios de Rotina</span>
+              </div>
+              <span class="fact-desc">Ensaio dielétrico de 2,5 kV e verificação de continuidade de PE</span>
+            </div>
+            <div class="tech-fact-item">
+              <div class="tech-fact-header">
+                <span class="fact-index">02</span>
+                <span class="fact-num">Normas Vigentes</span>
+              </div>
+              <span class="fact-desc">Conformidade total com NBR 5410, NR-10 e IEC 61439-1/2</span>
+            </div>
+            <div class="tech-fact-item">
+              <div class="tech-fact-header">
+                <span class="fact-index">03</span>
+                <span class="fact-num">Cobre Eletrolítico C11000</span>
+              </div>
+              <span class="fact-desc">Barramentos estanhados com torque calibrado por torquímetro</span>
+            </div>
+            <div class="tech-fact-item">
+              <div class="tech-fact-header">
+                <span class="fact-index">04</span>
+                <span class="fact-num">Uberlândia e Região</span>
+              </div>
+              <span class="fact-desc">Bancada própria de montagem e engenharia presencial dedicada</span>
+            </div>
+          </div>
+
+          <a href="sobre.html" class="cbe-btn">
+            <span>Conhecer Nossa Estrutura Técnica</span>
+            <span class="icon-wrap">
+              <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="solid-blue-visual">
+          <!-- Selo Rotativo Interativo de Ação (Aponta para a Estrutura Técnica) -->
+          <div class="rotating-badge-wrapper">
+            <a href="sobre.html" class="rotating-emblem-link" title="Conhecer a oficina e estrutura técnica da CBE" data-swup-animation="gradient">
+              <div class="rotating-emblem">
+                <svg class="circular-text" viewBox="0 0 200 200">
+                  <defs>
+                    <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" fill="none"/>
+                  </defs>
+                  <text font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="3.5">
+                    <textPath href="#circlePath" startOffset="0%">
+                      CONHECER ESTRUTURA TÉCNICA · OFICINA CBE ·
+                    </textPath>
+                  </text>
+                </svg>
+                <div class="emblem-center">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="factory-photo-stack">
+            <img src="assets/images/cbe_bancada_montagem.jpg" alt="Bancada de Montagem e Testes Real da CBE em Uberlândia" width="540" height="360" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Catálogo / Vitrine em Destaque -->
+    <section class="section-spacing catalog-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div class="section-header-left">
+            <span class="section-subtitle">Portfólio em Destaque</span>
+            <h2>Quadros elétricos fabricados para distribuição, comando e acionamentos.</h2>
+          </div>
+          <a href="quadros-eletricos.html" class="cbe-btn cbe-btn-blue">
+            <span>Ver Catálogo Completo</span>
+            <span class="icon-wrap">
+              <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <!-- Filtros Rápidos -->
+        <div class="filter-tabs-row">
+          <button class="filter-tab-btn active" data-filter="all">Todos os Quadros</button>
+          <button class="filter-tab-btn" data-filter="ccm">CCM & Acionamentos</button>
+          <button class="filter-tab-btn" data-filter="distribuicao">Distribuição (QGBT / QDF)</button>
+          <button class="filter-tab-btn" data-filter="comando">Automação & Comando</button>
+        </div>
+
+        <!-- Grid de Cards do Catálogo em Layout Editorial com Giro 3D Vermelho (ITEM 4) -->
+        <div class="cbe-compact-grid cbe-portfolio-grid">
+          
+          <!-- Card 1 (Destaque Editorial): Coluna Soft-Starters Industrial -->
+          <div class="cbe-compact-card card-featured" data-category="ccm" title="Clique ou passe o mouse para ver os parâmetros técnicos">
+            <div class="cbe-compact-inner">
+              <div class="cbe-compact-front">
+                <div class="cbe-compact-front-image">
+                  <img src="assets/images/cbe_coluna_softstarter.jpg" alt="Coluna CCM com Soft-Starters" loading="lazy">
+                </div>
+                <div class="cbe-compact-front-body">
+                  <div class="cbe-compact-front-body-top">
+                    <span class="panel-category">CCM — Centro de Controle de Motores</span>
+                    <h3 class="panel-title">Coluna CCM com Soft-Starters</h3>
+                  </div>
+                  <div class="cbe-compact-front-actions">
+                    <a href="#orcamento" class="card-orcamento-btn" data-tipo="CCM" title="Solicitar orçamento deste quadro">
+                      <span>Solicitar orçamento</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <div class="cbe-flip-cue" title="Ver parâmetros técnicos">
+                      <span>Girar</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cbe-compact-back">
+                <div>
+                  <div class="back-header">
+                    <span class="back-cat">Centro de Controle de Motores</span>
+                    <h4 class="back-title">Coluna CCM Soft-Starter</h4>
+                  </div>
+                  <ul class="back-specs-list">
+                    <li><span class="spec-label">Potência:</span><span class="spec-val">Até 500 kVA</span></li>
+                    <li><span class="spec-label">Tensão:</span><span class="spec-val">380V / 440V Trifásico</span></li>
+                    <li><span class="spec-label">Bypass:</span><span class="spec-val">Interno Integrado</span></li>
+                    <li><span class="spec-label">Grau de Proteção:</span><span class="spec-val">IP65</span></li>
+                    <li><span class="spec-label">Normas:</span><span class="spec-val">IEC 61439-1/2 · NR-10</span></li>
+                  </ul>
+                </div>
+                <a href="#orcamento" class="back-action-btn" data-tipo="CCM">
+                  <span>Solicitar Orçamento</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Comercial Distribuição Caixa Moldada -->
+          <div class="cbe-compact-card" data-category="distribuicao" title="Clique ou passe o mouse para ver os parâmetros técnicos">
+            <div class="cbe-compact-inner">
+              <div class="cbe-compact-front">
+                <div class="cbe-compact-front-image">
+                  <img src="assets/images/cbe_distribuicao_disjuntores.jpg" alt="Painel de Distribuição com Disjuntores" loading="lazy">
+                </div>
+                <div class="cbe-compact-front-body">
+                  <div class="cbe-compact-front-body-top">
+                    <span class="panel-category">QGBT / QDF</span>
+                    <h3 class="panel-title">QGBT com Disjuntores Caixa Moldada</h3>
+                  </div>
+                  <div class="cbe-compact-front-actions">
+                    <a href="#orcamento" class="card-orcamento-btn" data-tipo="QGBT" title="Solicitar orçamento deste quadro">
+                      <span>Solicitar orçamento</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <div class="cbe-flip-cue" title="Ver parâmetros técnicos">
+                      <span>Girar</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cbe-compact-back">
+                <div>
+                  <div class="back-header">
+                    <span class="back-cat">Distribuição de Força</span>
+                    <h4 class="back-title">Quadro Geral de Baixa Tensão (QGBT)</h4>
+                  </div>
+                  <ul class="back-specs-list">
+                    <li><span class="spec-label">Potência Nominal:</span><span class="spec-val">350 kVA</span></li>
+                    <li><span class="spec-label">Tensão:</span><span class="spec-val">220V / 380V Trifásico</span></li>
+                    <li><span class="spec-label">Disjuntores:</span><span class="spec-val">Caixa Moldada em Cascata</span></li>
+                    <li><span class="spec-label">Grau de Proteção:</span><span class="spec-val">IP55</span></li>
+                    <li><span class="spec-label">Normas:</span><span class="spec-val">NBR 5410 · IEC 60947-2</span></li>
+                  </ul>
+                </div>
+                <a href="#orcamento" class="back-action-btn" data-tipo="QGBT">
+                  <span>Solicitar Orçamento</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Automação SITOP e Sirius -->
+          <div class="cbe-compact-card" data-category="comando" title="Clique ou passe o mouse para ver os parâmetros técnicos">
+            <div class="cbe-compact-inner">
+              <div class="cbe-compact-front">
+                <div class="cbe-compact-front-image">
+                  <img src="assets/images/cbe_automacao_sitop.jpg" alt="Painel de Automação com Fonte SITOP" loading="lazy">
+                </div>
+                <div class="cbe-compact-front-body">
+                  <div class="cbe-compact-front-body-top">
+                    <span class="panel-category">Quadros de Comando</span>
+                    <h3 class="panel-title">Quadro de Comando com Fonte 24Vcc</h3>
+                  </div>
+                  <div class="cbe-compact-front-actions">
+                    <a href="#orcamento" class="card-orcamento-btn" data-tipo="comando" title="Solicitar orçamento deste quadro">
+                      <span>Solicitar orçamento</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <div class="cbe-flip-cue" title="Ver parâmetros técnicos">
+                      <span>Girar</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cbe-compact-back">
+                <div>
+                  <div class="back-header">
+                    <span class="back-cat">Comando & Automação</span>
+                    <h4 class="back-title">Quadro de Comando com Fonte SITOP</h4>
+                  </div>
+                  <ul class="back-specs-list">
+                    <li><span class="spec-label">Alimentação:</span><span class="spec-val">24Vcc Estabilizada</span></li>
+                    <li><span class="spec-label">Fonte:</span><span class="spec-val">Siemens SITOP PSU</span></li>
+                    <li><span class="spec-label">Contatores:</span><span class="spec-val">Siemens Sirius</span></li>
+                    <li><span class="spec-label">Grau de Proteção:</span><span class="spec-val">IP55</span></li>
+                    <li><span class="spec-label">Normas:</span><span class="spec-val">NR-10 · IEC 61131</span></li>
+                  </ul>
+                </div>
+                <a href="#orcamento" class="back-action-btn" data-tipo="comando">
+                  <span>Solicitar Orçamento</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Inversor de Frequência WEG -->
+          <div class="cbe-compact-card" data-category="ccm" title="Clique ou passe o mouse para ver os parâmetros técnicos">
+            <div class="cbe-compact-inner">
+              <div class="cbe-compact-front">
+                <div class="cbe-compact-front-image">
+                  <img src="assets/images/cbe_inversor_weg.jpg" alt="Painel com Inversor WEG" loading="lazy">
+                </div>
+                <div class="cbe-compact-front-body">
+                  <div class="cbe-compact-front-body-top">
+                    <span class="panel-category">Quadros de Acionamento de Motores</span>
+                    <h3 class="panel-title">Quadro com Inversor WEG</h3>
+                  </div>
+                  <div class="cbe-compact-front-actions">
+                    <a href="#orcamento" class="card-orcamento-btn" data-tipo="acionamento" title="Solicitar orçamento deste quadro">
+                      <span>Solicitar orçamento</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <div class="cbe-flip-cue" title="Ver parâmetros técnicos">
+                      <span>Girar</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cbe-compact-back">
+                <div>
+                  <div class="back-header">
+                    <span class="back-cat">Acionamento de Motores</span>
+                    <h4 class="back-title">Quadro de Inversor WEG</h4>
+                  </div>
+                  <ul class="back-specs-list">
+                    <li><span class="spec-label">Potência:</span><span class="spec-val">15 a 150 cv</span></li>
+                    <li><span class="spec-label">Tensão:</span><span class="spec-val">380V Trifásico</span></li>
+                    <li><span class="spec-label">Proteção:</span><span class="spec-val">DPS Classe II</span></li>
+                    <li><span class="spec-label">Grau de Proteção:</span><span class="spec-val">IP55</span></li>
+                    <li><span class="spec-label">Normas:</span><span class="spec-val">IEC 61439 · NR-10</span></li>
+                  </ul>
+                </div>
+                <a href="#orcamento" class="back-action-btn" data-tipo="acionamento">
+                  <span>Solicitar Orçamento</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Instalação em Campo / Bombeamento -->
+          <div class="cbe-compact-card" data-category="ccm" title="Clique ou passe o mouse para ver os parâmetros técnicos">
+            <div class="cbe-compact-inner">
+              <div class="cbe-compact-front">
+                <div class="cbe-compact-front-image">
+                  <img src="assets/images/cbe_instalacao_campo.jpg" alt="Painéis CBE em Bombeamento" loading="lazy">
+                </div>
+                <div class="cbe-compact-front-body">
+                  <div class="cbe-compact-front-body-top">
+                    <span class="panel-category">Quadros de Acionamento de Motores</span>
+                    <h3 class="panel-title">Quadro de Comando e Bombas</h3>
+                  </div>
+                  <div class="cbe-compact-front-actions">
+                    <a href="#orcamento" class="card-orcamento-btn" data-tipo="acionamento" title="Solicitar orçamento deste quadro">
+                      <span>Solicitar orçamento</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <div class="cbe-flip-cue" title="Ver parâmetros técnicos">
+                      <span>Girar</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cbe-compact-back">
+                <div>
+                  <div class="back-header">
+                    <span class="back-cat">Acionamento & Recalque</span>
+                    <h4 class="back-title">Quadro de Força e Bombeamento</h4>
+                  </div>
+                  <ul class="back-specs-list">
+                    <li><span class="spec-label">Capacidade:</span><span class="spec-val">Até 300 kVA</span></li>
+                    <li><span class="spec-label">Ambiente:</span><span class="spec-val">Ventilação Forçada</span></li>
+                    <li><span class="spec-label">Grau de Proteção:</span><span class="spec-val">IP65</span></li>
+                    <li><span class="spec-label">Normas:</span><span class="spec-val">NBR 5410 · NR-10</span></li>
+                    <li><span class="spec-label">Automação:</span><span class="spec-val">Alternância de Bombas</span></li>
+                  </ul>
+                </div>
+                <a href="#orcamento" class="back-action-btn" data-tipo="acionamento">
+                  <span>Solicitar Orçamento</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Barramentos de Cobre de Alta Potência -->
+          <div class="cbe-compact-card" data-category="distribuicao" title="Clique ou passe o mouse para ver os parâmetros técnicos">
+            <div class="cbe-compact-inner">
+              <div class="cbe-compact-front">
+                <div class="cbe-compact-front-image">
+                  <img src="assets/images/cbe_barramentos_cobre.jpg" alt="Barramentos de Cobre Estanhado" loading="lazy">
+                </div>
+                <div class="cbe-compact-front-body">
+                  <div class="cbe-compact-front-body-top">
+                    <span class="panel-category">Quadros Elétricos Especiais</span>
+                    <h3 class="panel-title">Barramento de Cobre Estanhado para QGBT</h3>
+                  </div>
+                  <div class="cbe-compact-front-actions">
+                    <a href="#orcamento" class="card-orcamento-btn" data-tipo="especiais" title="Solicitar orçamento deste quadro">
+                      <span>Solicitar orçamento</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <div class="cbe-flip-cue" title="Ver parâmetros técnicos">
+                      <span>Girar</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cbe-compact-back">
+                <div>
+                  <div class="back-header">
+                    <span class="back-cat">Quadros Especiais</span>
+                    <h4 class="back-title">Barramentos de Cobre Eletrolítico</h4>
+                  </div>
+                  <ul class="back-specs-list">
+                    <li><span class="spec-label">Capacidade:</span><span class="spec-val">1000 kVA / 1600A</span></li>
+                    <li><span class="spec-label">Curto-circuito:</span><span class="spec-val">50 kA Icw</span></li>
+                    <li><span class="spec-label">Tratamento:</span><span class="spec-val">Eletrodeposição Estanho</span></li>
+                    <li><span class="spec-label">Grau de Proteção:</span><span class="spec-val">IP65</span></li>
+                    <li><span class="spec-label">Normas:</span><span class="spec-val">NBR IEC 61439-1</span></li>
+                  </ul>
+                </div>
+                <a href="#orcamento" class="back-action-btn" data-tipo="especiais">
+                  <span>Solicitar Orçamento</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Bloco Sólido de Orçamento / CTA -->
+    <section class="section-solid-cta" id="orcamento">
+      <div class="container cta-grid">
+        <div class="cta-left-content">
+          <span class="section-subtitle section-subtitle-red">Atendimento Técnico Direto</span>
+          <h2>Solicite seu orçamento técnico com memorial descritivo.</h2>
+          <p>
+            Os engenheiros eletricistas da CBE analisam a demanda da sua instalação para dimensionamento do quadro elétrico, lista de componentes e diagrama unifilar.
+          </p>
+
+          <div class="cta-human-box">
+            <h4>Análise Técnica de Engenharia</h4>
+            <p>
+              A CBE não utiliza respostas automáticas sem conferência técnica. Um engenheiro eletricista revisará os parâmetros de corrente, curto-circuito e normas antes de enviar a proposta.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta-form-card">
+          <div class="cta-form-header-row">
+            <div>
+              <h3>Solicite um Orçamento</h3>
+              <p class="form-subtitle">Preencha os dados e receba o retorno da engenharia:</p>
+            </div>
+            <div class="form-sla-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Retorno em até 24h úteis</span>
+            </div>
+          </div>
+
+          <form class="quick-form">
+            <div class="form-group">
+              <label for="nome_cta">Nome Completo</label>
+              <input type="text" id="nome_cta" class="form-input-line" placeholder="Seu nome ou responsável técnico" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email_cta">E-mail Profissional</label>
+              <input type="email" id="email_cta" class="form-input-line" placeholder="seuemail@empresa.com.br" required>
+            </div>
+
+            <div class="form-group">
+              <label for="tel_cta">Telefone / WhatsApp</label>
+              <input type="tel" id="tel_cta" class="form-input-line" placeholder="(34) 99999-9999" required>
+            </div>
+
+            <div class="form-group">
+              <label for="tipo_cta">Aplicação do Painel</label>
+              <select id="tipo_cta" class="form-select-line" required>
+                <option value="">Selecione a categoria técnica...</option>
+                <option value="QGBT">QGBT — Quadro Geral de Baixa Tensão</option>
+                <option value="QDF">QDF — Quadro de Distribuição de Força</option>
+                <option value="CCM">CCM — Centro de Controle de Motores</option>
+                <option value="acionamento">Quadros de Acionamento de Motores</option>
+                <option value="comando">Quadros de Comando e Automação</option>
+                <option value="iluminacao_tomadas">Quadros de Iluminação e Tomadas</option>
+                <option value="especiais">Quadros Elétricos Especiais</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="desc_cta">Breve Descrição ou Parâmetros</label>
+              <input type="text" id="desc_cta" class="form-input-line" placeholder="Ex: 150 kVA, 380V, disjuntor geral de 400A">
+            </div>
+
+            <button type="submit" class="cbe-btn cbe-btn-red" style="width: 100%; justify-content: center; margin-top: 1.25rem;">
+              <span>Enviar para Engenharia</span>
+              <span class="icon-wrap">
+                <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+                </svg>
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Fatos Concretos de Engenharia ("Mostrar, Não Explicar") -->
+    <section class="section-spacing facts-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div class="section-header-left">
+            <span class="section-subtitle">Engenharia Aplicada</span>
+            <h2>Critérios técnicos aplicados à montagem de quadros elétricos na CBE.</h2>
+          </div>
+        </div>
+
+        <div class="facts-grid">
+          <div class="fact-card">
+            <div class="fact-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Barramento de Cobre Estanhado</h3>
+            <p>
+              Tratamento eletrolítico que impede oxidação galvânica. Dimensões calculadas conforme tabela de densidade de corrente da IEC, suportando esforços dinâmicos de curto-circuito sem deformação mecânica.
+            </p>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Proteção Coordenada DPS e DR</h3>
+            <p>
+              Coordenação seletiva entre disjuntores e dispositivos diferenciais residuais (DR). Evitamos desligamentos em cascata quando ocorre fuga de corrente em apenas um ramal secundário.
+            </p>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <h3>Identificação Anodizada e Diagrama</h3>
+            <p>
+              Todo borne, condutor e componente recebe anilha numerada com identificação indelével. Diagrama unifilar plastificado fixado internamente na porta para manutenção rápida sem risco de acidente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Clientes e Parceiros Reais da CBE -->
+    <section class="partners-section">
+      <div class="container">
+        <p class="partners-title">Empresas e Parceiros que Confiam na Engenharia da CBE</p>
+      </div>
+      
+      <div class="partners-marquee-container">
+        <div class="partners-track" style="animation-duration: 280s !important;">
+          <!-- Bloco 1 de Logos Reais -->
+          <div class="partner-card" title="Petrobras">
+            <img src="assets/images/parceiros/petrobras.gif" alt="Petrobras" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="BRF Brasil Foods">
+            <img src="assets/images/parceiros/brf-brasil-food-seeklogo.png" alt="BRF Brasil Foods" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Syngenta">
+            <img src="assets/images/parceiros/syngenta.gif" alt="Syngenta" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Sotreq CAT">
+            <img src="assets/images/parceiros/sotreq.gif" alt="Sotreq CAT" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="C&A">
+            <img src="assets/images/parceiros/cea.jpg" alt="C&A" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Le Biscuit">
+            <img src="assets/images/parceiros/lebiscuit.jpg" alt="Le Biscuit" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Hospital Madrecor">
+            <img src="assets/images/parceiros/madrecor.jpg" alt="Hospital Madrecor" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="MGO Rodovias">
+            <img src="assets/images/parceiros/mgo.gif" alt="MGO Rodovias" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Patricia Bonaldi">
+            <img src="assets/images/parceiros/patriciabonaldi.gif" alt="Patricia Bonaldi" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Loja Elétrica">
+            <img src="assets/images/parceiros/lojaeletrica.gif" alt="Loja Elétrica" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Conel">
+            <img src="assets/images/parceiros/Conel.png" alt="Conel" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="NovaCond">
+            <img src="assets/images/parceiros/NovaCond.png" alt="NovaCond" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Portal Incorporadora">
+            <img src="assets/images/parceiros/Portal.png" alt="Portal Incorporadora" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Suprema">
+            <img src="assets/images/parceiros/Suprema.png" alt="Suprema" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Tratto">
+            <img src="assets/images/parceiros/Tratto.png" alt="Tratto" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Play">
+            <img src="assets/images/parceiros/Play.png" alt="Play" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Elétrica Cidade">
+            <img src="assets/images/parceiros/eletricacidade.gif" alt="Elétrica Cidade" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Eletromac">
+            <img src="assets/images/parceiros/eletromac.gif" alt="Eletromac" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Macrotec">
+            <img src="assets/images/parceiros/macrotec.gif" alt="Macrotec" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Protefer">
+            <img src="assets/images/parceiros/protefer.gif" alt="Protefer" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Multivisi">
+            <img src="assets/images/parceiros/multivisi.gif" alt="Multivisi" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="DW">
+            <img src="assets/images/parceiros/dw.gif" alt="DW" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="HG">
+            <img src="assets/images/parceiros/hg.gif" alt="HG" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="HLTS">
+            <img src="assets/images/parceiros/hlts.gif" alt="HLTS" class="partner-logo-img" loading="lazy">
+          </div>
+
+          <!-- Bloco 2 Duplicado para Loop Perfeito -->
+          <div class="partner-card" title="Petrobras">
+            <img src="assets/images/parceiros/petrobras.gif" alt="Petrobras" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="BRF Brasil Foods">
+            <img src="assets/images/parceiros/brf-brasil-food-seeklogo.png" alt="BRF Brasil Foods" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Syngenta">
+            <img src="assets/images/parceiros/syngenta.gif" alt="Syngenta" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Sotreq CAT">
+            <img src="assets/images/parceiros/sotreq.gif" alt="Sotreq CAT" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="C&A">
+            <img src="assets/images/parceiros/cea.jpg" alt="C&A" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Le Biscuit">
+            <img src="assets/images/parceiros/lebiscuit.jpg" alt="Le Biscuit" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Hospital Madrecor">
+            <img src="assets/images/parceiros/madrecor.jpg" alt="Hospital Madrecor" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="MGO Rodovias">
+            <img src="assets/images/parceiros/mgo.gif" alt="MGO Rodovias" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Patricia Bonaldi">
+            <img src="assets/images/parceiros/patriciabonaldi.gif" alt="Patricia Bonaldi" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Loja Elétrica">
+            <img src="assets/images/parceiros/lojaeletrica.gif" alt="Loja Elétrica" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Conel">
+            <img src="assets/images/parceiros/Conel.png" alt="Conel" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="NovaCond">
+            <img src="assets/images/parceiros/NovaCond.png" alt="NovaCond" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Portal Incorporadora">
+            <img src="assets/images/parceiros/Portal.png" alt="Portal Incorporadora" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Suprema">
+            <img src="assets/images/parceiros/Suprema.png" alt="Suprema" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Tratto">
+            <img src="assets/images/parceiros/Tratto.png" alt="Tratto" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Play">
+            <img src="assets/images/parceiros/Play.png" alt="Play" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Elétrica Cidade">
+            <img src="assets/images/parceiros/eletricacidade.gif" alt="Elétrica Cidade" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Eletromac">
+            <img src="assets/images/parceiros/eletromac.gif" alt="Eletromac" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Macrotec">
+            <img src="assets/images/parceiros/macrotec.gif" alt="Macrotec" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Protefer">
+            <img src="assets/images/parceiros/protefer.gif" alt="Protefer" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="Multivisi">
+            <img src="assets/images/parceiros/multivisi.gif" alt="Multivisi" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="DW">
+            <img src="assets/images/parceiros/dw.gif" alt="DW" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="HG">
+            <img src="assets/images/parceiros/hg.gif" alt="HG" class="partner-logo-img" loading="lazy">
+          </div>
+          <div class="partner-card" title="HLTS">
+            <img src="assets/images/parceiros/hlts.gif" alt="HLTS" class="partner-logo-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 7. Rodapé Institucional Sólido (Azul CBE) -->
+
+  <!-- 7. Rodapé Institucional Sólido (Azul CBE) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <a href="index.html">
+            <img src="assets/logo/logo-cbe-principal.png" alt="Corrêa Barbosa Engenharia" width="200" height="58">
+          </a>
+          <p>
+            Fabricação e montagem de quadros elétricos sob medida em conformidade com NBR 5410, IEC 61439 e NR-10 em Uberlândia e região.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="quadros-eletricos.html">Quadros Elétricos & Catálogo</a></li>
+            <li><a href="orcamento.html">Solicitar Orçamento Técnico</a></li>
+            <li><a href="sobre.html">Sobre a CBE Engenharia</a></li>
+            <li><a href="contato.html">Contato & Localização</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Fale com a Gente</h4>
+          <div class="footer-contact-items">
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Uberlândia - MG, Brasil</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><strong>(34) 99922-7667</strong> (CBE) · <strong>(34) 99883-4757</strong> (Vendas) · (34) 3237-3013</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>contato@cbeengenharia.com.br</span>
+            </div>
+          </div>
+
+          <!-- Redes Sociais Isométricas 3D -->
+          <div class="cbe-social-card">
+            <ul class="cbe-social-list">
+              <li class="iso-pro social-whatsapp">
+                <span></span><span></span><span></span>
+                <a href="https://wa.me/5534999227667?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20t%C3%A9cnico%20de%20quadros%20el%C3%A9tricos" target="_blank" rel="noopener noreferrer" data-no-swup aria-label="WhatsApp CBE">
+                  <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                </a>
+                <div class="text">WhatsApp</div>
+              </li>
+              <li class="iso-pro social-instagram">
+                <span></span><span></span><span></span>
+                <a href="https://www.instagram.com/cbe.eng" target="_blank" rel="noopener noreferrer" data-no-swup aria-label="Instagram CBE">
+                  <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                </a>
+                <div class="text">Instagram</div>
+              </li>
+              <li class="iso-pro social-linkedin">
+                <span></span><span></span><span></span>
+                <a href="https://www.linkedin.com/company/corr%C3%AAa-barbosa-engenharia-s-s-ltda/home/" target="_blank" rel="noopener noreferrer" data-no-swup aria-label="LinkedIn CBE">
+                  <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+                </a>
+                <div class="text">LinkedIn</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>© 2026 CBE — Corrêa Barbosa Engenharia. Todos os direitos reservados.</span>
+        <span>Fabricação e Montagem de Quadros Elétricos em Uberlândia / MG</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Widget Flutuante de Atendimento WhatsApp (3D Isométrico) -->
+  <div class="floating-whatsapp-widget" id="whatsapp-widget">
+    <div class="floating-whatsapp-card" id="whatsapp-card">
+      <div class="whatsapp-card-header">
+        <div class="whatsapp-card-header-info">
+          <span class="whatsapp-status-dot"></span>
+          <div>
+            <div class="whatsapp-card-title">Fale pelo WhatsApp</div>
+            <div class="whatsapp-card-subtitle">Atendimento Técnico Especializado</div>
+          </div>
+        </div>
+        <button class="whatsapp-close-btn" id="close-whatsapp-card" aria-label="Fechar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="whatsapp-contacts-list">
+        <!-- Contato 1: CBE Engenharia (Prioridade) -->
+        <a href="https://wa.me/5534999227667?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20t%C3%A9cnico%20de%20quadros%20el%C3%A9tricos" target="_blank" rel="noopener" class="whatsapp-contact-item priority">
+          <div class="whatsapp-item-icon">
+            <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          </div>
+          <div class="whatsapp-item-info">
+            <span class="whatsapp-item-badge">Prioritário · Engenharia</span>
+            <span class="whatsapp-item-name">CBE Engenharia</span>
+            <span class="whatsapp-item-number">(34) 99922-7667</span>
+          </div>
+        </a>
+
+        <!-- Contato 2: Vendedor Direto -->
+        <a href="https://wa.me/5534998834757?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20vendedor%20da%20CBE" target="_blank" rel="noopener" class="whatsapp-contact-item">
+          <div class="whatsapp-item-icon">
+            <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          </div>
+          <div class="whatsapp-item-info">
+            <span class="whatsapp-item-badge">Plantão Comercial</span>
+            <span class="whatsapp-item-name">Vendedor Direto</span>
+            <span class="whatsapp-item-number">(34) 99883-4757</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Botão com Animação Isométrica 3D -->
+    <div class="floating-whatsapp-btn-wrap" id="whatsapp-trigger-wrap">
+      <div class="floating-iso-pro">
+        <span></span><span></span><span></span>
+        <button class="floating-trigger-btn" id="toggle-whatsapp-widget" aria-label="Abrir WhatsApp CBE">
+          <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bibliotecas de Transição, Smooth Scroll e Animações GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/swup@4"></script>
+
+  <!-- Scripts Principais -->
+  <script src="js/main.js?v=6.1"></script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicitação de Orçamento Técnico — CBE Corrêa Barbosa Engenharia. Dimensionamento de quadros elétricos sob medida em Uberlândia/MG: QGBT, QDF, CCM e Comandos.">
+  <title>Orçamento Técnico | CBE Corrêa Barbosa Engenharia</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos da CBE -->
+  <link rel="stylesheet" href="css/tokens.css?v=6.1">
+  <link rel="stylesheet" href="css/main.css?v=6.1">
+</head>
+<body>
+
+  <!-- Header Institucional -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo" title="CBE - Corrêa Barbosa Engenharia" data-swup-animation="circle">
+        <img src="assets/logo/logo-cbe-principal.png" alt="Corrêa Barbosa Engenharia" width="180" height="52">
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="main-nav-menu">
+          <li><a href="index.html" class="nav-link" data-swup-animation="circle">Início</a></li>
+          <li><a href="quadros-eletricos.html" class="nav-link" data-swup-animation="square">Quadros Elétricos</a></li>
+          <li><a href="sobre.html" class="nav-link" data-swup-animation="gradient">Sobre Nós</a></li>
+          <li><a href="contato.html" class="nav-link" data-swup-animation="circle">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="orcamento.html" class="cbe-btn cbe-btn-red" data-swup-animation="square">
+          <span>Solicitar Orçamento</span>
+          <span class="icon-wrap">
+            <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+            </svg>
+          </span>
+        </a>
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Abrir Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="swup" class="transition-reveal">
+    <!-- Header da Página de Orçamento -->
+    <section class="section-spacing-sm" style="background-color: var(--cbe-bg-surface); border-bottom: 1px solid var(--cbe-border);">
+      <div class="container">
+        <span class="section-subtitle">Dimensionamento Sob Medida</span>
+        <h1 style="margin-top: 0.5rem; margin-bottom: 1rem;">Solicitação de Orçamento e Parâmetros de Engenharia</h1>
+        <p class="lead-text" style="max-width: 800px;">
+          Envie sua demanda para dimensionamento de quadros elétricos. Nossa equipe de engenheiros eletricistas analisa os parâmetros de carga e as normas aplicáveis para envio da proposta com memorial descritivo.
+        </p>
+      </div>
+    </section>
+
+    <!-- Conteúdo Principal com os 2 Caminhos -->
+    <section class="section-spacing">
+      <div class="container">
+
+        <!-- Caixa de Aviso de Engenharia Consultiva Humana com SLA -->
+        <div style="background-color: #F0F4FA; border: 1.5px solid #314E8A; border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-bottom: 3rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: flex-start; gap: 1.5rem; max-width: 800px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--cbe-blue); color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.35rem; color: var(--cbe-blue-dark);">Engenharia Consultiva Real — Análise por Engenheiros Eletricistas</h3>
+              <p style="font-size: 0.9375rem; color: var(--cbe-text-body); line-height: 1.55; margin-bottom: 0;">
+                Os parâmetros técnicos enviados são analisados diretamente por engenheiros eletricistas da CBE para dimensionamento de barramentos, corrente de interrupção (kA) e coordenação seletiva em conformidade com as normas NBR 5410 e IEC 61439-1/2.
+              </p>
+            </div>
+          </div>
+          <div class="form-sla-badge form-sla-badge-light" style="margin-top: 4px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Retorno em até 24h úteis</span>
+          </div>
+        </div>
+
+        <!-- Seletor de Perfil / Caminho (2 Caixas de Seleção) -->
+        <div class="orcamento-selector-wrap">
+          <div class="orcamento-option-card active" data-flow="tecnico">
+            <span style="font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--cbe-blue); text-transform: uppercase;">Caminho 1 — Técnico / Projetista</span>
+            <h3>Tenho especificações técnicas</h3>
+            <p>Formulário com parâmetros elétricos: kVA, corrente de curto-circuito (Icc), circuitos, regime de partida, tensão e grau IP.</p>
+          </div>
+
+          <div class="orcamento-option-card" data-flow="guiado">
+            <span style="font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--cbe-red); text-transform: uppercase;">Caminho 2 — Orientação Guiada</span>
+            <h3>Preciso de dimensionamento</h3>
+            <p>Fluxo passo a passo para informar o tipo de carga, maquinários e finalidade do quadro elétrico.</p>
+          </div>
+        </div>
+
+        <!-- FLUXO 1: CAMINHO TÉCNICO -->
+        <div id="flow-tecnico" class="flow-container active">
+          <div class="form-full-card">
+            <div class="cta-form-header-row" style="border-bottom: 1px solid var(--cbe-border); padding-bottom: 1rem; margin-bottom: 2rem;">
+              <div>
+                <h2 style="font-size: 1.6rem; color: var(--cbe-text-heading); margin-bottom: 0.25rem;">Parâmetros Técnicos do Quadro Elétrico</h2>
+                <p style="color: var(--cbe-text-muted); font-size: 0.9375rem; margin-bottom: 0;">Informe as grandezas elétricas para cálculo do barramento e componentes de proteção:</p>
+              </div>
+              <div class="form-sla-badge form-sla-badge-light">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Retorno em até 24h úteis</span>
+              </div>
+            </div>
+
+            <form>
+              <div class="form-row-2col" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label for="tec_nome" style="color: var(--cbe-text-heading);">Nome do Responsável Técnico</label>
+                  <input type="text" id="tec_nome" class="input-styled" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                  <label for="tec_empresa" style="color: var(--cbe-text-heading);">Empresa / Construtora / Indústria</label>
+                  <input type="text" id="tec_empresa" class="input-styled" placeholder="Nome da empresa">
+                </div>
+              </div>
+
+              <div class="form-row-2col" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label for="tec_email" style="color: var(--cbe-text-heading);">E-mail Corporativo</label>
+                  <input type="email" id="tec_email" class="input-styled" placeholder="contato@empresa.com.br" required>
+                </div>
+                <div class="form-group">
+                  <label for="tec_telefone" style="color: var(--cbe-text-heading);">Telefone / WhatsApp</label>
+                  <input type="tel" id="tec_telefone" class="input-styled" placeholder="(34) 99999-9999" required>
+                </div>
+              </div>
+
+              <!-- Parâmetros Elétricos Específicos -->
+              <div class="form-row-3col" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label for="tec_tipo_quadro" style="color: var(--cbe-text-heading); font-family: var(--font-mono);">Tipo de Quadro</label>
+                  <select id="tec_tipo_quadro" class="input-styled" required>
+                    <option value="">Selecione o tipo...</option>
+                    <option value="QGBT">QGBT — Quadro Geral de Baixa Tensão</option>
+                    <option value="QDF">QDF — Quadro de Distribuição de Força</option>
+                    <option value="CCM">CCM — Centro de Controle de Motores</option>
+                    <option value="acionamento">Quadro de Acionamento de Motores</option>
+                    <option value="comando">Quadro de Comando e Automação</option>
+                    <option value="iluminacao_tomadas">Quadro de Iluminação e Tomadas</option>
+                    <option value="especiais">Quadros Elétricos Especiais</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="tec_kva" style="color: var(--cbe-text-heading); font-family: var(--font-mono);">Potência (kVA / kW)</label>
+                  <input type="text" id="tec_kva" class="input-styled" placeholder="Ex: 150 kVA">
+                </div>
+                <div class="form-group">
+                  <label for="tec_tensao" style="color: var(--cbe-text-heading); font-family: var(--font-mono);">Tensão de Operação</label>
+                  <select id="tec_tensao" class="input-styled" required>
+                    <option value="">Selecione a tensão...</option>
+                    <option value="220/127V">127V / 220V Trifásico</option>
+                    <option value="380/220V">220V / 380V Trifásico</option>
+                    <option value="440V">440V Trifásico</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row-3col" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label for="tec_icc" style="color: var(--cbe-text-heading); font-family: var(--font-mono);">Corrente Curto-Circuito (Icc / Icu)</label>
+                  <input type="text" id="tec_icc" class="input-styled" placeholder="Ex: 15 kA, 25 kA, 50 kA">
+                </div>
+                <div class="form-group">
+                  <label for="tec_partida" style="color: var(--cbe-text-heading); font-family: var(--font-mono);">Tipo de Partida de Motores</label>
+                  <select id="tec_partida" class="input-styled">
+                    <option value="nao-aplica">Não aplicável (Apenas Distribuição)</option>
+                    <option value="direta">Partida Direta</option>
+                    <option value="estrela-triangulo">Estrela-Triângulo</option>
+                    <option value="soft-starter">Soft-Starter</option>
+                    <option value="inversor">Inversor de Frequência</option>
+                    <option value="misto">Misto</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="tec_ip" style="color: var(--cbe-text-heading); font-family: var(--font-mono);">Grau de Proteção (IP)</label>
+                  <select id="tec_ip" class="input-styled">
+                    <option value="IP54">IP54 (Padrão Abrigado)</option>
+                    <option value="IP55">IP55 (Proteção contra Poeira e Jatos)</option>
+                    <option value="IP65">IP65 (Estanque / Industrial)</option>
+                    <option value="IP66">IP66 (Ambiente Agressivo)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="tec_observacoes" style="color: var(--cbe-text-heading);">Requisitos Adicionais (Barramentos N+PE, relés específicos, medição, CLP)</label>
+                <textarea id="tec_observacoes" class="input-styled" rows="4" placeholder="Descreva particularidades do barramento, disjuntor de entrada motorizado, relé térmico, medição remota..."></textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="cbe-btn cbe-btn-red">
+                  <span>Enviar Especificações Técnicas</span>
+                  <span class="icon-wrap">
+                    <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- FLUXO 2: ORIENTAÇÃO GUIADA -->
+        <div id="flow-guiado" class="flow-container">
+          <div class="form-full-card">
+            <div class="cta-form-header-row" style="border-bottom: 1px solid var(--cbe-border); padding-bottom: 1rem; margin-bottom: 2rem;">
+              <div>
+                <h2 style="font-size: 1.6rem; color: var(--cbe-text-heading); margin-bottom: 0.25rem;">Orientação Guiada de Dimensionamento</h2>
+                <p style="color: var(--cbe-text-muted); font-size: 0.9375rem; margin-bottom: 0;">Responda às perguntas abaixo para que nosso time técnico estruture o quadro elétrico adequado:</p>
+              </div>
+              <div class="form-sla-badge form-sla-badge-light">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Retorno em até 24h úteis</span>
+              </div>
+            </div>
+
+            <form>
+              <div class="form-row-2col" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label for="gui_nome" style="color: var(--cbe-text-heading);">Seu Nome</label>
+                  <input type="text" id="gui_nome" class="input-styled" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                  <label for="gui_telefone" style="color: var(--cbe-text-heading);">Telefone / WhatsApp</label>
+                  <input type="tel" id="gui_telefone" class="input-styled" placeholder="(34) 99999-9999" required>
+                </div>
+              </div>
+
+              <div class="form-row-2col" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label for="gui_email" style="color: var(--cbe-text-heading);">Seu E-mail</label>
+                  <input type="email" id="gui_email" class="input-styled" placeholder="seuemail@exemplo.com.br" required>
+                </div>
+                <div class="form-group">
+                  <label for="gui_cidade" style="color: var(--cbe-text-heading);">Cidade / Estado</label>
+                  <input type="text" id="gui_cidade" class="input-styled" placeholder="Ex: Uberlândia / MG" required>
+                </div>
+              </div>
+
+              <div class="form-row-2col" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label for="gui_local" style="color: var(--cbe-text-heading);">Onde o quadro será instalado?</label>
+                  <select id="gui_local" class="input-styled" required>
+                    <option value="">Selecione...</option>
+                    <option value="industria">Indústria / Galpão Fabril</option>
+                    <option value="comercio">Comércio / Supermercado / Shopping</option>
+                    <option value="predial">Edifício Comercial ou Residencial</option>
+                    <option value="agronegocio">Agronegócio / Fazenda / Irrigação</option>
+                    <option value="outro">Outro local</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="gui_concessionaria" style="color: var(--cbe-text-heading);">Concessionária de Energia Local</label>
+                  <select id="gui_concessionaria" class="input-styled">
+                    <option value="cemig">CEMIG (Padrão Minas Gerais)</option>
+                    <option value="cpfl">CPFL</option>
+                    <option value="enel">Enel</option>
+                    <option value="equatorial">Equatorial</option>
+                    <option value="outra">Outra concessionária</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="gui_objetivo" style="color: var(--cbe-text-heading);">Qual é o objetivo principal?</label>
+                <select id="gui_objetivo" class="input-styled" required>
+                  <option value="">Selecione...</option>
+                  <option value="nova_instalacao">Construção Nova (Quadro do zero)</option>
+                  <option value="reforma_ampliacao">Reforma / Ampliação de Carga existente</option>
+                  <option value="adequacao_normas">Adequação às normas NR-10 / NBR 5410 / IEC 61439</option>
+                  <option value="automacao_motores">Instalação de Motores / Bombas / Automação</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="gui_cargas" style="color: var(--cbe-text-heading);">Quais cargas principais serão alimentadas pelo quadro? (Motores, bombas, compressores, iluminação, circuitos de força...)</label>
+                <textarea id="gui_cargas" class="input-styled" rows="4" placeholder="Descreva os equipamentos, quantidades e potências que o quadro irá alimentar..."></textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="cbe-btn cbe-btn-red">
+                  <span>Solicitar Contato do Engenheiro</span>
+                  <span class="icon-wrap">
+                    <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé Institucional Sólido -->
+
+  <!-- 7. Rodapé Institucional Sólido (Azul CBE) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <a href="index.html">
+            <img src="assets/logo/logo-cbe-principal.png" alt="Corrêa Barbosa Engenharia" width="200" height="58">
+          </a>
+          <p>
+            Fabricação e montagem de quadros elétricos sob medida em conformidade com NBR 5410, IEC 61439 e NR-10 em Uberlândia e região.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="quadros-eletricos.html">Quadros Elétricos & Catálogo</a></li>
+            <li><a href="orcamento.html">Solicitar Orçamento Técnico</a></li>
+            <li><a href="sobre.html">Sobre a CBE Engenharia</a></li>
+            <li><a href="contato.html">Contato & Localização</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Fale com a Gente</h4>
+          <div class="footer-contact-items">
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Uberlândia - MG, Brasil</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><strong>(34) 99922-7667</strong> (CBE) · <strong>(34) 99883-4757</strong> (Vendas) · (34) 3237-3013</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>contato@cbeengenharia.com.br</span>
+            </div>
+          </div>
+
+          <!-- Redes Sociais Isométricas 3D -->
+          <div class="cbe-social-card">
+            <ul class="cbe-social-list">
+              <li class="iso-pro social-whatsapp">
+                <span></span><span></span><span></span>
+                <a href="https://wa.me/5534999227667?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20t%C3%A9cnico%20de%20quadros%20el%C3%A9tricos" target="_blank" rel="noopener noreferrer" data-no-swup aria-label="WhatsApp CBE">
+                  <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                </a>
+                <div class="text">WhatsApp</div>
+              </li>
+              <li class="iso-pro social-instagram">
+                <span></span><span></span><span></span>
+                <a href="https://www.instagram.com/cbe.eng" target="_blank" rel="noopener noreferrer" data-no-swup aria-label="Instagram CBE">
+                  <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                </a>
+                <div class="text">Instagram</div>
+              </li>
+              <li class="iso-pro social-linkedin">
+                <span></span><span></span><span></span>
+                <a href="https://www.linkedin.com/company/corr%C3%AAa-barbosa-engenharia-s-s-ltda/home/" target="_blank" rel="noopener noreferrer" data-no-swup aria-label="LinkedIn CBE">
+                  <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+                </a>
+                <div class="text">LinkedIn</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>© 2026 CBE — Corrêa Barbosa Engenharia. Todos os direitos reservados.</span>
+        <span>Fabricação e Montagem de Quadros Elétricos em Uberlândia / MG</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Widget Flutuante de Atendimento WhatsApp (3D Isométrico) -->
+  <div class="floating-whatsapp-widget" id="whatsapp-widget">
+    <div class="floating-whatsapp-card" id="whatsapp-card">
+      <div class="whatsapp-card-header">
+        <div class="whatsapp-card-header-info">
+          <span class="whatsapp-status-dot"></span>
+          <div>
+            <div class="whatsapp-card-title">Fale pelo WhatsApp</div>
+            <div class="whatsapp-card-subtitle">Atendimento Técnico Especializado</div>
+          </div>
+        </div>
+        <button class="whatsapp-close-btn" id="close-whatsapp-card" aria-label="Fechar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="whatsapp-contacts-list">
+        <!-- Contato 1: CBE Engenharia (Prioridade) -->
+        <a href="https://wa.me/5534999227667?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20t%C3%A9cnico%20de%20quadros%20el%C3%A9tricos" target="_blank" rel="noopener" class="whatsapp-contact-item priority">
+          <div class="whatsapp-item-icon">
+            <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          </div>
+          <div class="whatsapp-item-info">
+            <span class="whatsapp-item-badge">Prioritário · Engenharia</span>
+            <span class="whatsapp-item-name">CBE Engenharia</span>
+            <span class="whatsapp-item-number">(34) 99922-7667</span>
+          </div>
+        </a>
+
+        <!-- Contato 2: Vendedor Direto -->
+        <a href="https://wa.me/5534998834757?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20vendedor%20da%20CBE" target="_blank" rel="noopener" class="whatsapp-contact-item">
+          <div class="whatsapp-item-icon">
+            <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          </div>
+          <div class="whatsapp-item-info">
+            <span class="whatsapp-item-badge">Plantão Comercial</span>
+            <span class="whatsapp-item-name">Vendedor Direto</span>
+            <span class="whatsapp-item-number">(34) 99883-4757</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Botão com Animação Isométrica 3D -->
+    <div class="floating-whatsapp-btn-wrap" id="whatsapp-trigger-wrap">
+      <div class="floating-iso-pro">
+        <span></span><span></span><span></span>
+        <button class="floating-trigger-btn" id="toggle-whatsapp-widget" aria-label="Abrir WhatsApp CBE">
+          <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bibliotecas de Transição, Smooth Scroll e Animações GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/swup@4"></script>
+
+  <!-- Scripts Principais -->
+  <script src="js/main.js?v=6.1"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "cbe-pr-01",
+    "codigo": "CBE-PR-01",
+    "prancha": "LÂMINA 01 · COMANDO E AUTOMAÇÃO",
+    "nome": "Quadro de Comando com CLP e I/O Remotas",
+    "categoria": "comando",
+    "potencia-kva": "150 kVA",
+    "tensao-v": "380V / 220V CA + 24Vcc Estabilizada",
+    "grau-protecao-ip": "IP55 / IP65",
+    "normas-atendidas": "NR-10, NR-12, IEC 61131-2, NBR 5410",
+    "descricao": "Quadro de comando autoportante com estrutura modular em chapa 14 MSG, canaletas com alta densidade de bornes anilhados a laser, ventilação forçada com termostato digital e iluminação interna LED.",
+    "destaques": [
+      "Fonte chaveada Siemens SITOP 24Vcc redundante com proteção contra transientes",
+      "Bastidor de bornes de passagem e seccionáveis anilhados individualmente",
+      "Porta com intertravamento de segurança, comutadores rotativos e sinalização frontal",
+      "Malha de aterramento equipotencial com cordoalha de cobre estanhado flexível"
+    ],
+    "componentes_principais": "Siemens Simatic, SITOP PSU, Bornes Phoenix/Weidmüller, Rittal/Eletropol",
+    "imagem": "assets/images/cbe_armario_automacao_grande.jpg"
+  },
+  {
+    "id": "cbe-pr-02",
+    "codigo": "CBE-PR-02",
+    "prancha": "LÂMINA 02 · CONTROLE AVANÇADO",
+    "nome": "Quadro de Comando com CLP Siemens S7-1500",
+    "categoria": "comando",
+    "potencia-kva": "75 kVA",
+    "tensao-v": "24Vcc Estabilizada / 220V CA",
+    "grau-protecao-ip": "IP54",
+    "normas-atendidas": "IEC 61131, PROFINET Certified, NR-10",
+    "descricao": "Placa de montagem dedicada ao processamento de lógica industrial, equipada com CPU de alta velocidade, cartões de entradas/saídas digitais e analógicas, switches Profinet e relés de interface.",
+    "destaques": [
+      "Módulos de segurança intrínseca e cartões Fail-Safe certificados SIL3 / PLe",
+      "Switches industriais gerenciáveis com topologia em anel redundante (MRP)",
+      "Cabos de comando 0,75mm² antiflama com identificação individual indelével",
+      "Isolação galvânica entre circuitos de potência e barramento de sinal"
+    ],
+    "componentes_principais": "Siemens S7-1500 / ET200SP, SITOP PSU100S, Relés Weidmüller",
+    "imagem": "assets/images/cbe_clp_siemens_s7.jpg"
+  },
+  {
+    "id": "cbe-pr-03",
+    "codigo": "CBE-PR-03",
+    "prancha": "LÂMINA 03 · ACIONAMENTO DE MOTORES",
+    "nome": "Quadro de Acionamento de Motores com Inversores PowerFlex",
+    "categoria": "ccm",
+    "potencia-kva": "250 kVA",
+    "tensao-v": "380V / 440V Trifásico",
+    "grau-protecao-ip": "IP54 / IP55",
+    "normas-atendidas": "IEC 61439-1/2, IEEE 519 (Harmônicos), NR-10",
+    "descricao": "Quadro de acionamento múltiplo contendo 10 conversores de frequência compactos em paralelo, dimensionado para sincronismo de motores, transportadores e linhas contínuas de envase.",
+    "destaques": [
+      "Inversores com comunicação EtherNet/IP integrada e controle vetorial",
+      "Filtros de linha RFI/EMC incorporados e reatores de rede individuais",
+      "Cabos de potência blindados com aterramento 360° por prensa-cabos EMC",
+      "Proteção de retaguarda por disjuntores-motores termomagnéticos com bloqueio"
+    ],
+    "componentes_principais": "Allen-Bradley PowerFlex 525, Bornes WAGO, Disjuntores Schneider",
+    "imagem": "assets/images/cbe_bateria_inversores_powerflex.jpg"
+  },
+  {
+    "id": "cbe-pr-04",
+    "codigo": "CBE-PR-04",
+    "prancha": "LÂMINA 04 · PROCESSOS CONTÍNUOS",
+    "nome": "Quadro de Acionamento de Motores com Inversores ATV320",
+    "categoria": "ccm",
+    "potencia-kva": "300 kVA",
+    "tensao-v": "380V Trifásico",
+    "grau-protecao-ip": "IP55",
+    "normas-atendidas": "IEC 61800-3, IEC 61439, NR-10",
+    "descricao": "Sistema composto por 13 acionamentos de velocidade variável Schneider Altivar com proteção contra sobretensões transitórias (DPS Tipo 2), barramento blindado e chicotes espiralados.",
+    "destaques": [
+      "Disposição em duplo andar com espaçamento calculado para fluxo laminar de ar",
+      "Disjuntores dedicados por inversor para manutenção setorizada sem parada total",
+      "Sinalização de status por LEDs frontais e barramento de controle Modbus",
+      "100% ensaiado sob carga simulada antes do envio para a obra"
+    ],
+    "componentes_principais": "Schneider Altivar ATV320, Acti9 iC60N, DPS iPRD",
+    "imagem": "assets/images/cbe_bateria_inversores_schneider.jpg"
+  },
+  {
+    "id": "cbe-pr-05",
+    "codigo": "CBE-PR-05",
+    "prancha": "LÂMINA 05 · CENTRO DE CONTROLE DE MOTORES",
+    "nome": "CCM — Coluna de Acionamento com Soft-Starters",
+    "categoria": "ccm",
+    "potencia-kva": "500 kVA",
+    "tensao-v": "380V / 440V Trifásico",
+    "grau-protecao-ip": "IP65",
+    "normas-atendidas": "IEC 61439-1/2 (Forma 2b/3b), NR-10, NR-12",
+    "descricao": "Coluna vertical autoportante com soft-starters eletrônicos de partida suave, chave seccionadora de acionamento rotativo frontal com bloqueio por cadeado e sinalização luminosa de comando na porta.",
+    "destaques": [
+      "Redução de corrente de pico na partida de motores pesados (bombas e moinhos)",
+      "Bypass interno integrado que elimina aquecimento após o regime nominal",
+      "Separação física entre compartimento de potência e compartimento de cabos",
+      "Placas de policarbonato transparente para proteção contra contatos acidentais"
+    ],
+    "componentes_principais": "Siemens Sirius 3RW, WEG SSW, Disjuntores 3VA",
+    "imagem": "assets/images/cbe_coluna_softstarter.jpg"
+  },
+  {
+    "id": "cbe-pr-06",
+    "codigo": "CBE-PR-06",
+    "prancha": "LÂMINA 06 · DISTRIBUIÇÃO PRINCIPAL",
+    "nome": "QGBT — Quadro Geral de Baixa Tensão com Disjuntores Caixa Moldada",
+    "categoria": "distribuicao",
+    "potencia-kva": "350 kVA",
+    "tensao-v": "220V / 380V Trifásico",
+    "grau-protecao-ip": "IP55",
+    "normas-atendidas": "NBR 5410, IEC 60947-2, NR-10",
+    "descricao": "Quadro Geral de Baixa Tensão (QGBT) em placa de montagem laranja fosca, estruturado com disjuntores caixa moldada em cascata de alta capacidade de interrupção (Icu) e barramento principal estanhado.",
+    "destaques": [
+      "Disjuntores com unidades de disparo eletrônicas ajustáveis (LSI)",
+      "Barramentos principais de cobre eletrolítico 99,9% com furação puncionada",
+      "Alimentação auxiliar estabilizada em 24Vcc com disjuntores unipolares",
+      "Torque controlado com marcação visual por lacre de segurança em todas as conexões"
+    ],
+    "componentes_principais": "Schneider Compact NSX / Siemens 3VA, Cobre Eletrolítico Estanhado",
+    "imagem": "assets/images/cbe_distribuicao_disjuntores.jpg"
+  },
+  {
+    "id": "cbe-pr-07",
+    "codigo": "CBE-PR-07",
+    "prancha": "LÂMINA 07 · QUADROS ESPECIAIS",
+    "nome": "Quadro Especial — Conjunto de Barramento de Cobre Estanhado",
+    "categoria": "especiais",
+    "potencia-kva": "1000 kVA",
+    "tensao-v": "Até 1000V / 1600A (50 kA Icw)",
+    "grau-protecao-ip": "IP65",
+    "normas-atendidas": "NBR IEC 61439-1, NBR 5410",
+    "descricao": "Projeto e conformação mecânica de barramentos principais e de derivação em cobre eletrolítico C11000 puro, dimensionados rigorosamente para suportar esforços térmicos e dinâmicos de curto-circuito.",
+    "destaques": [
+      "Tratamento superficial por eletrodeposição de estanho contra oxidação",
+      "Isolamento integral por espaguete termoretrátil com código de cores por fase",
+      "Isoladores tipo bucha e suporte em resina epóxi autoextinguível",
+      "Barra de terra (PE) e neutro (N) contínuas com pontos de conexão puncionados"
+    ],
+    "componentes_principais": "Cobre Eletrolítico C11000 (ABNT), Isoladores Epóxi 1kV",
+    "imagem": "assets/images/cbe_barramentos_cobre.jpg"
+  },
+  {
+    "id": "cbe-pr-08",
+    "codigo": "CBE-PR-08",
+    "prancha": "LÂMINA 08 · ILUMINAÇÃO E TOMADAS",
+    "nome": "Quadro de Iluminação e Tomadas Industriais Steck",
+    "categoria": "distribuicao",
+    "potencia-kva": "60 kVA",
+    "tensao-v": "220V / 380V Trifásico",
+    "grau-protecao-ip": "IP65",
+    "normas-atendidas": "NBR 5410, NR-10, NR-18 (Segurança na Construção)",
+    "descricao": "Caixas de sobrepor em chapa de aço tratada com pintura eletrostática a pó poliéster, tomadas industriais de embutir com tampa de proteção e disjuntores DR de alta sensibilidade.",
+    "destaques": [
+      "Tomadas com grau de proteção IP67 e tampas com trava contra poeira e jatos d'água",
+      "Proteção individual por disjuntor termomagnético e DR de 30mA contra choque elétrico",
+      "Fecho tipo fenda/cadeado para atendimento às exigências da NR-10 e NR-18",
+      "Entrada de cabos por prensa-cabos cônicos estanques na parte inferior"
+    ],
+    "componentes_principais": "Tomadas Industriais Steck / Scame, Disjuntores Siemens / WEG",
+    "imagem": "assets/images/cbe_quadros_tomadas.jpg"
+  }
+]

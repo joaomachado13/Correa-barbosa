@@ -1,0 +1,18 @@
+# Sistema operacional / Arquivos temporários
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Logs e IDE
+*.log
+.vscode/
+.idea/

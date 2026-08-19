@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cbeGradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0052CC" />
+      <stop offset="100%" stop-color="#003399" />
+    </linearGradient>
+    <linearGradient id="cbeGradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53E3E" />
+      <stop offset="100%" stop-color="#9B2C2C" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Símbolo de Engrenagem / Raio elétrico -->
+  <g transform="translate(10, 10)">
+    <!-- Circuito Elétrico Base Hexagonal -->
+    <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" fill="none" stroke="url(#cbeGradBlue)" stroke-width="6" />
+    <circle cx="50" cy="50" r="30" fill="url(#cbeGradBlue)" />
+    
+    <!-- Ícone de Raio / Energia -->
+    <path d="M 54 22 L 36 52 L 48 52 L 42 78 L 64 44 L 50 44 Z" fill="#FFFFFF" filter="url(#glow)" />
+    
+    <!-- Pontos de Conexão de Fase -->
+    <circle cx="50" cy="5" r="4" fill="#E53E3E" />
+    <circle cx="90" cy="28" r="4" fill="#0052CC" />
+    <circle cx="90" cy="72" r="4" fill="#059669" />
+  </g>
+
+  <!-- Tipografia Principal: CBE -->
+  <text x="120" y="68" font-family="'Outfit', 'Inter', sans-serif" font-size="52" font-weight="900" letter-spacing="-1.5" fill="#FFFFFF">
+    CBE
+  </text>
+  <circle cx="232" cy="38" r="6" fill="url(#cbeGradRed)" />
+
+  <!-- Subtítulo: CORRÊA BARBOSA ENGENHARIA -->
+  <text x="122" y="92" font-family="'Inter', sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#94A3B8">
+    CORRÊA BARBOSA ENGENHARIA
+  </text>
+  <line x1="122" y1="100" x2="350" y2="100" stroke="url(#cbeGradRed)" stroke-width="2" />
+</svg>

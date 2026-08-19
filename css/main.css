@@ -1,0 +1,3847 @@
+/* ==========================================================================
+   CBE — CORRÊA BARBOSA ENGENHARIA
+   main.css — Estilos Globais, Componentes e Direção Visual
+   ========================================================================== */
+
+@import url('./tokens.css');
+
+/* --- Reset e Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Suporte Nativo ao Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--cbe-text-body);
+  background-color: var(--cbe-bg-body);
+  overflow-x: hidden;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- Container e Grid de Layout --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section-spacing {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+}
+
+.section-spacing-sm {
+  padding-top: var(--section-pad-sm);
+  padding-bottom: var(--section-pad-sm);
+}
+
+/* --- Tipografia Global --- */
+h1, h2, h3, h4, h5, h6,
+.hero-title, .section-header-left h2, .solid-blue-content h2, 
+.family-guide-card h3, .panel-title, .back-title, .catalog-card-title,
+.about-history-content h2, .form-full-card h3 {
+  font-family: var(--font-display);
+  color: var(--cbe-text-heading);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1, .hero-title { 
+  font-size: var(--fs-hero); 
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h2, .section-header-left h2, .solid-blue-content h2 { 
+  font-size: var(--fs-h1); 
+  font-weight: 700;
+}
+
+h3 { 
+  font-size: var(--fs-h2); 
+  font-weight: 700;
+}
+
+h4 { 
+  font-size: var(--fs-h3); 
+  font-weight: 600;
+}
+
+.mono-spec {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+.lead-text {
+  font-size: var(--fs-body-lg);
+  color: var(--cbe-text-muted);
+  line-height: 1.65;
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--cbe-blue);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.section-subtitle-white {
+  color: #93C5FD;
+}
+
+.section-subtitle-red {
+  color: var(--cbe-red);
+}
+
+/* --- Botões no Formato Pill com Ícone Circular (REF-4) --- */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.6rem 0.5rem 1.6rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-pill .btn-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.btn-pill:hover .btn-icon-circle {
+  transform: translateX(3px) scale(1.05);
+}
+
+/* --- Splash Screen "Olá" --- */
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FBFBFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+  overflow: hidden;
+}
+
+.splash-overlay.splash-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#ola-svg {
+  width: min(60vw, 620px);
+  height: auto;
+  overflow: visible;
+}
+
+.letter-stroke {
+  fill: none;
+  stroke: var(--cbe-blue, #314E8A);
+  stroke-width: 9;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.letter-fill {
+  fill: var(--cbe-blue, #314E8A);
+  stroke: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* ===== Swup Official Reveal Animations com Fundo Azul e Vermelho ===== */
+html {
+  --origin-x: calc(var(--click-x, 0.5) * 100%);
+  --origin-y: calc(var(--click-y, 0.5) * 100%);
+}
+
+/* Fundo institucional colorido durante as trocas (nunca branco) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -999;
+  background-color: var(--cbe-blue, #314E8A);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+html.is-changing body::before,
+html.is-animating body::before {
+  opacity: 1;
+}
+
+html.to-circle body::before {
+  background-color: #314E8A; /* Azul CBE */
+}
+
+html.to-square body::before {
+  background-color: #EC3237; /* Vermelho CBE */
+}
+
+html.to-gradient body::before {
+  background-color: #0F172A; /* Azul Escuro Institucional */
+}
+
+html.is-changing body,
+html.is-animating body {
+  background-color: #0F172A !important;
+}
+
+.transition-reveal {
+  position: relative;
+  background-color: var(--cbe-bg-body, #FBFBFA);
+  will-change: clip-path, mask-position, -webkit-mask-position;
+}
+
+html.is-changing .transition-reveal {
+  transition: clip-path 0.45s cubic-bezier(0.4, 0, 0.1, 1), mask-position 0.45s cubic-bezier(0.4, 0, 0.1, 1);
+  transition: clip-path 0.45s cubic-bezier(0.4, 0, 0.1, 1), -webkit-mask-position 0.45s cubic-bezier(0.4, 0, 0.1, 1);
+}
+
+/* 1. Circle Reveal (Azul CBE) */
+html.to-circle .transition-reveal {
+  clip-path: circle(150% at var(--origin-x) var(--origin-y));
+}
+
+html.to-circle.is-animating .transition-reveal {
+  clip-path: circle(0% at var(--origin-x) var(--origin-y));
+}
+
+/* 2. Square / Diamond Reveal (Vermelho CBE) */
+html.to-square .transition-reveal {
+  clip-path: polygon(-50% -50%, 150% -50%, 150% 150%, -50% 150%);
+}
+
+html.to-square.is-animating .transition-reveal {
+  clip-path: polygon(var(--origin-x) var(--origin-y), var(--origin-x) var(--origin-y), var(--origin-x) var(--origin-y), var(--origin-x) var(--origin-y));
+}
+
+/* 3. Gradient / Wipe Reveal (Azul Escuro) */
+html.to-gradient .transition-reveal {
+  mask-image: linear-gradient(to left, transparent 33.33%, white 66.66%);
+  mask-size: 300% 100%;
+  mask-position: 0%;
+  -webkit-mask-image: linear-gradient(to left, transparent 33.33%, white 66.66%);
+  -webkit-mask-size: 300% 100%;
+  -webkit-mask-position: 0%;
+}
+
+html.to-gradient.is-animating .transition-reveal {
+  mask-position: 100%;
+  -webkit-mask-position: 100%;
+}
+
+/* ===== Novo Botão Interativo CBE (Explore Style) ===== */
+.cbe-btn {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.4rem 0.65rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cbe-text-heading);
+  background: #FFFFFF;
+  border: 1.5px solid var(--cbe-text-heading);
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease;
+  pointer-events: auto !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.cbe-btn::before,
+.cbe-btn::after {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--cbe-blue);
+  border-radius: 9999px;
+  z-index: -1;
+  transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none !important;
+}
+
+.cbe-btn > * {
+  pointer-events: none !important;
+}
+
+.cbe-btn:hover {
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+  box-shadow: 0 8px 20px rgba(49, 78, 138, 0.25);
+}
+
+.cbe-btn:hover::before {
+  left: 0;
+  transform: translateY(-50%) scale(1.6);
+}
+
+/* Ícone com rotação de 45deg para 90deg */
+.cbe-btn .icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0.35rem;
+  border: 1px solid currentColor;
+  border-radius: 9999px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  pointer-events: none !important;
+}
+
+.cbe-btn .icon-wrap svg {
+  width: 100%;
+  height: 100%;
+  transition: fill 0.3s ease;
+  pointer-events: none !important;
+}
+
+.cbe-btn .icon-wrap path {
+  fill: currentColor;
+  transition: fill 0.3s ease;
+  pointer-events: none !important;
+}
+
+.cbe-btn:hover .icon-wrap {
+  transform: rotate(90deg);
+  border-color: transparent;
+  background: #FFFFFF;
+}
+
+.cbe-btn:hover .icon-wrap path {
+  fill: var(--cbe-blue);
+}
+
+/* Variação Vermelha CBE */
+.cbe-btn-red {
+  background: var(--cbe-red);
+  color: #FFFFFF;
+  border-color: var(--cbe-red);
+}
+
+.cbe-btn-red::before {
+  background: var(--cbe-blue);
+}
+
+.cbe-btn-red .icon-wrap {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cbe-btn-red .icon-wrap path {
+  fill: #FFFFFF;
+}
+
+.cbe-btn-red:hover {
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+  box-shadow: 0 8px 20px rgba(236, 50, 55, 0.35);
+}
+
+.cbe-btn-red:hover .icon-wrap {
+  background: #FFFFFF;
+}
+
+.cbe-btn-red:hover .icon-wrap path {
+  fill: var(--cbe-blue);
+}
+
+.cbe-btn-red:hover .icon-wrap path {
+  fill: var(--cbe-blue);
+}
+
+/* Variação Azul CBE */
+.cbe-btn-blue {
+  background: var(--cbe-blue);
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+}
+
+.cbe-btn-blue::before {
+  background: var(--cbe-red);
+}
+
+.cbe-btn-blue .icon-wrap {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cbe-btn-blue .icon-wrap path {
+  fill: #FFFFFF;
+}
+
+.cbe-btn-blue:hover {
+  color: #FFFFFF;
+  border-color: var(--cbe-red);
+  box-shadow: 0 8px 20px rgba(49, 78, 138, 0.35);
+}
+
+.cbe-btn-blue:hover .icon-wrap {
+  background: #FFFFFF;
+}
+
+.cbe-btn-blue:hover .icon-wrap path {
+  fill: var(--cbe-red);
+}
+
+/* --- Redes Sociais Isométricas 3D --- */
+.cbe-social-card {
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.cbe-social-list {
+  display: flex;
+  list-style: none;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.cbe-social-list li.iso-pro {
+  position: relative;
+  list-style: none;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cbe-social-list li.iso-pro span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none !important;
+}
+
+.cbe-social-list li.iso-pro.social-whatsapp span {
+  border: 1px solid #25D366;
+  background: rgba(37, 211, 102, 0.2);
+}
+.cbe-social-list li.iso-pro.social-instagram span {
+  border: 1px solid #E1306C;
+  background: rgba(225, 48, 108, 0.2);
+}
+.cbe-social-list li.iso-pro.social-linkedin span {
+  border: 1px solid #0077B5;
+  background: rgba(0, 119, 181, 0.2);
+}
+
+.cbe-social-list li.iso-pro:hover span:nth-child(1) {
+  opacity: 0.2;
+}
+.cbe-social-list li.iso-pro:hover span:nth-child(2) {
+  opacity: 0.4;
+  transform: translate(3px, -3px);
+}
+.cbe-social-list li.iso-pro:hover span:nth-child(3) {
+  opacity: 0.6;
+  transform: translate(6px, -6px);
+}
+
+.cbe-social-list li.iso-pro a {
+  position: relative;
+  z-index: 5;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cbe-social-list li.iso-pro:hover a {
+  transform: translate(6px, -6px);
+}
+
+.cbe-social-list li.iso-pro .svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0.75rem;
+  border-radius: 50%;
+  color: #FFFFFF;
+  fill: currentColor;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+  pointer-events: none !important;
+}
+
+.cbe-social-list li.iso-pro.social-whatsapp:hover .svg {
+  background: #25D366;
+}
+.cbe-social-list li.iso-pro.social-instagram:hover .svg {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.cbe-social-list li.iso-pro.social-linkedin:hover .svg {
+  background: #0077B5;
+}
+
+.cbe-social-list li.iso-pro .text {
+  opacity: 0;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: var(--cbe-blue-dark);
+  position: absolute;
+  left: 50%;
+  bottom: -28px;
+  transform: translateX(-50%);
+  pointer-events: none !important;
+  white-space: nowrap;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.cbe-social-list li.iso-pro:hover .text {
+  opacity: 1;
+  transform: translateX(-50%) translateY(2px);
+}
+
+/* Compatibilidade com classes anteriores de botões pill */
+.btn-pill {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.4rem 0.65rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  pointer-events: auto !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn-pill::before,
+.btn-pill::after {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--cbe-blue);
+  border-radius: 9999px;
+  z-index: -1;
+  transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none !important;
+}
+
+.btn-pill > * {
+  pointer-events: none !important;
+}
+
+.btn-pill:hover::before {
+  left: 0;
+  transform: translateY(-50%) scale(1.6);
+}
+
+.btn-pill .btn-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0.35rem;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-pill:hover .btn-icon-circle {
+  transform: rotate(90deg);
+  background: #FFFFFF;
+  border-color: transparent;
+}
+
+.btn-pill-red {
+  background-color: var(--cbe-red);
+  color: #FFFFFF;
+  border: 1.5px solid var(--cbe-red);
+}
+
+.btn-pill-red:hover {
+  border-color: var(--cbe-blue);
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(236, 50, 55, 0.35);
+}
+
+.btn-pill-red:hover .btn-icon-circle svg path {
+  fill: var(--cbe-blue);
+}
+
+.btn-pill-blue {
+  background-color: var(--cbe-blue);
+  color: #FFFFFF;
+  border: 1.5px solid var(--cbe-blue);
+}
+
+.btn-pill-blue::before {
+  background: var(--cbe-red);
+}
+
+.btn-pill-blue:hover {
+  border-color: var(--cbe-red);
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(49, 78, 138, 0.35);
+}
+
+.btn-pill-white {
+  background-color: #FFFFFF;
+  color: var(--cbe-text-heading);
+  border: 1.5px solid #FFFFFF;
+}
+
+.btn-pill-white:hover {
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+}
+
+.btn-pill-outline {
+  background-color: transparent;
+  color: var(--cbe-text-heading);
+  border: 1.5px solid var(--cbe-border-dark);
+}
+
+.btn-pill-outline:hover {
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+}
+
+/* --- Header e Navegação --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(251, 251, 250, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cbe-border);
+  transition: all var(--transition-fast);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cbe-text-heading);
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--cbe-blue);
+  transition: width var(--transition-normal);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--cbe-blue);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.mobile-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--cbe-text-heading);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* ============================================================
+   HERO SECTION — Fotografia 16:9 preenche 100% da largura
+   Foto: 1024×576px (16:9) | Estúdio à esq. (#9faec4) | Painel à dir.
+   
+   REGRA CHAVE: usar height: Xvw em vez de aspect-ratio + max-height.
+   56.25vw = 100vw × (9÷16) → altura natural de um 16:9 em tela cheia.
+   Assim a seção é SEMPRE 100% da largura sem gaps laterais.
+   ============================================================ */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  /* 56.25vw = 9/16 × 100vw: altura exata para imagem 16:9 preencher 100% */
+  height: clamp(460px, 56.25vw, 940px);
+  display: flex;
+  align-items: center;
+  /* Cor combina com bordas da nova foto */
+  background-color: #77859f;
+  overflow: hidden;
+}
+
+/* Fotografia de fundo — 100% da seção, painel completamente visível */
+.hero-bg-photo-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-bg-photo-wrap picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-bg-photo {
+  width: 100%;
+  height: 100%;
+  /* contain: imagem inteira exibida — nenhum recorte no painel */
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+/* Camada de conteúdo — flutua sobre o espaço limpo de estúdio (lateral esquerda) */
+.hero-container-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  /* Alinha o texto na metade esquerda onde o estúdio está vazio */
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.hero-content {
+  /* Texto ocupa ~44% da largura com contraste aprimorado */
+  max-width: 44%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 5;
+}
+
+/* Pastilha de rótulo da categoria */
+.hero-content .section-subtitle {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  padding: 0.35rem 0.85rem;
+  color: #060D1E;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 3.8vw, 3.65rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #060D1E;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.08;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.hero-description {
+  font-size: clamp(0.95rem, 1.25vw, 1.125rem);
+  color: #0B192C;
+  font-weight: 600;
+  margin-bottom: 1.75rem;
+  line-height: 1.55;
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ─── Responsividade ─── */
+
+/* Tablet (900px) — hero empilhado: foto no topo, texto embaixo */
+@media (max-width: 900px) {
+  .hero-section {
+    height: auto;
+    flex-direction: column;
+    background-color: #77859f;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-bg-photo-wrap {
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* Mantém a proporção 16:9 da nova foto */
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-bg-photo {
+    object-fit: contain;
+    object-position: center;
+    height: auto;
+    width: 100%;
+  }
+
+  .hero-container-content {
+    padding-top: 1.5rem;
+    justify-content: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* Mobile (600px) */
+@media (max-width: 600px) {
+  .hero-section {
+    padding-bottom: 2rem;
+  }
+
+  .hero-container-content {
+    padding-top: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.65rem;
+    line-height: 1.15;
+  }
+
+  .hero-description {
+    font-size: 0.9375rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .cbe-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 2. Bloco Sólido de Credibilidade Técnica (Azul CBE) */
+.section-solid-blue {
+  background-color: var(--cbe-blue-dark);
+  position: relative;
+  color: #FFFFFF;
+  clip-path: polygon(0 0, 100% 3.5vw, 100% 100%, 0 calc(100% - 3.5vw));
+  margin-top: -3.5vw;
+  margin-bottom: -3.5vw;
+  padding-top: calc(var(--section-pad-y) + 3.5vw);
+  padding-bottom: calc(var(--section-pad-y) + 3.5vw);
+  z-index: 5;
+  overflow: hidden;
+}
+
+.section-solid-blue::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px, 64px 64px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.solid-blue-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.solid-blue-content h2 {
+  color: #FFFFFF;
+  font-size: clamp(2rem, 3.2vw, 2.85rem);
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.solid-blue-content p {
+  color: #E2E8F0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.tech-facts-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 2.25rem;
+  margin-bottom: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent !important;
+}
+
+.tech-fact-item {
+  background: transparent !important;
+  padding: 1.35rem 1.5rem 1.35rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.tech-fact-item:nth-child(odd) {
+  padding-right: 1.75rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.tech-fact-item:nth-child(even) {
+  padding-left: 1.75rem;
+}
+
+.tech-fact-item:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.tech-fact-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.tech-fact-item .fact-index {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--cbe-red);
+  letter-spacing: 0.08em;
+}
+
+.tech-fact-item .fact-num {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.tech-fact-item .fact-desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #CBD5E1;
+  line-height: 1.5;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .tech-facts-list {
+    grid-template-columns: 1fr;
+  }
+  .tech-fact-item:nth-child(odd) {
+    border-right: none;
+    padding-right: 0;
+  }
+  .tech-fact-item:nth-child(even) {
+    padding-left: 0;
+  }
+  .tech-fact-item:nth-last-child(-n+2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .tech-fact-item:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Selo / Emblema Rotativo de Ação em Glassmorphism Ampliado (ITEM 4) */
+.solid-blue-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.rotating-badge-wrapper {
+  position: static;
+  align-self: flex-end;
+  margin-bottom: 0;
+  z-index: 25;
+  pointer-events: auto;
+}
+
+.rotating-emblem-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 30;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Dimensão Ampliada (+45%) com Alto Impacto Visual */
+.rotating-emblem {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 50%;
+  border: 2.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), inset 0 1px 3px rgba(255, 255, 255, 0.7);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.rotating-emblem * {
+  pointer-events: none !important;
+}
+
+.rotating-emblem:hover {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), inset 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.rotating-emblem svg.circular-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: spinSlow 14s linear infinite;
+  pointer-events: none !important;
+  transform-origin: center center;
+}
+
+.rotating-emblem .emblem-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: var(--cbe-red);
+  border-radius: 50%;
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(236, 50, 55, 0.65);
+  z-index: 2;
+  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  pointer-events: none !important;
+}
+
+.rotating-emblem .emblem-center svg {
+  width: 24px;
+  height: 24px;
+}
+
+.rotating-emblem:hover .emblem-center {
+  transform: scale(1.12);
+  background: #FFFFFF;
+  color: var(--cbe-red);
+}
+
+@media (max-width: 768px) {
+  .rotating-emblem {
+    width: 170px;
+    height: 170px;
+  }
+  .rotating-emblem .emblem-center {
+    width: 56px;
+    height: 56px;
+  }
+  .rotating-emblem .emblem-center svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Galeria de Fotos Reais da Fábrica Integrada no Bloco Azul */
+.factory-photo-stack {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.factory-photo-stack img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out-smooth);
+}
+
+.factory-photo-stack:hover img {
+  transform: scale(1.02);
+}
+
+/* Guia de Famílias de Produtos no Catálogo */
+.catalog-families-intro {
+  margin-bottom: 3.5rem;
+}
+
+.family-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.family-guide-card {
+  background: #FFFFFF;
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.family-guide-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cbe-blue);
+  box-shadow: 0 10px 30px rgba(49, 78, 138, 0.12);
+}
+
+.family-schematic {
+  width: 100%;
+  height: 52px;
+  margin-bottom: 1.15rem;
+  padding: 0.35rem 0.65rem;
+  background: var(--cbe-bg-surface);
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.family-guide-card:hover .family-schematic {
+  background: #FFFFFF;
+  border-color: rgba(49, 78, 138, 0.3);
+  box-shadow: 0 2px 8px rgba(49, 78, 138, 0.08);
+}
+
+.family-schematic svg {
+  width: 100%;
+  height: 100%;
+  max-width: 220px;
+}
+
+.family-guide-card .family-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cbe-red);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.family-guide-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cbe-text-heading);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.family-guide-card p {
+  font-size: 0.875rem;
+  color: var(--cbe-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.family-guide-card .family-app-text {
+  font-size: 0.8125rem;
+  color: var(--cbe-text-muted);
+  line-height: 1.5;
+  border-top: 1px solid var(--cbe-border);
+  padding-top: 0.75rem;
+  margin-top: auto;
+}
+
+.family-guide-card .family-app-text span {
+  font-weight: 700;
+  color: var(--cbe-blue-dark);
+}
+
+.factory-photo-stack:hover img {
+  transform: scale(1.03);
+}
+
+.factory-photo-stack::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 70%, rgba(31, 51, 99, 0.5) 100%);
+}
+
+/* --- Seção de Catálogo / Vitrine --- */
+.catalog-section {
+  background-color: var(--cbe-bg-body);
+  position: relative;
+  z-index: 2;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.section-header-left {
+  max-width: 600px;
+}
+
+.section-header-left h2 {
+  font-size: var(--fs-h1);
+  margin-top: 0.5rem;
+  line-height: 1.15;
+}
+
+/* Filtros do Catálogo */
+.filter-tabs-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--cbe-border);
+  padding-bottom: 1rem;
+}
+
+.filter-tab-btn {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--cbe-text-muted);
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.filter-tab-btn:hover {
+  color: var(--cbe-blue);
+  background-color: var(--cbe-bg-surface);
+}
+
+.filter-tab-btn.active {
+  background-color: var(--cbe-blue);
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+}
+
+/* Grid de Produtos / Quadros */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+.catalog-card {
+  background: var(--cbe-bg-card);
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.catalog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(49, 78, 138, 0.3);
+}
+
+.catalog-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  background-color: #0F172A;
+  overflow: hidden;
+}
+
+.catalog-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out-smooth);
+}
+
+.catalog-card:hover .catalog-card-image img {
+  transform: scale(1.05);
+}
+
+.catalog-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.catalog-category-name {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--cbe-blue);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.catalog-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cbe-text-heading);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.catalog-card-desc {
+  font-size: 0.9375rem;
+  color: var(--cbe-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+/* Specs Técnicas no Card (JetBrains Mono) */
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  background: var(--cbe-bg-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.specs-table tr:not(:last-child) {
+  border-bottom: 1px solid var(--cbe-border);
+}
+
+.specs-table td {
+  padding: 0.5rem 0.75rem;
+}
+
+.specs-table td.spec-key {
+  color: var(--cbe-text-muted);
+  font-weight: 500;
+}
+
+.specs-table td.spec-val {
+  color: var(--cbe-text-heading);
+  font-weight: 700;
+  text-align: right;
+}
+
+.catalog-card-action {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cbe-border);
+}
+
+/* --- Bloco Sólido de Orçamento / CTA (REF-2 Inspirado) --- */
+/* --- Bloco Sólido de Orçamento / CTA (REF-2 Inspirado) --- */
+.section-solid-cta {
+  background-color: var(--cbe-bg-dark);
+  position: relative;
+  color: #FFFFFF;
+  clip-path: polygon(0 0, 100% 2.5vw, 100% 100%, 0 calc(100% - 2.5vw));
+  margin-top: -1.25vw;
+  margin-bottom: -1.25vw;
+  padding-top: calc(var(--section-pad-y) + 5rem);
+  padding-bottom: calc(var(--section-pad-y) + 5rem);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.cta-watermark {
+  position: absolute;
+  top: 8%;
+  left: 4%;
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 16vw, 16rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.025);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.cta-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 5.5rem;
+}
+
+.cta-left-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cta-left-content h2 {
+  color: #FFFFFF;
+  font-size: clamp(2.1rem, 3.2vw, 2.85rem);
+  margin-top: 0.75rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cta-left-content p {
+  color: #CBD5E1;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  margin-bottom: 2.25rem;
+}
+
+.cta-human-box {
+  background: rgba(49, 78, 138, 0.22);
+  border: 1px solid rgba(49, 78, 138, 0.5);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  margin-top: 1rem;
+}
+
+.cta-human-box .cta-human-title {
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.cta-human-box .cta-human-desc {
+  color: #94A3B8;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  display: block;
+}
+
+/* Card Arejado e Elegante para o Formulário de Orçamento Rápido */
+.cta-right-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: clamp(2.25rem, 4vw, 3.25rem);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
+}
+
+.cta-right-card h3 {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.cta-form-lead {
+  color: #94A3B8;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.cta-quick-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.label-styled {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #CBD5E1;
+  margin-bottom: 0.45rem;
+  display: block;
+}
+
+.input-styled {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 0.95rem 1.25rem;
+  color: #FFFFFF;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+
+.input-styled::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-styled:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--cbe-blue-light, #4A6FB5);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(49, 78, 138, 0.35);
+}
+
+/* Card do Formulário Sólido Vermelho CBE (REF-2) */
+.cta-form-card {
+  background: var(--cbe-red);
+  color: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: var(--shadow-dark);
+}
+
+.cta-form-card h3 {
+  color: #FFFFFF;
+  font-size: var(--fs-h2);
+  margin-bottom: 0.5rem;
+}
+
+.cta-form-card .form-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9375rem;
+  margin-bottom: 2rem;
+}
+
+.quick-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.form-input-line {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.45);
+  padding: 0.8rem 0;
+  color: #FFFFFF;
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-input-line::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input-line:focus {
+  border-bottom-color: #FFFFFF;
+}
+
+.form-select-line {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.45);
+  padding: 0.8rem 0;
+  color: #FFFFFF;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.form-select-line option {
+  background-color: var(--cbe-blue-dark);
+  color: #FFFFFF;
+}
+
+.form-select-line option {
+  background-color: var(--cbe-blue-dark);
+  color: #FFFFFF;
+}
+
+/* --- Seção de Fatos de Engenharia ("Mostrar, Não Explicar") --- */
+.facts-section {
+  background-color: var(--cbe-bg-body);
+  position: relative;
+  z-index: 2;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.fact-card {
+  background: var(--cbe-bg-card);
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.fact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(49, 78, 138, 0.25);
+}
+
+.fact-card .fact-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(49, 78, 138, 0.08);
+  color: var(--cbe-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.fact-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--cbe-text-heading);
+}
+
+.fact-card p {
+  font-size: 0.9375rem;
+  color: var(--cbe-text-muted);
+  line-height: 1.6;
+}
+
+/* --- Seção de Marcas / Componentes Trabalhados com Slide Contínuo e Mouse Reveal --- */
+.partners-section {
+  background-color: #FFFFFF;
+  border-top: 1px solid var(--cbe-border);
+  border-bottom: 1px solid var(--cbe-border);
+  padding: 3.5rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.partners-title {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--cbe-text-subtle);
+  margin-bottom: 2.25rem;
+}
+
+.partners-marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  user-select: none;
+  padding: 1.25rem 0;
+  /* Máscara de degrade nas bordas para entrada e saída suaves */
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+  will-change: transform;
+  animation: scrollPartners 280s linear infinite !important;
+}
+
+.partners-marquee-container:hover .partners-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollPartners {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Card Individual de Parceiro com Mouse Reveal e Proporção Consistente */
+.partner-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 1.8rem;
+  border-radius: var(--radius-lg);
+  background: #FFFFFF;
+  border: 1px solid var(--cbe-border);
+  min-width: 180px;
+  height: 90px;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Camada do Efeito Mouse Reveal / Spotlight */
+.partner-card::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(49, 78, 138, 0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.partner-card:hover::before {
+  opacity: 1;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(49, 78, 138, 0.45);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+  background: #FFFFFF;
+}
+
+/* Logos sempre com proporção nativa preservada, nítidos e com respiro equilibrado */
+.partner-logo-img,
+.partner-card img,
+.partner-svg-logo {
+  height: auto;
+  width: auto;
+  max-width: 120px;
+  max-height: 42px;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: none !important;
+  opacity: 0.92;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.partner-card:hover .partner-logo-img,
+.partner-card:hover .partner-card img,
+.partner-card:hover .partner-svg-logo {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* --- Rodapé Institucional Sólido (REF-3 Inspirado - Azul CBE) --- */
+.site-footer {
+  background-color: var(--cbe-blue);
+  color: #FFFFFF;
+  position: relative;
+  z-index: 20;
+}
+
+.footer-top-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3.5rem;
+  padding-top: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer-brand img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.footer-brand p {
+  color: #CBD5E1;
+  font-size: 0.9375rem;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-nav-list a {
+  color: #CBD5E1;
+  font-size: 0.9375rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-nav-list a:hover {
+  color: #FFFFFF;
+  padding-left: 4px;
+}
+
+.footer-contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #CBD5E1;
+  font-size: 0.9375rem;
+}
+
+.footer-contact-item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #93C5FD;
+}
+
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  font-size: 0.8125rem;
+  color: #94A3B8;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --- Estilos Específicos para a Página de Orçamento (2 Caminhos) --- */
+.orcamento-selector-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.orcamento-option-card {
+  background: #FFFFFF;
+  border: 2px solid var(--cbe-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.orcamento-option-card:hover {
+  border-color: var(--cbe-blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.orcamento-option-card.active {
+  border-color: var(--cbe-blue);
+  background: #F0F4FA;
+  box-shadow: var(--shadow-md);
+}
+
+.orcamento-option-card h3 {
+  font-size: 1.35rem;
+  color: var(--cbe-text-heading);
+}
+
+.orcamento-option-card p {
+  color: var(--cbe-text-muted);
+  font-size: 0.9375rem;
+}
+
+.flow-container {
+  display: none;
+}
+
+.flow-container.active {
+  display: block;
+  animation: fadeIn 0.4s var(--ease-out-smooth);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-full-card {
+  background: #FFFFFF;
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-md);
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-row-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-styled {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--cbe-bg-surface);
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: var(--cbe-text-heading);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input-styled:focus {
+  border-color: var(--cbe-blue);
+  box-shadow: 0 0 0 3px rgba(49, 78, 138, 0.15);
+  background-color: #FFFFFF;
+}
+
+/* --- Responsividade Mobile --- */
+@media (max-width: 992px) {
+  .hero-grid, .solid-blue-grid, .cta-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-diagonal-bg {
+    display: none;
+  }
+
+  .facts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .orcamento-selector-wrap, .form-row-2col, .form-row-3col {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .mobile-toggle-btn {
+    display: block;
+  }
+
+  .nav-menu.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--cbe-border);
+    z-index: 99;
+  }
+}
+
+/* ==========================================================================
+   CATÁLOGO CBE ENGENHARIA — HERO E FILTROS
+   ========================================================================== */
+
+.catalog-hero-bar {
+  background: var(--cbe-blue-dark);
+  color: #FFFFFF;
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 3px solid var(--cbe-red);
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog-hero-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.catalog-hero-subtitle {
+  font-size: 1.0625rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 780px;
+  line-height: 1.6;
+}
+
+/* Barra de Filtros Não-Fixa (Estática, Sem Atrapalhar a Leitura) */
+.catalog-filters-static {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--cbe-border);
+  padding: 1.5rem 0;
+  margin-bottom: 2.5rem;
+}
+
+.catalog-filters-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.catalog-filter-btn {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--cbe-text-muted);
+  background-color: var(--cbe-bg-surface);
+  border: 1px solid var(--cbe-border);
+}
+
+.catalog-filter-btn:hover {
+  color: var(--cbe-blue);
+  border-color: var(--cbe-blue);
+  background-color: #FFFFFF;
+}
+
+.catalog-filter-btn.active {
+  background-color: var(--cbe-blue);
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+  box-shadow: 0 4px 12px rgba(49, 78, 138, 0.25);
+}
+
+/* ==========================================================================
+   CARDS COMPACTOS 3D FLIP VERMELHO (CBE RED FLIP CARDS - ITEM 4 & ITEM 5)
+   ========================================================================== */
+
+.cbe-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.25rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Layout Editorial do Portfólio da Home (ITEM 2) */
+.cbe-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.25rem;
+}
+
+@media (min-width: 900px) {
+  .cbe-portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2.25rem !important;
+  }
+
+  .cbe-portfolio-grid .cbe-compact-card.card-featured {
+    grid-column: span 2 !important;
+  }
+
+  .cbe-portfolio-grid .cbe-compact-card.card-featured .cbe-compact-front-image {
+    height: 74%;
+  }
+
+  .cbe-portfolio-grid .cbe-compact-card.card-featured .cbe-compact-front-body {
+    height: 26%;
+  }
+
+  .cbe-portfolio-grid .cbe-compact-card.card-featured .cbe-compact-front-image::after {
+    content: "DESTAQUE DE ENGENHARIA";
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--cbe-red);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 12px rgba(236, 50, 55, 0.4);
+    z-index: 10;
+  }
+}
+
+.cbe-compact-card {
+  background-color: transparent;
+  height: 460px;
+  perspective: 1200px;
+  border-radius: var(--radius-lg);
+}
+
+.cbe-compact-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+}
+
+.cbe-compact-card:hover .cbe-compact-inner,
+.cbe-compact-card.is-flipped .cbe-compact-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 16px 36px rgba(236, 50, 55, 0.25);
+}
+
+/* FACE FRONTAL: Limpa, foto real e título elegante com CTA */
+.cbe-compact-front {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid var(--cbe-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.cbe-compact-front-image {
+  width: 100%;
+  height: 68%;
+  position: relative;
+  overflow: hidden;
+  background: #F1F5F9;
+}
+
+.cbe-compact-front-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-out-smooth);
+}
+
+.cbe-compact-card:hover .cbe-compact-front-image img {
+  transform: scale(1.05);
+}
+
+.cbe-compact-front-body {
+  height: 32%;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFFFFF;
+  border-top: 1px solid var(--cbe-border);
+}
+
+.cbe-compact-front-body-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.cbe-compact-front-body .panel-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cbe-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.cbe-compact-front-body .panel-title {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cbe-text-heading);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cbe-compact-front-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--cbe-border-subtle);
+}
+
+/* Gerenciamento de cliques e precisão 3D nos Cards */
+.cbe-compact-card .cbe-compact-front {
+  pointer-events: auto;
+}
+
+.cbe-compact-card .cbe-compact-back {
+  pointer-events: none;
+}
+
+.cbe-compact-card:hover .cbe-compact-front,
+.cbe-compact-card.is-flipped .cbe-compact-front {
+  pointer-events: none;
+}
+
+.cbe-compact-card:hover .cbe-compact-back,
+.cbe-compact-card.is-flipped .cbe-compact-back {
+  pointer-events: auto;
+}
+
+.card-orcamento-btn {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cbe-blue-dark);
+  background: var(--cbe-bg-surface);
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.75rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  pointer-events: auto !important;
+  user-select: none;
+  position: relative;
+  z-index: 15;
+}
+
+.card-orcamento-btn > * {
+  pointer-events: none !important;
+}
+
+.card-orcamento-btn:hover {
+  background: var(--cbe-blue);
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+}
+
+.cbe-flip-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cbe-red);
+  white-space: nowrap;
+  padding: 0.35rem 0.65rem;
+  background: rgba(236, 50, 55, 0.08);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  pointer-events: auto !important;
+  user-select: none;
+  position: relative;
+  z-index: 15;
+}
+
+.cbe-flip-cue > * {
+  pointer-events: none !important;
+}
+
+/* FACE TRASEIRA: Fundo Vermelho CBE Vibrante, especificações e botão */
+.cbe-compact-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, #EC3237 0%, #B81D22 100%);
+  color: #FFFFFF;
+  padding: 1.5rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cbe-compact-back .back-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 0.65rem;
+}
+
+.cbe-compact-back .back-cat {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+}
+
+.cbe-compact-back .back-title {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0.25rem 0 0;
+  line-height: 1.25;
+}
+
+.cbe-compact-back .back-specs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+}
+
+.cbe-compact-back .back-specs-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.35rem;
+}
+
+.cbe-compact-back .back-specs-list .spec-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.cbe-compact-back .back-specs-list .spec-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.cbe-compact-back .back-action-btn {
+  background: #FFFFFF;
+  color: #B81D22;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  pointer-events: auto !important;
+  user-select: none;
+  position: relative;
+  z-index: 20;
+}
+
+.cbe-compact-back .back-action-btn > * {
+  pointer-events: none !important;
+}
+
+.cbe-compact-back .back-action-btn:hover {
+  background: #0B132B;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   PROVA SOCIAL QUANTIFICADA E SLA DE ATENDIMENTO (24H ÚTEIS)
+   ========================================================================== */
+
+.cbe-metrics-strip {
+  background: #FFFFFF;
+  border-top: 1px solid var(--cbe-border);
+  border-bottom: 1px solid var(--cbe-border);
+  padding: 3rem 0;
+  position: relative;
+  z-index: 6;
+}
+
+.cbe-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.cbe-metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--cbe-bg-surface);
+  border: 1px solid var(--cbe-border);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.cbe-metric-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--cbe-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.cbe-metric-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.cbe-metric-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(49, 78, 138, 0.1);
+  color: var(--cbe-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.cbe-metric-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cbe-text-heading);
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+
+.cbe-metric-subtext {
+  font-size: 0.8125rem;
+  color: var(--cbe-text-muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .cbe-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .cbe-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Badge de Retorno em até 24h úteis */
+.cta-form-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.form-sla-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.form-sla-badge-light {
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+  color: #1E40AF;
+}
+
+/* ==========================================================================
+   PRANCHA EXPOSITIVA DE ENGENHARIA (FOLIO PLATE)
+   ========================================================================== */
+
+.lookbook-plates-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  padding: 3rem 0;
+}
+
+.expository-plate {
+  background: #FFFFFF;
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+  position: relative;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.expository-plate:hover {
+  border-color: rgba(49, 78, 138, 0.35);
+  box-shadow: 0 16px 50px rgba(15, 23, 42, 0.1);
+}
+
+/* Cabeçalho da Prancha Técnica */
+.plate-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: #F8FAFC;
+  border-bottom: 1px solid var(--cbe-border);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--cbe-text-muted);
+}
+
+.plate-serial-badge {
+  font-weight: 700;
+  color: var(--cbe-red);
+  letter-spacing: 0.1em;
+}
+
+.plate-sheet-name {
+  font-weight: 600;
+  color: var(--cbe-blue-dark);
+  letter-spacing: 0.05em;
+}
+
+.plate-grid-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 0;
+}
+
+/* ==========================================================================
+   3D FLIP CARD COM DUPLA FOTOGRAFIA TÉCNICA (CBE 3D INSPECTION)
+   ========================================================================== */
+
+.cbe-flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  perspective: 1200px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-right: 1px solid var(--cbe-border);
+}
+
+.cbe-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.cbe-flip-card:hover .cbe-flip-inner,
+.cbe-flip-card.is-flipped .cbe-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.cbe-flip-front,
+.cbe-flip-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background: #F1F5F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cbe-flip-front img,
+.cbe-flip-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-out-smooth);
+}
+
+.cbe-flip-card:hover .cbe-flip-front img,
+.cbe-flip-card:hover .cbe-flip-back img {
+  transform: scale(1.02);
+}
+
+.cbe-flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Indicador Técnico de Rotação 3D */
+.flip-hint-badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 5;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.cbe-flip-card:hover .flip-hint-badge {
+  background: var(--cbe-red);
+  border-color: var(--cbe-red);
+}
+
+.plate-overlay-red {
+  background: rgba(236, 50, 55, 0.9) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Aplicação do Flip Card na Grade (Grid) */
+.catalog-card-image .cbe-flip-card {
+  min-height: 100%;
+  height: 100%;
+  border-right: none;
+}
+
+/* Visual da Imagem da Prancha */
+.plate-image-container {
+  position: relative;
+  background: #F1F5F9;
+  min-height: 480px;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid var(--cbe-border);
+}
+
+/* Marcadores Técnicos sobre a Imagem */
+.corner-crosshair {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.corner-tl { top: 1rem; left: 1rem; }
+.corner-tr { top: 1rem; right: 1rem; }
+.corner-bl { bottom: 1rem; left: 1rem; }
+.corner-br { bottom: 1rem; right: 1rem; }
+
+.plate-image-overlay-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.plate-zoom-hint {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.plate-image-container:hover .plate-zoom-hint {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Coluna de Especificações e Memorial da Prancha */
+.plate-content-col {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFFFFF;
+}
+
+.plate-main-title {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: var(--cbe-text-heading);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.plate-desc-text {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--cbe-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Tabela de Engenharia da Prancha */
+.plate-specs-grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.plate-specs-grid tr {
+  border-bottom: 1px solid var(--cbe-border);
+}
+
+.plate-specs-grid tr:last-child {
+  border-bottom: none;
+}
+
+.plate-specs-grid td {
+  padding: 0.65rem 0;
+  vertical-align: top;
+}
+
+.plate-spec-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--cbe-text-heading);
+  width: 38%;
+}
+
+.plate-spec-value {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--cbe-blue);
+  font-weight: 600;
+}
+
+/* Destaques de Montagem e Testes */
+.plate-highlights-box {
+  background: #F8FAFC;
+  border-left: 3px solid var(--cbe-blue);
+  padding: 1rem 1.25rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-bottom: 1.75rem;
+}
+
+.plate-highlights-title {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cbe-text-heading);
+  margin-bottom: 0.5rem;
+}
+
+.plate-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.plate-highlights-list li {
+  font-size: 0.8125rem;
+  color: var(--cbe-text-body);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+.plate-highlights-list li::before {
+  content: "■";
+  font-size: 0.5rem;
+  color: var(--cbe-red);
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+}
+
+/* Ações da Prancha */
+.plate-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--cbe-border);
+}
+
+/* ==========================================================================
+   MODAL DE INSPEÇÃO TÉCNICA EM ALTA RESOLUÇÃO (SHOWROOM VIEWER)
+   ========================================================================== */
+
+.inspection-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(11, 19, 43, 0.92);
+  backdrop-filter: blur(16px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.inspection-modal-backdrop.active {
+  display: flex;
+}
+
+.inspection-modal-content {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #F1F5F9;
+  border: 1px solid var(--cbe-border);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: var(--cbe-red);
+  color: #FFFFFF;
+  border-color: var(--cbe-red);
+}
+
+.modal-image-view {
+  background: #0B132B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.modal-image-view img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-details-view {
+  padding: 2.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Responsividade do Lookbook */
+@media (max-width: 992px) {
+  .plate-grid-layout, .inspection-modal-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .plate-image-container {
+    min-height: 340px;
+    border-right: none;
+    border-bottom: 1px solid var(--cbe-border);
+  }
+
+  .inspection-modal-content {
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .modal-image-view {
+    max-height: 380px;
+  }
+}
+
+/* ==========================================================================
+   DIAGONAL CUTS & TRANSIÇÕES ANGULARES DE SEÇÃO (ITEM 2)
+   ========================================================================== */
+
+.section-solid-cta {
+  background-color: var(--cbe-blue-dark);
+  position: relative;
+  color: #FFFFFF;
+  clip-path: polygon(0 3.5vw, 100% 0, 100% 100%, 0 100%);
+  margin-top: -3.5vw;
+  padding-top: calc(var(--section-pad-y) + 3.5vw);
+  padding-bottom: var(--section-pad-y);
+  z-index: 5;
+  overflow: hidden;
+}
+
+.section-solid-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px, 64px 64px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.family-guide-diagonal {
+  position: relative;
+  background-color: var(--cbe-bg-surface);
+  clip-path: polygon(0 0, 100% 3vw, 100% 100%, 0 calc(100% - 3vw));
+  margin-top: -3vw;
+  margin-bottom: -3vw;
+  padding-top: calc(var(--section-pad-sm) + 3vw);
+  padding-bottom: calc(var(--section-pad-sm) + 3vw);
+  z-index: 3;
+}
+
+.cta-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.cta-left-content h2 {
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  line-height: 1.15;
+}
+
+.cta-left-content p {
+  color: #E2E8F0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.cta-human-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.cta-human-box h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+.cta-human-box p {
+  color: #CBD5E1;
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+.cta-form-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-form-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-form-header-row h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cbe-text-heading);
+  margin-bottom: 0.25rem;
+}
+
+.form-subtitle {
+  color: var(--cbe-text-muted);
+  font-size: 0.875rem;
+}
+
+.form-sla-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(49, 78, 138, 0.08);
+  color: var(--cbe-blue);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-group label,
+.label-styled {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cbe-text-heading);
+  margin-bottom: 0.4rem;
+}
+
+.form-input-line,
+.form-select-line,
+.input-styled {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-md);
+  background: #F8FAFC;
+  color: var(--cbe-text-heading);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.form-select-line {
+  cursor: pointer;
+  background-color: #F8FAFC;
+  color: var(--cbe-text-heading);
+}
+
+.form-input-line:focus,
+.form-select-line:focus,
+.input-styled:focus {
+  background: #FFFFFF;
+  border-color: var(--cbe-blue);
+  box-shadow: 0 0 0 3px rgba(49, 78, 138, 0.18);
+  outline: none;
+}
+
+.form-input-line::placeholder,
+.input-styled::placeholder {
+  color: #94A3B8;
+}
+
+@media (max-width: 900px) {
+  .cta-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   ESTILOS DA PÁGINA DE CONTATO — BLOCO SÓLIDO AZUL E BADGES (ITEM 7 & ITEM 8)
+   ========================================================================== */
+
+.contact-solid-section {
+  padding-top: calc(var(--section-pad-y) + 2vw);
+  padding-bottom: calc(var(--section-pad-y) + 2vw);
+}
+
+.contact-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.contact-methods-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.contact-method-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.contact-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-item-text h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.contact-item-text p {
+  color: #E2E8F0;
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+.phone-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.phone-entry a {
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.phone-entry a:hover {
+  color: #93C5FD;
+}
+
+.phone-landline {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: #CBD5E1;
+  margin-top: 0.35rem;
+}
+
+/* Badges de Atendimento Estritamente Dentro da Paleta Oficial (ITEM 8) */
+.cbe-badge-channel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cbe-badge-priority {
+  background: var(--cbe-red);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(236, 50, 55, 0.4);
+}
+
+.cbe-badge-direct {
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-form-surface {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-dark);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.form-card-head {
+  margin-bottom: 1.75rem;
+}
+
+.form-card-head h3 {
+  font-size: 1.5rem;
+  color: var(--cbe-text-heading);
+  margin-bottom: 0.35rem;
+}
+
+.form-card-head p {
+  color: var(--cbe-text-muted);
+  font-size: 0.9375rem;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.input-styled {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-md);
+  background: #F8FAFC;
+  color: var(--cbe-text-heading);
+  font-size: 0.9375rem;
+  transition: all var(--transition-fast);
+}
+
+.input-styled:focus {
+  background: #FFFFFF;
+  border-color: var(--cbe-blue);
+  box-shadow: 0 0 0 3px rgba(49, 78, 138, 0.15);
+}
+
+@media (max-width: 900px) {
+  .contact-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .form-row-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   ESTILOS DE IMPRESSÃO TÉCNICA (MEDIA PRINT)
+   ========================================================================== */
+
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .site-header, .site-footer, .expository-controls-sticky, .plate-actions-row, .modal-zoom-hint, .filter-tabs-row {
+    display: none !important;
+  }
+
+  .expository-header-bar {
+    background: transparent !important;
+    color: #000000 !important;
+    border-bottom: 2px solid #000000 !important;
+    padding: 1rem 0 !important;
+  }
+
+  .expository-title {
+    color: #000000 !important;
+    font-size: 2rem !important;
+  }
+
+  .expository-meta-stamp {
+    color: #333333 !important;
+  }
+
+  .expository-plate {
+    page-break-after: always;
+    border: 1px solid #CCCCCC !important;
+    box-shadow: none !important;
+    margin-bottom: 2rem !important;
+    border-radius: 0 !important;
+  }
+
+  .plate-grid-layout {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .plate-image-container {
+    background: #FFFFFF !important;
+  }
+
+  .plate-image-container img {
+    max-height: 400px !important;
+  }
+}
+
+/* ==========================================================================
+   CARD FLUTUANTE WHATSAPP INFERIOR COM ANIMAÇÃO ISOMÉTRICA 3D
+   ========================================================================== */
+
+.floating-whatsapp-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Card Popup de Contatos WhatsApp */
+.floating-whatsapp-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(49, 78, 138, 0.2);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.5);
+  width: 320px;
+  padding: 1.25rem;
+  margin-bottom: 12px;
+  transform-origin: bottom right;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.85) translateY(15px);
+  pointer-events: none;
+}
+
+.floating-whatsapp-widget.is-open .floating-whatsapp-card {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.whatsapp-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cbe-border);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.whatsapp-card-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.whatsapp-status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #25D366;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.3);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cbe-text-heading);
+  line-height: 1.2;
+}
+
+.whatsapp-card-subtitle {
+  font-size: 0.75rem;
+  color: var(--cbe-text-muted);
+}
+
+.whatsapp-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--cbe-text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.whatsapp-close-btn:hover {
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--cbe-text-heading);
+}
+
+.whatsapp-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Item de Contato Individual */
+.whatsapp-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: #F8FAFC;
+  border: 1.5px solid transparent;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.whatsapp-contact-item:hover {
+  background: #FFFFFF;
+  border-color: #25D366;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(37, 211, 102, 0.15);
+}
+
+.whatsapp-contact-item.priority {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.35);
+}
+
+.whatsapp-contact-item.priority:hover {
+  background: #FFFFFF;
+  border-color: #25D366;
+}
+
+.whatsapp-item-icon {
+  width: 38px;
+  height: 38px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+  transition: transform var(--transition-fast);
+}
+
+.whatsapp-contact-item:hover .whatsapp-item-icon {
+  transform: scale(1.08);
+}
+
+.whatsapp-item-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.whatsapp-item-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #15803D;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.whatsapp-item-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cbe-text-heading);
+  line-height: 1.2;
+}
+
+.whatsapp-item-number {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cbe-blue);
+  margin-top: 2px;
+}
+
+/* Botão Flutuante em Glassmorphism com Animação Isométrica 3D no Hover */
+.floating-whatsapp-btn-wrap {
+  position: relative;
+  cursor: pointer;
+}
+
+.floating-iso-pro {
+  position: relative;
+  list-style: none;
+  transition: transform 0.4s ease;
+}
+
+/* Estado Normal: Glassmorphism elegante, discreto e premium */
+.floating-iso-pro .floating-trigger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  width: 54px;
+  padding: 0.75rem;
+  border-radius: 50%;
+  color: #1D3A7A;
+  fill: currentColor;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* Estado Hover: Transiciona para o verde oficial com elevação 3D */
+.floating-iso-pro:hover .floating-trigger-btn {
+  transform: translate(6px, -6px);
+  background: #25D366;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45), 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+/* Camadas Isométricas 3D */
+.floating-iso-pro span {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 54px;
+  width: 54px;
+  pointer-events: none;
+  border: 1px solid #25D366;
+  background: rgba(37, 211, 102, 0.22);
+}
+
+.floating-iso-pro:hover span {
+  opacity: 1;
+}
+
+.floating-iso-pro:hover span:nth-child(1) {
+  opacity: 0.25;
+}
+
+.floating-iso-pro:hover span:nth-child(2) {
+  opacity: 0.5;
+  transform: translate(3px, -3px);
+}
+
+.floating-iso-pro:hover span:nth-child(3) {
+  opacity: 0.75;
+  transform: translate(6px, -6px);
+}
+
+@media (max-width: 600px) {
+  .floating-whatsapp-widget {
+    bottom: 16px;
+    right: 16px;
+  }
+  .floating-whatsapp-card {
+    width: calc(100vw - 32px);
+    max-width: 320px;
+  }
+}
+
