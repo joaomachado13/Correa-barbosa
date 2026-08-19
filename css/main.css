@@ -485,6 +485,9 @@ html.to-gradient.is-animating .transition-reveal {
   display: flex;
   align-items: center;
   margin-top: 1rem;
+  position: relative;
+  z-index: 50;
+  pointer-events: auto !important;
 }
 
 .cbe-social-list {
@@ -494,6 +497,9 @@ html.to-gradient.is-animating .transition-reveal {
   align-items: center;
   padding: 0;
   margin: 0;
+  position: relative;
+  z-index: 55;
+  pointer-events: auto !important;
 }
 
 .cbe-social-list li.iso-pro {
@@ -505,6 +511,8 @@ html.to-gradient.is-animating .transition-reveal {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 60;
+  pointer-events: auto !important;
 }
 
 .cbe-social-list li.iso-pro span {
@@ -546,7 +554,7 @@ html.to-gradient.is-animating .transition-reveal {
 
 .cbe-social-list li.iso-pro a {
   position: relative;
-  z-index: 5;
+  z-index: 70;
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -3590,6 +3598,7 @@ html.to-gradient.is-animating .transition-reveal {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  pointer-events: none !important;
 }
 
 /* Card Popup de Contatos WhatsApp */
@@ -3767,6 +3776,7 @@ html.to-gradient.is-animating .transition-reveal {
 .floating-whatsapp-btn-wrap {
   position: relative;
   cursor: pointer;
+  pointer-events: auto !important;
 }
 
 .floating-iso-pro {
