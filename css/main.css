@@ -338,7 +338,7 @@ html.to-gradient.is-animating .transition-reveal {
   cursor: pointer;
   overflow: hidden;
   text-decoration: none;
-  transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease;
+  transition: color 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease, background 0.5s ease;
   pointer-events: auto !important;
   user-select: none;
   -webkit-user-select: none;
@@ -356,7 +356,7 @@ html.to-gradient.is-animating .transition-reveal {
   background: var(--cbe-blue);
   border-radius: 9999px;
   z-index: -1;
-  transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none !important;
 }
 
@@ -375,7 +375,7 @@ html.to-gradient.is-animating .transition-reveal {
   transform: translateY(-50%) scale(1.6);
 }
 
-/* Ícone com rotação de 45deg para 90deg */
+/* Ícone com rotação suave */
 .cbe-btn .icon-wrap {
   display: flex;
   align-items: center;
@@ -386,20 +386,20 @@ html.to-gradient.is-animating .transition-reveal {
   border: 1px solid currentColor;
   border-radius: 9999px;
   transform: rotate(45deg);
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, background 0.4s ease;
   pointer-events: none !important;
 }
 
 .cbe-btn .icon-wrap svg {
   width: 100%;
   height: 100%;
-  transition: fill 0.3s ease;
+  transition: fill 0.4s ease;
   pointer-events: none !important;
 }
 
 .cbe-btn .icon-wrap path {
   fill: currentColor;
-  transition: fill 0.3s ease;
+  transition: fill 0.4s ease;
   pointer-events: none !important;
 }
 
@@ -440,10 +440,6 @@ html.to-gradient.is-animating .transition-reveal {
 
 .cbe-btn-red:hover .icon-wrap {
   background: #FFFFFF;
-}
-
-.cbe-btn-red:hover .icon-wrap path {
-  fill: var(--cbe-blue);
 }
 
 .cbe-btn-red:hover .icon-wrap path {
@@ -503,8 +499,8 @@ html.to-gradient.is-animating .transition-reveal {
 .cbe-social-list li.iso-pro {
   position: relative;
   list-style: none;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -515,37 +511,37 @@ html.to-gradient.is-animating .transition-reveal {
   position: absolute;
   top: 0;
   left: 0;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
   opacity: 0;
   pointer-events: none !important;
 }
 
 .cbe-social-list li.iso-pro.social-whatsapp span {
-  border: 1px solid #25D366;
-  background: rgba(37, 211, 102, 0.2);
+  border: 1.5px solid #25D366;
+  background: rgba(37, 211, 102, 0.22);
 }
 .cbe-social-list li.iso-pro.social-instagram span {
-  border: 1px solid #E1306C;
-  background: rgba(225, 48, 108, 0.2);
+  border: 1.5px solid #E1306C;
+  background: rgba(225, 48, 108, 0.22);
 }
 .cbe-social-list li.iso-pro.social-linkedin span {
-  border: 1px solid #0077B5;
-  background: rgba(0, 119, 181, 0.2);
+  border: 1.5px solid #0077B5;
+  background: rgba(0, 119, 181, 0.22);
 }
 
 .cbe-social-list li.iso-pro:hover span:nth-child(1) {
-  opacity: 0.2;
+  opacity: 0.25;
 }
 .cbe-social-list li.iso-pro:hover span:nth-child(2) {
-  opacity: 0.4;
-  transform: translate(3px, -3px);
+  opacity: 0.45;
+  transform: translate(4px, -4px);
 }
 .cbe-social-list li.iso-pro:hover span:nth-child(3) {
-  opacity: 0.6;
-  transform: translate(6px, -6px);
+  opacity: 0.65;
+  transform: translate(8px, -8px);
 }
 
 .cbe-social-list li.iso-pro a {
@@ -554,43 +550,47 @@ html.to-gradient.is-animating .transition-reveal {
   display: flex !important;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  pointer-events: auto !important;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .cbe-social-list li.iso-pro:hover a {
-  transform: translate(6px, -6px);
+  transform: translate(8px, -8px);
 }
 
 .cbe-social-list li.iso-pro .svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  padding: 0.75rem;
+  width: 50px;
+  height: 50px;
+  padding: 0.8rem;
   border-radius: 50%;
   color: #FFFFFF;
   fill: currentColor;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease;
+  transition: background 0.45s ease, border-color 0.45s ease;
   pointer-events: none !important;
 }
 
 .cbe-social-list li.iso-pro.social-whatsapp:hover .svg {
   background: #25D366;
+  border-color: #25D366;
 }
 .cbe-social-list li.iso-pro.social-instagram:hover .svg {
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: #e6683c;
 }
 .cbe-social-list li.iso-pro.social-linkedin:hover .svg {
   background: #0077B5;
+  border-color: #0077B5;
 }
 
 .cbe-social-list li.iso-pro .text {
@@ -604,11 +604,11 @@ html.to-gradient.is-animating .transition-reveal {
   background-color: var(--cbe-blue-dark);
   position: absolute;
   left: 50%;
-  bottom: -28px;
+  bottom: -30px;
   transform: translateX(-50%);
   pointer-events: none !important;
   white-space: nowrap;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   z-index: 10;
 }
 
@@ -1160,7 +1160,7 @@ html.to-gradient.is-animating .transition-reveal {
   align-self: flex-end;
   margin-bottom: 0;
   z-index: 25;
-  pointer-events: auto;
+  pointer-events: auto !important;
 }
 
 .rotating-emblem-link {
@@ -1171,14 +1171,15 @@ html.to-gradient.is-animating .transition-reveal {
   position: relative;
   z-index: 30;
   cursor: pointer;
-  pointer-events: auto;
+  border-radius: 50%;
+  pointer-events: auto !important;
 }
 
-/* Dimensão Ampliada (+45%) com Alto Impacto Visual */
+/* Dimensão Ampliada com Alto Impacto Visual e Área 100% Clicável */
 .rotating-emblem {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 210px;
+  height: 210px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1188,15 +1189,16 @@ html.to-gradient.is-animating .transition-reveal {
   border-radius: 50%;
   border: 2.5px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), inset 0 1px 3px rgba(255, 255, 255, 0.7);
-  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.45s ease, background 0.45s ease, box-shadow 0.5s ease;
   cursor: pointer;
-  pointer-events: auto;
+  pointer-events: auto !important;
 }
 
 .rotating-emblem * {
   pointer-events: none !important;
 }
 
+.rotating-emblem-link:hover .rotating-emblem,
 .rotating-emblem:hover {
   transform: scale(1.06);
   background: rgba(255, 255, 255, 0.24);
@@ -1219,14 +1221,14 @@ html.to-gradient.is-animating .transition-reveal {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
+  width: 68px;
+  height: 68px;
   background: var(--cbe-red);
   border-radius: 50%;
   color: #FFFFFF;
   box-shadow: 0 10px 30px rgba(236, 50, 55, 0.65);
   z-index: 2;
-  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), background 0.4s ease, color 0.4s ease;
   pointer-events: none !important;
 }
 
@@ -1235,6 +1237,7 @@ html.to-gradient.is-animating .transition-reveal {
   height: 24px;
 }
 
+.rotating-emblem-link:hover .emblem-center,
 .rotating-emblem:hover .emblem-center {
   transform: scale(1.12);
   background: #FFFFFF;

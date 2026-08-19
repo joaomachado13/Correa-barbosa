@@ -73,8 +73,9 @@
   --shadow-floating: 0 24px 60px rgba(0, 0, 0, 0.18);
   --shadow-dark: 0 20px 48px rgba(0, 0, 0, 0.35);
 
-  /* --- Transições --- */
+  /* --- Transições Suaves e Elegantes --- */
   --ease-out-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.35s var(--ease-out-smooth);
+  --transition-fast: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-normal: 0.55s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
