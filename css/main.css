@@ -2219,7 +2219,7 @@ html.to-gradient.is-animating .transition-reveal {
 .catalog-hero-bar {
   background: var(--cbe-blue-dark);
   color: #FFFFFF;
-  padding: 3.5rem 0 2.5rem;
+  padding: 4rem 0 5.5rem;
   border-bottom: 3px solid var(--cbe-red);
   position: relative;
   overflow: hidden;
@@ -3214,11 +3214,11 @@ html.to-gradient.is-animating .transition-reveal {
 .family-guide-diagonal {
   position: relative;
   background-color: var(--cbe-bg-surface);
-  clip-path: polygon(0 0, 100% 3vw, 100% 100%, 0 calc(100% - 3vw));
-  margin-top: -3vw;
-  margin-bottom: -3vw;
-  padding-top: calc(var(--section-pad-sm) + 3vw);
-  padding-bottom: calc(var(--section-pad-sm) + 3vw);
+  clip-path: polygon(0 0, 100% 2.5vw, 100% 100%, 0 calc(100% - 2.5vw));
+  margin-top: -2.5vw;
+  margin-bottom: -2.5vw;
+  padding-top: calc(var(--section-pad-sm) + 2.5vw);
+  padding-bottom: calc(var(--section-pad-sm) + 2.5vw);
   z-index: 3;
 }
 
