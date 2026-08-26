@@ -4383,3 +4383,324 @@ html.to-gradient.is-animating .transition-reveal {
   }
 }
 
+/* ==========================================================================
+   DEPTH CAROUSEL — CARROSSEL 3D DE CASES E MONTAGENS REAIS
+   ========================================================================== */
+
+.cases-depth-section {
+  background: var(--cbe-bg-dark);
+  color: #FFFFFF;
+  padding: calc(var(--section-pad-y) + 1rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cases-depth-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 36px 36px, 72px 72px;
+  pointer-events: none;
+}
+
+.depth-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  height: 520px;
+  perspective: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.depth-carousel-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.depth-card {
+  position: absolute;
+  width: 340px;
+  height: 420px;
+  border-radius: 28px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, filter, opacity;
+  user-select: none;
+  background: #05060a;
+}
+
+.depth-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.depth-card:hover .depth-card-img {
+  transform: scale(1.06);
+}
+
+.depth-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 6, 10, 0.05) 0%, rgba(5, 6, 10, 0.8) 55%, rgba(5, 6, 10, 0.98) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem 1.5rem;
+  transition: all 0.4s ease;
+}
+
+.depth-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cbe-red);
+  margin-bottom: 0.35rem;
+}
+
+.depth-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+}
+
+.depth-card-specs {
+  font-size: 0.875rem;
+  color: #CBD5E1;
+  line-height: 1.45;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.depth-card-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.depth-spec-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Controles e Indicadores */
+.depth-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+  position: relative;
+  z-index: 10;
+}
+
+.depth-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.depth-nav-btn:hover {
+  background: var(--cbe-red);
+  border-color: var(--cbe-red);
+  transform: scale(1.08);
+}
+
+.depth-indicators {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.depth-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.depth-dot.active {
+  width: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--cbe-red);
+}
+
+@media (max-width: 768px) {
+  .depth-carousel-wrapper {
+    height: 460px;
+  }
+  .depth-card {
+    width: 290px;
+    height: 380px;
+  }
+}
+
+/* ==========================================================================
+   FAQ — PERGUNTAS FREQUENTES DE ENGENHARIA
+   ========================================================================== */
+
+.faq-section {
+  background: var(--cbe-bg-surface);
+  padding: var(--section-pad-y) 0;
+  border-top: 1px solid var(--cbe-border);
+  border-bottom: 1px solid var(--cbe-border);
+}
+
+.faq-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+.faq-sticky-intro {
+  position: sticky;
+  top: 100px;
+}
+
+.faq-sticky-intro h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1.2;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.faq-accordion-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: #FFFFFF;
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-item:hover {
+  border-color: rgba(49, 78, 138, 0.35);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-item.active {
+  border-color: var(--cbe-blue);
+  box-shadow: 0 10px 25px rgba(49, 78, 138, 0.1);
+}
+
+.faq-question-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.4rem 1.75rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--cbe-text-heading);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  transition: color var(--transition-fast);
+}
+
+.faq-question-btn:hover {
+  color: var(--cbe-blue);
+}
+
+.faq-icon-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #F1F5F9;
+  border: 1px solid var(--cbe-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--cbe-blue);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.active .faq-icon-indicator {
+  background: var(--cbe-blue);
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+  transform: rotate(180deg);
+}
+
+.faq-answer-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-answer-content {
+  padding: 0 1.75rem 1.5rem 1.75rem;
+  color: var(--cbe-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.faq-answer-content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .faq-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .faq-sticky-intro {
+    position: static;
+  }
+}
+

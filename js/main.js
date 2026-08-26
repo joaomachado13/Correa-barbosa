@@ -31,6 +31,8 @@ function initPageScripts() {
   initFlipCards();
   initCardActionPreselect();
   initSocialLinks();
+  initDepthCarousel();
+  initFaqAccordion();
   updateActiveNavigation();
 }
 
@@ -839,4 +841,222 @@ function initHeroMouseTilt() {
  */
 function initSocialLinks() {
   // O link HTML <a> nativo já cuida da abertura única em nova aba com target="_blank".
+}
+
+/**
+ * 14. DepthCarousel — Carrossel 3D de Profundidade com Cases Reais e Hover
+ */
+function initDepthCarousel() {
+  const stage = document.querySelector('.depth-carousel-stage');
+  const cards = Array.from(document.querySelectorAll('.depth-card'));
+  const prevBtn = document.querySelector('.depth-prev-btn');
+  const nextBtn = document.querySelector('.depth-next-btn');
+  const indicatorsContainer = document.querySelector('.depth-indicators');
+
+  if (!stage || !cards.length) return;
+
+  let activeIndex = 0;
+  const total = cards.length;
+  const depth = 220; // translateZ step
+  const spread = 75; // translateX step %
+  const falloff = 0.2; // scale falloff
+  const maxBlur = 11; // blur px step
+  let isAutoplay = true;
+  let autoplayTimer = null;
+
+  // Cria indicadores de paginação
+  if (indicatorsContainer) {
+    indicatorsContainer.innerHTML = '';
+    cards.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = `depth-dot ${idx === 0 ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Ir para o Case ${idx + 1}`);
+      dot.addEventListener('click', () => {
+        goToIndex(idx);
+        resetAutoplay();
+      });
+      indicatorsContainer.appendChild(dot);
+    });
+  }
+
+  function updateCards() {
+    const dots = document.querySelectorAll('.depth-dot');
+    
+    cards.forEach((card, index) => {
+      // Calcula o deslocamento relativo cíclico mais curto
+      let offset = index - activeIndex;
+      if (offset > total / 2) offset -= total;
+      if (offset < -total / 2) offset += total;
+
+      const absOffset = Math.abs(offset);
+      const isVisible = absOffset <= 3;
+
+      if (!isVisible) {
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+        card.style.transform = `translateX(${offset * 120}%) translateZ(-800px) scale(0.5)`;
+        card.style.filter = 'blur(16px)';
+        card.style.zIndex = '0';
+        return;
+      }
+
+      // Parâmetros de profundidade 3D
+      const translateX = offset * spread;
+      const translateZ = -absOffset * depth;
+      const scale = Math.max(0.6, 1 - absOffset * falloff);
+      const opacity = absOffset === 0 ? 1 : Math.max(0.25, 1 - absOffset * 0.26);
+      const blurVal = absOffset * (maxBlur / 2.5);
+      const zIndex = 100 - absOffset * 10;
+
+      card.style.opacity = opacity.toFixed(2);
+      card.style.pointerEvents = isVisible ? 'auto' : 'none';
+      card.style.zIndex = zIndex;
+      card.style.transform = `translateX(${translateX}%) translateZ(${translateZ}px) scale(${scale})`;
+      card.style.filter = blurVal > 0.5 ? `blur(${blurVal.toFixed(1)}px)` : 'none';
+
+      if (absOffset === 0) {
+        card.classList.add('active-card');
+      } else {
+        card.classList.remove('active-card');
+      }
+    });
+
+    if (dots.length) {
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === activeIndex);
+      });
+    }
+  }
+
+  function goToIndex(index) {
+    activeIndex = (index + total) % total;
+    updateCards();
+  }
+
+  function nextCard() {
+    goToIndex(activeIndex + 1);
+  }
+
+  function prevCard() {
+    goToIndex(activeIndex - 1);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevCard();
+      resetAutoplay();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextCard();
+      resetAutoplay();
+    });
+  }
+
+  // Clique direto no card para centralizá-lo
+  cards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      if (idx !== activeIndex) {
+        goToIndex(idx);
+        resetAutoplay();
+      }
+    });
+  });
+
+  // Autoplay suave com pausa em hover
+  function startAutoplay() {
+    if (!isAutoplay) return;
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(() => {
+      nextCard();
+    }, 4000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    startAutoplay();
+  }
+
+  stage.addEventListener('mouseenter', () => {
+    clearInterval(autoplayTimer);
+  });
+
+  stage.addEventListener('mouseleave', () => {
+    startAutoplay();
+  });
+
+  // Suporte a swipe no mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  stage.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  stage.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextCard();
+      } else {
+        prevCard();
+      }
+      resetAutoplay();
+    }
+  }, { passive: true });
+
+  updateCards();
+  startAutoplay();
+}
+
+/**
+ * 15. FAQ Accordion — Expansão Suave das Perguntas Técnicas
+ */
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach((item, index) => {
+    const btn = item.querySelector('.faq-question-btn');
+    const collapse = item.querySelector('.faq-answer-collapse');
+    if (!btn || !collapse) return;
+
+    // O primeiro item inicia expandido
+    if (index === 0) {
+      item.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      collapse.style.maxHeight = collapse.scrollHeight + 'px';
+    } else {
+      btn.setAttribute('aria-expanded', 'false');
+      collapse.style.maxHeight = '0px';
+    }
+
+    btn.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      // Fecha outros itens para foco limpo
+      faqItems.forEach(other => {
+        if (other !== item && other.classList.contains('active')) {
+          other.classList.remove('active');
+          const otherBtn = other.querySelector('.faq-question-btn');
+          const otherCollapse = other.querySelector('.faq-answer-collapse');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          if (otherCollapse) otherCollapse.style.maxHeight = '0px';
+        }
+      });
+
+      if (isActive) {
+        item.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        collapse.style.maxHeight = '0px';
+      } else {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        collapse.style.maxHeight = collapse.scrollHeight + 'px';
+      }
+    });
+  });
 }
