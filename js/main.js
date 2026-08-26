@@ -449,12 +449,15 @@ function initCatalogFilters() {
   familyCards.forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
+      const explicitCat = card.getAttribute('data-category-target');
       const text = card.innerText.toLowerCase();
-      let targetCat = 'all';
-      if (text.includes('comando') || text.includes('automação')) targetCat = 'comando';
-      else if (text.includes('ccm') || text.includes('acionamento')) targetCat = 'ccm';
-      else if (text.includes('qgbt') || text.includes('distribuição')) targetCat = 'distribuicao';
-      else if (text.includes('especia') || text.includes('barramento')) targetCat = 'especiais';
+      let targetCat = explicitCat || 'all';
+      if (!explicitCat) {
+        if (text.includes('comando') || text.includes('automação')) targetCat = 'comando';
+        else if (text.includes('ccm') || text.includes('acionamento')) targetCat = 'ccm';
+        else if (text.includes('qgbt') || text.includes('distribuição')) targetCat = 'distribuicao';
+        else if (text.includes('especia') || text.includes('barramento')) targetCat = 'especiais';
+      }
 
       applyFilter(targetCat);
 

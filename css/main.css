@@ -1438,88 +1438,155 @@ html.to-gradient.is-animating .transition-reveal {
 
 .family-guide-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.15rem;
+  margin-top: 1.5rem;
 }
 
 .family-guide-card {
   background: #FFFFFF;
   border: 1px solid var(--cbe-border);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.15rem;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.family-guide-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--cbe-border);
+  transition: background var(--transition-fast), width var(--transition-fast);
 }
 
 .family-guide-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--cbe-blue);
-  box-shadow: 0 10px 30px rgba(49, 78, 138, 0.12);
+  transform: translateY(-3px);
+  border-color: var(--cbe-blue-light);
+  box-shadow: 0 8px 24px rgba(49, 78, 138, 0.1);
 }
 
-.family-schematic {
-  width: 100%;
-  height: 52px;
-  margin-bottom: 1.15rem;
-  padding: 0.35rem 0.65rem;
-  background: var(--cbe-bg-surface);
-  border: 1px solid var(--cbe-border);
-  border-radius: var(--radius-md);
+.family-guide-card:hover::before {
+  background: var(--cbe-red);
+}
+
+.family-card-head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
 }
 
-.family-guide-card:hover .family-schematic {
-  background: #FFFFFF;
-  border-color: rgba(49, 78, 138, 0.3);
-  box-shadow: 0 2px 8px rgba(49, 78, 138, 0.08);
+.family-code-highlight {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--cbe-blue-dark);
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-.family-schematic svg {
-  width: 100%;
-  height: 100%;
-  max-width: 220px;
-}
-
-.family-guide-card .family-tag {
+.family-tag-pill {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   color: var(--cbe-red);
+  background: var(--cbe-red-subtle);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
-  display: block;
 }
 
 .family-guide-card h3 {
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--cbe-text-heading);
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
 }
 
 .family-guide-card p {
-  font-size: 0.875rem;
+  font-size: 0.825rem;
   color: var(--cbe-text-muted);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 0.65rem;
+}
+
+.family-specs-compact {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.family-specs-compact li {
+  font-size: 0.785rem;
+  color: var(--cbe-text-body);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.family-specs-compact li svg {
+  width: 13px;
+  height: 13px;
+  color: var(--cbe-blue);
+  flex-shrink: 0;
+}
+
+.family-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--cbe-blue);
+  background: var(--cbe-bg-surface);
+  border: 1px solid var(--cbe-border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  margin-top: auto;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  width: 100%;
+}
+
+.family-action-link svg {
+  transition: transform var(--transition-fast);
+}
+
+.family-guide-card:hover .family-action-link {
+  background: var(--cbe-blue);
+  color: #FFFFFF;
+  border-color: var(--cbe-blue);
+}
+
+.family-guide-card:hover .family-action-link svg {
+  transform: translateX(3px);
 }
 
 .family-guide-card .family-app-text {
-  font-size: 0.8125rem;
+  font-size: 0.785rem;
   color: var(--cbe-text-muted);
-  line-height: 1.5;
-  border-top: 1px solid var(--cbe-border);
-  padding-top: 0.75rem;
-  margin-top: auto;
+  line-height: 1.4;
+  border-top: 1px solid var(--cbe-border-subtle);
+  padding-top: 0.55rem;
+  margin-top: 0.55rem;
 }
 
 .family-guide-card .family-app-text span {
