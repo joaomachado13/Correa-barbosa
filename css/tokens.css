@@ -29,11 +29,11 @@
   --cbe-border-focus: rgba(49, 78, 138, 0.4);
   --cbe-border-subtle: #EDF2F7;
 
-  /* --- Cores de Texto --- */
+  /* --- Cores de Texto com Alto Contraste --- */
   --cbe-text-heading: #0F172A;
-  --cbe-text-body: #2D3748;
-  --cbe-text-muted: #5A6A85;
-  --cbe-text-subtle: #8A9BB5;
+  --cbe-text-body: #1E293B;
+  --cbe-text-muted: #334155;
+  --cbe-text-subtle: #475569;
   --cbe-text-white: #FFFFFF;
   --cbe-text-white-muted: #CBD5E1;
 

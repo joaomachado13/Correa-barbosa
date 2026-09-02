@@ -195,7 +195,7 @@ h4 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #FBFBFA;
+  background-color: var(--cbe-bg-body, #FBFBFA);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -477,6 +477,49 @@ html.to-gradient.is-animating .transition-reveal {
 
 .cbe-btn-blue:hover .icon-wrap path {
   fill: var(--cbe-red);
+}
+
+/* Variação Secundária / Outline CBE (Alto Contraste e Elegância Técnica) */
+.cbe-btn-secondary,
+.cbe-btn-outline {
+  background: #FFFFFF;
+  color: var(--cbe-blue);
+  border: 2px solid var(--cbe-blue);
+  box-shadow: 0 2px 6px rgba(49, 78, 138, 0.08);
+}
+
+.cbe-btn-secondary::before,
+.cbe-btn-outline::before {
+  background: var(--cbe-blue);
+}
+
+.cbe-btn-secondary .icon-wrap,
+.cbe-btn-outline .icon-wrap {
+  border-color: var(--cbe-blue);
+}
+
+.cbe-btn-secondary .icon-wrap path,
+.cbe-btn-outline .icon-wrap path {
+  fill: var(--cbe-blue);
+}
+
+.cbe-btn-secondary:hover,
+.cbe-btn-outline:hover {
+  color: #FFFFFF;
+  background: var(--cbe-blue);
+  border-color: var(--cbe-blue);
+  box-shadow: 0 6px 18px rgba(49, 78, 138, 0.28);
+}
+
+.cbe-btn-secondary:hover .icon-wrap,
+.cbe-btn-outline:hover .icon-wrap {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.cbe-btn-secondary:hover .icon-wrap path,
+.cbe-btn-outline:hover .icon-wrap path {
+  fill: var(--cbe-blue);
 }
 
 /* --- Redes Sociais Isométricas 3D --- */
@@ -1275,136 +1318,79 @@ html.to-gradient.is-animating .transition-reveal {
   }
 }
 
-/* Selo / Emblema Rotativo de Ação em Glassmorphism Ampliado (ITEM 4) */
+/* Bloco Visual de Estrutura Técnica da Fábrica (Foto Sólida e Retilínea) */
 .solid-blue-visual {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
   width: 100%;
 }
 
+/* Emblema Rotativo — Sobre Nós */
 .rotating-badge-wrapper {
-  position: static;
-  align-self: flex-end;
-  margin-bottom: 0;
-  z-index: 25;
-  pointer-events: auto !important;
-}
-
-.rotating-emblem-link {
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 30;
-  cursor: pointer;
-  border-radius: 50%;
-  pointer-events: auto !important;
-}
-
-/* Dimensão Ampliada com Alto Impacto Visual e Área 100% Clicável */
-.rotating-emblem {
-  position: relative;
-  width: 210px;
-  height: 210px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 50%;
-  border: 2.5px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), inset 0 1px 3px rgba(255, 255, 255, 0.7);
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.45s ease, background 0.45s ease, box-shadow 0.5s ease;
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+.rotating-emblem-link {
+  display: block;
+  text-decoration: none;
   cursor: pointer;
-  pointer-events: auto !important;
 }
 
-.rotating-emblem * {
-  pointer-events: none !important;
+.rotating-emblem {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.rotating-emblem-link:hover .rotating-emblem,
-.rotating-emblem:hover {
-  transform: scale(1.06);
-  background: rgba(255, 255, 255, 0.24);
-  border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), inset 0 1px 3px rgba(255, 255, 255, 0.9);
-}
-
-.rotating-emblem svg.circular-text {
+.rotating-emblem .circular-text {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  animation: spinSlow 14s linear infinite;
-  pointer-events: none !important;
-  transform-origin: center center;
+  animation: rotateBadge 18s linear infinite;
+}
+
+.rotating-emblem-link:hover .circular-text {
+  animation-duration: 8s;
 }
 
 .rotating-emblem .emblem-center {
+  position: relative;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 68px;
-  height: 68px;
-  background: var(--cbe-red);
-  border-radius: 50%;
   color: #FFFFFF;
-  box-shadow: 0 10px 30px rgba(236, 50, 55, 0.65);
-  z-index: 2;
-  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), background 0.4s ease, color 0.4s ease;
-  pointer-events: none !important;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.rotating-emblem .emblem-center svg {
-  width: 24px;
-  height: 24px;
+.rotating-emblem-link:hover .emblem-center {
+  background: var(--cbe-red, #EC3237);
+  border-color: var(--cbe-red, #EC3237);
+  transform: scale(1.08);
 }
 
-.rotating-emblem-link:hover .emblem-center,
-.rotating-emblem:hover .emblem-center {
-  transform: scale(1.12);
-  background: #FFFFFF;
-  color: var(--cbe-red);
-}
-
-@media (max-width: 900px) {
-  .solid-blue-visual {
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1.5rem;
-  }
-
-  .rotating-badge-wrapper {
-    align-self: center;
-    margin: 0 auto;
-  }
-
-  .rotating-emblem {
-    width: 160px;
-    height: 160px;
-  }
-  .rotating-emblem .emblem-center {
-    width: 52px;
-    height: 52px;
-  }
-  .rotating-emblem .emblem-center svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-@keyframes spinSlow {
+@keyframes rotateBadge {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* Galeria de Fotos Reais da Fábrica Integrada no Bloco Azul */
@@ -1782,17 +1768,15 @@ html.to-gradient.is-animating .transition-reveal {
   border-top: 1px solid var(--cbe-border);
 }
 
-/* --- Bloco Sólido de Orçamento / CTA (REF-2 Inspirado) --- */
-/* --- Bloco Sólido de Orçamento / CTA (REF-2 Inspirado) --- */
 .section-solid-cta {
   background-color: var(--cbe-bg-dark);
   position: relative;
   color: #FFFFFF;
-  clip-path: polygon(0 0, 100% 2.5vw, 100% 100%, 0 calc(100% - 2.5vw));
-  margin-top: -1.25vw;
-  margin-bottom: -1.25vw;
-  padding-top: calc(var(--section-pad-y) + 5rem);
-  padding-bottom: calc(var(--section-pad-y) + 5rem);
+  clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 calc(100% - 2vw));
+  margin-top: -1vw;
+  margin-bottom: -1vw;
+  padding-top: clamp(2.75rem, 4.5vw, 3.75rem);
+  padding-bottom: clamp(2.75rem, 4.5vw, 3.75rem);
   z-index: 10;
   overflow: hidden;
 }
@@ -1850,7 +1834,7 @@ html.to-gradient.is-animating .transition-reveal {
 }
 
 .cta-human-box .cta-human-title {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-size: 1.05rem;
   font-weight: 700;
   display: block;
@@ -1858,75 +1842,108 @@ html.to-gradient.is-animating .transition-reveal {
 }
 
 .cta-human-box .cta-human-desc {
-  color: #94A3B8;
+  color: #E2E8F0 !important;
   font-size: 0.875rem;
   line-height: 1.6;
   display: block;
 }
 
-/* Card Arejado e Elegante para o Formulário de Orçamento Rápido */
+/* Card Arejado e Elegante para o Formulário de Orçamento Rápido (Alto Contraste) */
 .cta-right-card {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-xl);
-  padding: clamp(2.25rem, 4vw, 3.25rem);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(14px);
 }
 
-.cta-right-card h3 {
-  color: #FFFFFF;
+.cta-right-card h3,
+.section-solid-cta h3 {
+  color: #FFFFFF !important;
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
 
-.cta-form-lead {
-  color: #94A3B8;
+.cta-form-lead,
+.section-solid-cta .cta-form-lead {
+  color: #E2E8F0 !important;
   font-size: 0.9375rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.cta-right-card .form-sla-badge,
+.section-solid-cta .form-sla-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.cta-right-card .form-sla-badge svg,
+.section-solid-cta .form-sla-badge svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 .cta-quick-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
-.label-styled {
+.section-solid-cta .label-styled,
+.section-solid-cta .form-group label,
+.cta-right-card .label-styled,
+.cta-right-card .form-group label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #CBD5E1;
+  letter-spacing: 0.06em;
+  color: #FFFFFF !important;
   margin-bottom: 0.45rem;
   display: block;
 }
 
-.input-styled {
+.section-solid-cta .input-styled,
+.cta-right-card .input-styled {
   width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
   border-radius: var(--radius-md);
-  padding: 0.95rem 1.25rem;
-  color: #FFFFFF;
+  padding: 0.95rem 1.15rem;
+  color: #0F172A !important;
   font-size: 0.9375rem;
-  font-family: inherit;
+  font-weight: 500;
+  font-family: var(--font-body);
   transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
-.input-styled::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+.section-solid-cta .input-styled::placeholder,
+.cta-right-card .input-styled::placeholder {
+  color: #64748B !important;
+  opacity: 1;
 }
 
-.input-styled:focus {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--cbe-blue-light, #4A6FB5);
+.section-solid-cta .input-styled:focus,
+.cta-right-card .input-styled:focus {
+  background: #FFFFFF !important;
+  border-color: var(--cbe-blue, #314E8A) !important;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(49, 78, 138, 0.35);
+  box-shadow: 0 0 0 4px rgba(49, 78, 138, 0.28) !important;
 }
 
 /* Card do Formulário Sólido Vermelho CBE (REF-2) */
@@ -2014,12 +2031,21 @@ html.to-gradient.is-animating .transition-reveal {
   background-color: var(--cbe-bg-body);
   position: relative;
   z-index: 2;
+  padding-top: clamp(2.25rem, 3.5vw, 3.25rem);
+  padding-bottom: clamp(2.25rem, 3.5vw, 3.25rem);
 }
 
 .facts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .facts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .fact-card {
@@ -2651,66 +2677,32 @@ html.to-gradient.is-animating .transition-reveal {
    CARDS COMPACTOS 3D FLIP VERMELHO (CBE RED FLIP CARDS - ITEM 4 & ITEM 5)
    ========================================================================== */
 
-.cbe-compact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.25rem;
-  margin-bottom: 3.5rem;
-}
-
-/* Layout Editorial do Portfólio da Home (ITEM 2) */
+/* Grid Padronizado e Uniforme do Portfólio CBE (ITEM 2) */
+.cbe-compact-grid,
 .cbe-portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 960px) {
+  .cbe-compact-grid,
+  .cbe-portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
   .cbe-compact-grid,
   .cbe-portfolio-grid {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
 
   .cbe-compact-card {
-    height: 440px;
-  }
-}
-
-@media (min-width: 900px) {
-  .cbe-portfolio-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 2.25rem !important;
-  }
-
-  .cbe-portfolio-grid .cbe-compact-card.card-featured {
-    grid-column: span 2 !important;
-  }
-
-  .cbe-portfolio-grid .cbe-compact-card.card-featured .cbe-compact-front-image {
-    height: 74%;
-  }
-
-  .cbe-portfolio-grid .cbe-compact-card.card-featured .cbe-compact-front-body {
-    height: 26%;
-  }
-
-  .cbe-portfolio-grid .cbe-compact-card.card-featured .cbe-compact-front-image::after {
-    content: "DESTAQUE DE ENGENHARIA";
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: var(--cbe-red);
-    color: #FFFFFF;
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 0.35rem 0.75rem;
-    border-radius: var(--radius-pill);
-    box-shadow: 0 4px 12px rgba(236, 50, 55, 0.4);
-    z-index: 10;
+    height: 420px;
   }
 }
 
@@ -3689,8 +3681,7 @@ html.to-gradient.is-animating .transition-reveal {
   margin-bottom: 1.15rem;
 }
 
-.form-group label,
-.label-styled {
+.form-group label {
   display: block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -3699,6 +3690,25 @@ html.to-gradient.is-animating .transition-reveal {
   letter-spacing: 0.05em;
   color: var(--cbe-text-heading);
   margin-bottom: 0.4rem;
+}
+
+/* Forçar Perguntas e Rótulos em Branco nas Seções de Fundo Escuro */
+.section-solid-cta label,
+.section-solid-cta .label-styled,
+.section-solid-cta .form-group label,
+.section-solid-blue label,
+.section-solid-blue .form-group label,
+.cta-right-card label,
+.cta-right-card .label-styled,
+.cta-right-card .form-group label {
+  color: #FFFFFF !important;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.45rem;
+  display: block;
 }
 
 .form-input-line,
