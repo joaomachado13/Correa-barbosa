@@ -1875,8 +1875,7 @@ html.to-gradient.is-animating .transition-reveal {
   margin-bottom: 1.75rem;
 }
 
-.cta-right-card .form-sla-badge,
-.section-solid-cta .form-sla-badge {
+.cta-right-card .form-sla-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -1891,8 +1890,7 @@ html.to-gradient.is-animating .transition-reveal {
   letter-spacing: 0.03em;
 }
 
-.cta-right-card .form-sla-badge svg,
-.section-solid-cta .form-sla-badge svg {
+.cta-right-card .form-sla-badge svg {
   color: #FFFFFF !important;
   stroke: #FFFFFF !important;
 }
@@ -1903,8 +1901,6 @@ html.to-gradient.is-animating .transition-reveal {
   gap: 1.25rem;
 }
 
-.section-solid-cta .label-styled,
-.section-solid-cta .form-group label,
 .cta-right-card .label-styled,
 .cta-right-card .form-group label {
   font-family: var(--font-mono);
@@ -3692,10 +3688,7 @@ html.to-gradient.is-animating .transition-reveal {
   margin-bottom: 0.4rem;
 }
 
-/* Forçar Perguntas e Rótulos em Branco nas Seções de Fundo Escuro */
-.section-solid-cta label,
-.section-solid-cta .label-styled,
-.section-solid-cta .form-group label,
+/* Forçar Rótulos em Branco apenas nas Seções de Fundo Escuro */
 .section-solid-blue label,
 .section-solid-blue .form-group label,
 .cta-right-card label,
@@ -3711,6 +3704,51 @@ html.to-gradient.is-animating .transition-reveal {
   display: block;
 }
 
+/* Formulário da Home (card branco .cta-form-card dentro de seção sólida) — restaura cores escuras de alto contraste */
+.cta-form-card label,
+.cta-form-card .form-group label {
+  color: var(--cbe-text-heading) !important;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.cta-form-card .form-input-line,
+.cta-form-card .form-select-line {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1.5px solid var(--cbe-border, #E2E8F0) !important;
+  border-radius: 0 !important;
+  padding: 0.8rem 0 !important;
+  color: var(--cbe-text-heading) !important;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+
+.cta-form-card .form-input-line::placeholder,
+.cta-form-card .form-select-line::placeholder {
+  color: #94A3B8 !important;
+}
+
+.cta-form-card .form-input-line:focus,
+.cta-form-card .form-select-line:focus {
+  border-bottom-color: var(--cbe-blue, #314E8A) !important;
+  outline: none;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.cta-form-card .form-select-line option {
+  background-color: #FFFFFF;
+  color: var(--cbe-text-heading);
+}
+
+/* Campos genéricos fora de contexto escuro (fundo claro) */
 .form-input-line,
 .form-select-line,
 .input-styled {
