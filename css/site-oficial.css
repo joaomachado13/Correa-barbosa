@@ -45,8 +45,7 @@ h1,h2,h3 { font-family: var(--cbe-display); letter-spacing: -.045em; }
 .cbe-splash { position: fixed; inset: 0; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 13px; background: #f7f8fa; }
 .splash-logo { width: min(250px, 62vw); height: auto; object-fit: contain; clip-path: inset(0 100% 0 0); }
 .splash-caption { color: #536078; font: 600 9px var(--cbe-mono); letter-spacing: .2em; opacity: 0; }
-.brand-logo img { opacity: 0; transition: opacity .2s ease; }
-body.splash-complete .brand-logo img { opacity: 1; }
+.brand-logo img { opacity: 1; transition: opacity .2s ease; }
 .page-transition { position: fixed; inset: 0; z-index: 9990; display: grid; place-items: center; background: var(--cbe-navy); opacity: 0; pointer-events: none; transition: opacity .34s ease; }
 .page-transition img { width: min(210px, 54vw); height: auto; filter: brightness(0) invert(1); transform: scale(.92); transition: transform .34s ease; }
 .page-transition.is-active { opacity: 1; pointer-events: auto; }
