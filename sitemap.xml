@@ -11,4 +11,5 @@
   <url><loc>https://www.cbe.eng.br/mobilidade-eletrica.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.cbe.eng.br/sobre.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.cbe.eng.br/contato.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.cbe.eng.br/orcamento.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
 </urlset>
