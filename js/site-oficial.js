@@ -18,17 +18,15 @@
   if (splash && (hasSeenSplash || reduceMotion || !window.gsap || !splashLogo || !headerLogo)) {
     finishSplash();
   } else if (splash && splashLogo && headerLogo) {
+    const from = splashLogo.getBoundingClientRect();
+    const to = headerLogo.getBoundingClientRect();
+    const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
+    const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
+    const scale = to.width / from.width;
     const timeline = window.gsap.timeline({ onComplete: finishSplash });
     timeline.to(splashLogo, { clipPath: 'inset(0 0% 0 0)', duration: 1.4, ease: 'power3.inOut' });
     timeline.to({}, { duration: 0.3 });
-    timeline.add(() => {
-      const from = splashLogo.getBoundingClientRect();
-      const to = headerLogo.getBoundingClientRect();
-      const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
-      const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
-      const scale = to.width / from.width;
-      window.gsap.to(splashLogo, { x: dx, y: dy, scale: scale, duration: 1.2, ease: 'power3.inOut' });
-    });
+    timeline.to(splashLogo, { x: dx, y: dy, scale: scale, duration: 1.2, ease: 'power3.inOut' });
     timeline.to(splash, { opacity: 0, duration: 0.4, ease: 'power1.out' });
   }
 
