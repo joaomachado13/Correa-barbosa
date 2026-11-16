@@ -412,3 +412,6 @@ h1,h2,h3 { font-family: var(--cbe-display); letter-spacing: -.045em; }
   .service-process-step > span { margin-bottom: 8px; }
   .service-charger svg { padding: 22px 38px 20px; }
 }
+
+.detail-more-link { margin: 12px 0 0 14px; font-size: 10px; }
+@media (max-width: 560px) { .detail-more-link { margin: 14px 0 0; } }
