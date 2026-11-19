@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "postinstall": "node scripts/vendor.mjs",
-    "dev": "python3 -m http.server 8000 --bind 0.0.0.0",
+    "dev": "npm run build && python3 -m http.server 8000 --bind 0.0.0.0 --directory dist",
+    "dev:rascunhos": "npm run build:preview && python3 -m http.server 8001 --bind 0.0.0.0 --directory dist-preview",
     "build": "node scripts/build.mjs",
+    "build:preview": "node scripts/build.mjs --preview",
+    "frentes:validar": "node scripts/frentes-cli.mjs validar",
+    "frente:criar": "node scripts/frentes-cli.mjs criar",
     "test": "node --test tests/*.test.mjs && playwright test",
     "test:unit": "node --test tests/*.test.mjs",
     "test:browser": "playwright test"

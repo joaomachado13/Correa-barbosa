@@ -1,4 +1,4 @@
-import { initFormInteractions, initGuidedForms } from './forms.js';
+import { initFormInteractions, initGuidedForms } from './forms.js?v=8';
 
 document.documentElement.classList.add('js-enabled');
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -204,11 +204,15 @@ function initSwupTransitions() {
  * Atualiza o link ativo no menu de navegação
  */
 function updateActiveNavigation() {
+  const quoteHref = document.getElementById('swup')?.dataset.quoteHref || 'orcamento.html';
+  document.querySelectorAll('.site-header .nav-actions > a.cbe-btn, .site-header .drawer-quote-btn').forEach(link => {
+    link.setAttribute('href', quoteHref);
+  });
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+    if (href === currentPath || (currentPath === '' && href === 'index.html') || (href === 'solucoes.html' && document.querySelector('[data-areas-page]'))) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');

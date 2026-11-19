@@ -1,0 +1,66 @@
+/* Energia solar: utiliza tipografia, componentes e cores institucionais da CBE. */
+.solar-hero { background: var(--cbe-blue-deep); color: var(--cbe-text-white); }
+.solar-hero-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr); gap: 3rem; align-items: center; }
+.solar-hero h1 { color: inherit; margin-bottom: 1.5rem; text-wrap: balance; }
+.solar-hero-copy > p { color: var(--cbe-text-white-muted); font-size: var(--fs-body-lg); max-width: 36rem; }
+.solar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-top: 2rem; }
+.solar-text-link { display: inline-block; text-decoration: underline; text-underline-offset: 0.25em; font-weight: 600; }
+.solar-hero-photo img { width: 100%; height: auto; border-radius: var(--radius-md); }
+.solar-hero-photo figcaption { margin-top: 0.75rem; font-size: var(--fs-sm); color: var(--cbe-text-white-muted); }
+.solar-scope, .solar-faq-layout, .solar-contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 4rem; align-items: start; }
+.solar-scope h2, .solar-contact-copy h2 { margin-bottom: 1.25rem; text-wrap: balance; }
+.solar-audiences { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.solar-audiences h3 { font-size: var(--fs-h3); margin-bottom: 1rem; color: var(--cbe-blue-dark); }
+.solar-audiences ul { list-style: disc; padding-left: 1.25rem; }
+.solar-audiences li + li { margin-top: 0.75rem; }
+.solar-projects, .solar-questions { background: var(--cbe-bg-surface); }
+.solar-section-intro { max-width: 47rem; margin-bottom: 2.5rem; }
+.solar-section-intro h2 { margin-bottom: 1rem; text-wrap: balance; }
+.solar-project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 2rem; }
+.solar-project > a { display: block; border-radius: var(--radius-md); overflow: hidden; }
+.solar-project img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.solar-project figcaption { padding-top: 1rem; }
+.solar-project-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; color: var(--cbe-blue-dark); font-size: var(--fs-sm); margin-bottom: 0.5rem; }
+.solar-project-meta strong { font-variant-numeric: tabular-nums; }
+.solar-project h3 { font-size: var(--fs-h3); margin-bottom: 0.5rem; line-height: 1.35; }
+.solar-project figcaption p { color: var(--cbe-text-muted); }
+.solar-steps { list-style: decimal-leading-zero; padding-left: 2rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; }
+.solar-steps li { padding-left: 0.5rem; }
+.solar-steps li::marker { font-family: var(--font-display); font-weight: 700; color: var(--cbe-red-dark); }
+.solar-steps h3 { font-size: var(--fs-h3); margin-bottom: 1rem; }
+.solar-faq details { border-bottom: 1px solid var(--cbe-border); }
+.solar-faq summary { cursor: pointer; padding-block: 1.25rem; font-weight: 600; color: var(--cbe-blue-dark); }
+.solar-faq details:first-child summary { padding-top: 0; }
+.solar-faq details p { padding-bottom: 1.25rem; }
+.solar-contact-copy p { margin-bottom: 1.25rem; }
+.solar-contact-copy .solar-text-link { color: var(--cbe-blue-dark); }
+.solar-form { padding: 2rem; background: var(--cbe-bg-surface); border-radius: var(--radius-lg); min-width: 0; }
+.solar-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.solar-form .form-group { margin-bottom: 0; }
+.solar-form label { display: block; margin-bottom: 0.5rem; font: 600 var(--fs-body)/1.5 var(--font-body); text-transform: none; letter-spacing: normal; }
+.solar-form-note { font-size: var(--fs-sm); color: var(--cbe-text-muted); margin-bottom: 1rem; }
+#solar-consumo-ajuda { margin-top: 0.75rem; }
+.solar-form .input-styled { background: var(--cbe-bg-card); min-height: 48px; border-color: var(--cbe-text-subtle); }
+.solar-form textarea { resize: vertical; }
+.solar-form .form-feedback { margin-top: 1.5rem; }
+#analise-solar, #projetos-solares { scroll-margin-top: 7rem; }
+@media (max-width: 1000px) {
+  .solar-hero-grid { gap: 2rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .solar-scope, .solar-faq-layout, .solar-contact-layout { gap: 2.5rem; }
+  .solar-project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .solar-steps { gap: 2rem; }
+}
+@media (max-width: 760px) {
+  .solar-hero-grid, .solar-scope, .solar-faq-layout, .solar-contact-layout { grid-template-columns: minmax(0, 1fr); }
+  .solar-hero-grid { gap: 2.5rem; }
+  .solar-actions { align-items: flex-start; flex-direction: column; }
+  .solar-audiences { gap: 1.5rem; }
+  .solar-project-grid { gap: 2rem 1.5rem; }
+  .solar-steps { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .solar-form { padding: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .solar-project-grid, .solar-form-grid, .solar-audiences { grid-template-columns: minmax(0, 1fr); }
+  .solar-audiences { gap: 2rem; }
+  .solar-form { padding: 1.25rem; }
+}

@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
-const routes = ['index', 'quadros-eletricos', 'sobre', 'orcamento', 'contato', 'privacidade'];
+const fronts = JSON.parse(readFileSync('assets/data/frentes.json', 'utf8')).frentes;
+const routes = ['index', 'quadros-eletricos', 'sobre', 'orcamento', 'contato', 'privacidade', 'solucoes', ...fronts.filter(front => front.status === 'publicada' && front.tipo === 'servico').map(front => front.id)];
 test.use({ reducedMotion: 'reduce' });
 async function open(page, route) {
   await page.goto(`/${route}.html`, { waitUntil: 'networkidle' });

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="CBE — Corrêa Barbosa Engenharia">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css?v=7">
+  <link rel="stylesheet" href="css/main.css?v=8">
+  <link rel="stylesheet" href="css/frentes.css">
+  <link rel="stylesheet" href="css/solar.css">
+  <link rel="icon" type="image/webp" href="assets/logo/logo-cbe-principal.webp">
+</head>
+<body>
+  <a class="skip-link" href="#swup">Pular para o conteúdo</a>
+  {{HEADER}}
+  {{NOJS_NAV}}
+  <main id="swup" class="transition-reveal" tabindex="-1" data-areas-page data-quote-href="{{QUOTE_HREF}}">
+    {{MAIN}}
+  </main>
+  {{FOOTER}}
+  {{WIDGET}}
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/lenis.min.js"></script>
+  <script defer src="assets/vendor/swup.min.js"></script>
+  <script type="module" src="js/main.js?v=8"></script>
+</body>
+</html>

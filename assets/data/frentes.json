@@ -1,0 +1,311 @@
+{
+  "versao": 1,
+  "frentes": [
+    {
+      "id": "quadros-eletricos",
+      "nome": "Quadros elétricos",
+      "status": "publicada",
+      "tipo": "existente",
+      "pagina": "quadros-eletricos.html",
+      "resumo": "Fabricação e montagem de quadros de distribuição, comando e acionamento sob medida.",
+      "introducao": "Conheça os painéis e as especificações no catálogo técnico da CBE.",
+      "imagem": {
+        "src": "assets/images/cbe_distribuicao_disjuntores.jpg",
+        "alt": "Quadro de distribuição montado pela CBE"
+      },
+      "grupos": [],
+      "origens": [
+        {
+          "url": "https://cbe.eng.br/produtos-e-servicos",
+          "secao": "Instalações elétricas — montagem de quadros",
+          "consultadoEm": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "id": "projetos-e-laudos",
+      "nome": "Projetos e laudos",
+      "status": "rascunho",
+      "tipo": "servico",
+      "pagina": "projetos-e-laudos.html",
+      "resumo": "Projetos elétricos, estudos e avaliação técnica das instalações.",
+      "introducao": "A CBE desenvolve projetos e documentos técnicos a partir das necessidades da instalação e das premissas definidas com o cliente.",
+      "imagem": null,
+      "grupos": [
+        {
+          "titulo": "Projetos",
+          "itens": [
+            "Cabines de medição e subestações",
+            "Instalações elétricas industriais, prediais e residenciais",
+            "Sistemas alternativos de geração de energia",
+            "Iluminação e projetos luminotécnicos",
+            "Estudos de seletividade",
+            "Distribuição de energia e iluminação pública",
+            "Aterramento e SPDA",
+            "Sistemas de detecção de incêndio, CFTV, controle de acesso e segurança"
+          ]
+        },
+        {
+          "titulo": "Laudos e vistorias",
+          "itens": [
+            "Prontuário das Instalações Elétricas e Relatório Técnico de Inspeções",
+            "Laudos de instalações elétricas em baixa e alta tensão",
+            "Auditorias de instalações conforme normas aplicáveis",
+            "Perícia técnica relacionada à NR-10",
+            "Laudos de SPDA e aterramento",
+            "Vistorias de instalações prediais"
+          ]
+        }
+      ],
+      "origens": [
+        {
+          "url": "https://cbe.eng.br/produtos-e-servicos",
+          "secao": "Projetos e Laudos",
+          "consultadoEm": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "id": "consultorias-e-comissionamento",
+      "nome": "Consultorias e comissionamento",
+      "status": "rascunho",
+      "tipo": "servico",
+      "pagina": "consultorias-e-comissionamento.html",
+      "resumo": "Análise de energia e verificação do desempenho das instalações.",
+      "introducao": "Consultorias e comissionamento apoiam decisões de projeto, execução, recebimento e manutenção das instalações elétricas.",
+      "imagem": null,
+      "grupos": [
+        {
+          "titulo": "Consultorias",
+          "itens": [
+            "Gerenciamento energético e contratos de fornecimento",
+            "Estudos de opção tarifária, demanda e consumo",
+            "Diagnóstico energético e monitoramento da qualidade da energia",
+            "Correção do fator de potência",
+            "Viabilidade de geração com fontes alternativas",
+            "Estratégias de uso de grupos geradores",
+            "Estudos de eficiência energética"
+          ]
+        },
+        {
+          "titulo": "Comissionamento",
+          "itens": [
+            "Procedimentos para instaladoras",
+            "Conferência da execução em relação ao projeto",
+            "Verificação do desempenho das instalações",
+            "Testes e ensaios em campo",
+            "Comissionamento para certificação das instalações",
+            "Relatórios técnicos de acompanhamento"
+          ]
+        }
+      ],
+      "origens": [
+        {
+          "url": "https://cbe.eng.br/produtos-e-servicos",
+          "secao": "Consultorias e Comissionamento",
+          "consultadoEm": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "id": "instalacoes-eletricas",
+      "nome": "Instalações elétricas",
+      "status": "rascunho",
+      "tipo": "servico",
+      "pagina": "instalacoes-eletricas.html",
+      "resumo": "Execução e montagem de infraestrutura elétrica para diferentes instalações.",
+      "introducao": "A CBE executa montagens elétricas a partir da análise do projeto e das condições de instalação.",
+      "imagem": null,
+      "grupos": [
+        {
+          "titulo": "Montagens e infraestrutura",
+          "itens": [
+            "Infraestrutura de sistemas elétricos",
+            "Quadros elétricos de distribuição, comando e acionamentos",
+            "Cabines de medição, subestações e transformadores",
+            "Motores e equipamentos",
+            "Sistemas de iluminação e tomadas",
+            "Instrumentação e controle",
+            "SPDA",
+            "Instalações industriais"
+          ]
+        },
+        {
+          "titulo": "Sistemas complementares",
+          "itens": [
+            "Correção do fator de potência e bancos automáticos de capacitores",
+            "Contratos de performance para redução de energia reativa excedente",
+            "Instalação e manutenção de grupos geradores",
+            "Instalação de sistemas de ar-condicionado"
+          ]
+        }
+      ],
+      "origens": [
+        {
+          "url": "https://cbe.eng.br/produtos-e-servicos",
+          "secao": "Instalações",
+          "consultadoEm": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "id": "automacao",
+      "nome": "Automação",
+      "status": "rascunho",
+      "tipo": "servico",
+      "pagina": "automacao.html",
+      "resumo": "Automação de processos, máquinas e instalações prediais e residenciais.",
+      "introducao": "A automação integra controle e operação para atender às necessidades de cada processo ou instalação.",
+      "imagem": null,
+      "grupos": [
+        {
+          "titulo": "Industrial",
+          "itens": [
+            "Automação de processos industriais",
+            "Projetos especiais de automação de máquinas"
+          ]
+        },
+        {
+          "titulo": "Predial e residencial",
+          "itens": [
+            "Controle de iluminação",
+            "Medição remota de energia, água e gás",
+            "Monitoramento e controle de equipamentos",
+            "Lógicas de comando e telas de operação"
+          ]
+        }
+      ],
+      "origens": [
+        {
+          "url": "https://cbe.eng.br/produtos-e-servicos",
+          "secao": "Automação",
+          "consultadoEm": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "id": "energia-fotovoltaica",
+      "nome": "Energia solar fotovoltaica",
+      "status": "publicada",
+      "tipo": "servico",
+      "pagina": "energia-fotovoltaica.html",
+      "resumo": "Projeto e instalação de sistemas fotovoltaicos para residências e empresas em Uberlândia e região.",
+      "introducao": "Projeto e instalação de sistemas fotovoltaicos para residências e empresas em Uberlândia e região. Fale com a CBE para avaliar o consumo e as condições do seu imóvel.",
+      "imagem": {
+        "src": "assets/images/solar/comercial-tubalina.jpeg",
+        "alt": "Painéis solares na cobertura de instalação comercial no bairro Tubalina",
+        "width": 1032,
+        "height": 581
+      },
+      "grupos": [
+        {
+          "titulo": "Para sua casa",
+          "itens": [
+            "Sistemas fotovoltaicos residenciais",
+            "Avaliação do consumo e das condições de instalação"
+          ]
+        },
+        {
+          "titulo": "Para sua empresa",
+          "itens": [
+            "Sistemas para comércios e condomínios",
+            "Projeto elétrico e instalação do sistema fotovoltaico"
+          ]
+        }
+      ],
+      "origens": [
+        {
+          "url": "https://cbe.eng.br/empresa",
+          "secao": "Visão: instalações de geradores fotovoltaicos",
+          "consultadoEm": "2026-11-19"
+        },
+        {
+          "url": "https://cbe.eng.br/cases",
+          "secao": "18 cases fotovoltaicos residenciais e comerciais",
+          "consultadoEm": "2026-11-19"
+        }
+      ],
+      "layout": "solar",
+      "cases": [
+        {
+          "id": "residencial-cyrela",
+          "nome": "Residencial — Condomínio Cyrela",
+          "cidade": "Uberlândia/MG",
+          "tipo": "Residencial",
+          "potenciaKwp": 19.8,
+          "imagem": {
+            "src": "assets/images/solar/residencial-cyrela.jpeg",
+            "alt": "Módulos fotovoltaicos instalados na cobertura de residência no Condomínio Cyrela",
+            "width": 1280,
+            "height": 960
+          }
+        },
+        {
+          "id": "condominio-vertical",
+          "nome": "Condomínio residencial",
+          "cidade": "Uberlândia/MG",
+          "tipo": "Residencial",
+          "potenciaKwp": 40.92,
+          "imagem": {
+            "src": "assets/images/solar/condominio-vertical.jpg",
+            "alt": "Painéis solares sobre a cobertura de um condomínio residencial",
+            "width": 960,
+            "height": 720
+          }
+        },
+        {
+          "id": "clinica-prata",
+          "nome": "Clínica médica",
+          "cidade": "Prata/MG",
+          "tipo": "Comercial",
+          "potenciaKwp": 17.16,
+          "imagem": {
+            "src": "assets/images/solar/clinica-prata.jpeg",
+            "alt": "Sistema de painéis solares na cobertura de clínica médica em Prata",
+            "width": 1280,
+            "height": 960
+          }
+        },
+        {
+          "id": "metalurgica",
+          "nome": "Metalúrgica",
+          "cidade": "Uberlândia/MG",
+          "tipo": "Comercial",
+          "potenciaKwp": 31.2,
+          "imagem": {
+            "src": "assets/images/solar/metalurgica.jpeg",
+            "alt": "Módulos fotovoltaicos instalados no telhado de uma metalúrgica",
+            "width": 1280,
+            "height": 960
+          }
+        },
+        {
+          "id": "comercial-tubalina",
+          "nome": "Instalação comercial — Tubalina",
+          "cidade": "Uberlândia/MG",
+          "tipo": "Comercial",
+          "potenciaKwp": 46.2,
+          "imagem": {
+            "src": "assets/images/solar/comercial-tubalina.jpeg",
+            "alt": "Painéis solares na cobertura de instalação comercial no bairro Tubalina",
+            "width": 1032,
+            "height": 581
+          }
+        },
+        {
+          "id": "escritorio-cbe",
+          "nome": "Escritório CBE",
+          "cidade": "Uberlândia/MG",
+          "tipo": "Comercial",
+          "potenciaKwp": 9.1,
+          "imagem": {
+            "src": "assets/images/solar/escritorio-cbe.jpeg",
+            "alt": "Sistema fotovoltaico instalado na cobertura do escritório CBE",
+            "width": 1280,
+            "height": 960
+          }
+        }
+      ]
+    }
+  ]
+}

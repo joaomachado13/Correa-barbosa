@@ -4841,6 +4841,7 @@ html.to-gradient.is-animating .transition-reveal {
 .cta-right-card .form-channel-note { color: #E2E8F0; }
 .cta-right-card .form-feedback p { color: var(--cbe-text-body); }
 .form-feedback .cbe-btn, form .cbe-btn { max-width: 100%; white-space: normal; }
+.footer-contact-item span { min-width: 0; overflow-wrap: anywhere; }
 .flip-return { align-self: flex-start; color: #FFFFFF; text-decoration: underline; cursor: pointer; font-size: 0.875rem; }
 .option-title { font-family: var(--font-display); font-weight: 700; line-height: 1.3; }
 .quote-intro { margin-bottom: 1.5rem; color: var(--cbe-text-muted); }

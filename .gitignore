@@ -19,6 +19,7 @@ $RECYCLE.BIN/
 
 node_modules/
 dist/
+dist-preview/
 test-results/
 playwright-report/
 assets/vendor/

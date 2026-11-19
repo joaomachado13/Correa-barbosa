@@ -79,6 +79,12 @@ export function initFormInteractions() {
     };
   });
   if (subject) subject.onchange = syncChips;
+  const front = document.getElementById('ct_frente');
+  const requestedFront = new URLSearchParams(window.location.search).get('frente');
+  if (front && requestedFront && [...front.options].some(option => option.value === requestedFront)) {
+    front.value = requestedFront;
+    if (subject && requestedFront !== 'quadros-eletricos') subject.value = 'outro';
+  }
   syncChips();
 
   document.querySelectorAll('form[data-contact-form]').forEach(form => {

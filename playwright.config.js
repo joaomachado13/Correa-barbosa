@@ -12,11 +12,17 @@ export default defineConfig({
     launchOptions: { executablePath },
     trace: 'retain-on-failure'
   },
-  webServer: {
-    command: 'python3 -m http.server 8010 --bind 127.0.0.1',
+  webServer: [{
+    command: 'npm run build && python3 -m http.server 8010 --bind 127.0.0.1 --directory dist',
     url: 'http://127.0.0.1:8010',
     stdout: 'ignore',
     stderr: 'ignore',
     reuseExistingServer: !process.env.CI
-  }
+  }, {
+    command: 'npm run build:preview && python3 -m http.server 8012 --bind 127.0.0.1 --directory dist-preview',
+    url: 'http://127.0.0.1:8012',
+    stdout: 'ignore',
+    stderr: 'ignore',
+    reuseExistingServer: !process.env.CI
+  }]
 });

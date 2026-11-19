@@ -1,6 +1,6 @@
 # Site da Corrêa Barbosa Engenharia
 
-Site estático em HTML, CSS e JavaScript, com seis páginas. Mantém a identidade e as fotografias da CBE. Não exige servidor de aplicação ou banco de dados.
+Site estático em HTML, CSS e JavaScript, com oito páginas na versão de build atual e geração gradual de novas frentes. Mantém a identidade e as fotografias da CBE. Não exige servidor de aplicação ou banco de dados.
 
 ## Desenvolvimento
 
@@ -11,7 +11,20 @@ npm ci
 npm run dev
 ```
 
-`npm ci` verifica as dependências pelo lockfile e prepara bibliotecas/fontes em `assets/vendor` e `assets/fonts`. Esses diretórios são gerados e ignorados pelo Git. O servidor de desenvolvimento usa a porta 8000. Para outra porta, execute `python3 -m http.server PORTA --bind 0.0.0.0` na raiz do projeto.
+`npm ci` verifica as dependências pelo lockfile e prepara bibliotecas/fontes em `assets/vendor` e `assets/fonts`. Esses diretórios são gerados e ignorados pelo Git. `npm run dev` gera a versão pública em `dist/` e a serve na porta 8000. Reinicie o comando após editar fontes para regenerar o conteúdo. Para outra porta, gere o build e execute `python3 -m http.server PORTA --bind 0.0.0.0 --directory dist`.
+
+## Inclusão gradual de frentes
+
+O cadastro `assets/data/frentes.json` inclui Quadros Elétricos e Energia Solar Fotovoltaica no build normal; as outras áreas do site antigo continuam em rascunho. O build gera `solucoes.html`, páginas e opções de contato a partir das frentes selecionadas. Rascunhos ficam fora da versão pública. O status `publicada` apenas inclui a frente no build, sem enviar ao Git ou publicar na hospedagem.
+
+A primeira nova frente é `energia-fotovoltaica.html`, com seis projetos reais, perguntas frequentes e formulário específico para análise solar. Conteúdo, fontes das fotografias e conferência estão em [docs/energia-solar.md](docs/energia-solar.md).
+
+```sh
+npm run frentes:validar
+npm run dev:rascunhos
+```
+
+A prévia interna usa a porta 8001 e a pasta `dist-preview/`, com aviso e noindex. Reinicie após editar. Para uma nova frente: `npm run frente:criar -- slug "Nome da frente"`. O fluxo completo e as fontes do levantamento estão em [docs/expansao-frentes.md](docs/expansao-frentes.md).
 
 ## Formulários e atendimento
 
@@ -30,7 +43,7 @@ npx playwright install chromium
 npm test
 ```
 
-No ambiente de nuvem, os testes usam `/usr/bin/chromium` quando disponível. Também é possível informar `CHROMIUM_PATH`. Os testes iniciam seu próprio servidor na porta 8010, validam as rotas em quatro larguras, formulários, teclado, menu, navegação repetida Swup, redução de movimento, acesso sem JS e verificações axe. Não abrem nem enviam mensagens para WhatsApp. Capturas, traces e relatórios do runner ficam em diretórios ignorados.
+No ambiente de nuvem, os testes usam `/usr/bin/chromium` quando disponível. Também é possível informar `CHROMIUM_PATH`. Os testes geram e iniciam seus próprios servidores público e de rascunhos nas portas 8010 e 8012, validam as rotas em quatro larguras, formulários, teclado, menu, navegação repetida Swup, redução de movimento, acesso sem JS e verificações axe. Não abrem nem enviam mensagens para WhatsApp. Capturas, traces e relatórios do runner ficam em diretórios ignorados.
 
 Para executar apenas parte da validação: `npm run test:unit` ou `npm run test:browser`. A análise automática não equivale a uma certificação completa de acessibilidade ou teste da entrega real na conta comercial.
 
@@ -41,7 +54,7 @@ npm ci
 npm run build
 ```
 
-Publicar **o conteúdo de `dist/`** na hospedagem estática. O build inclui os arquivos gerados; não publique a raiz do repositório, `node_modules`, testes ou referências de trabalho.
+Publicar **o conteúdo de `dist/`** na hospedagem estática. A pasta `dist-preview/` é apenas para revisão interna. O build inclui os arquivos gerados; não publique a raiz do repositório, `node_modules`, testes ou referências de trabalho.
 
 O domínio oficial ainda não foi definido. Quando estiver disponível, executar:
 
