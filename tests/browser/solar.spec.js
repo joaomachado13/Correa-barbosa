@@ -42,7 +42,8 @@ test('energia solar é acessível pelas áreas e prepara um pedido específico s
   await form.locator('[type=submit]').click();
   expect(new URL(await link.getAttribute('href')).searchParams.get('text')).toContain('Consumo mensal (kWh): 850');
   expect(requests).toEqual([]);
-  await page.locator('#main-nav-menu a[href="quadros-eletricos.html"]').click();
+  await page.locator('#main-nav-menu a[href="index.html"]').click();
+  await page.locator('[data-home-front="quadros-eletricos"]').click();
   await expect(page.locator('.nav-actions > a.cbe-btn')).toHaveAttribute('href', 'orcamento.html');
   await page.locator('#main-nav-menu a[href="solucoes.html"]').click();
   await page.locator('[data-front="energia-fotovoltaica"] a').click();

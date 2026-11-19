@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import './vendor.mjs';
 import { validateFronts, selectFronts, renderSolutions, renderFront, renderFrontSelect, pageShell } from './frentes.mjs';
+import { renderHomeFronts, renderHomeOptions } from './home.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const preview = process.argv.includes('--preview');
@@ -35,9 +36,13 @@ pages.push(...generated.keys());
 await writeFile(path.join(output, 'assets/data/frentes.json'), JSON.stringify({ versao: 1, frentes: fronts.map(({ origens, ...front }) => front) }, null, 2) + '\n');
 const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 const urls = [];
+const homeContent = await readFile(path.join(root, 'templates/home-main.html'), 'utf8');
 for (const page of pages) {
   let html = generated.get(page) ?? await readFile(path.join(root, page), 'utf8');
+  html = html.replace('<!-- CBE:HOME-CONTENT -->', homeContent);
   html = html.replace('<!-- CBE:FRONT-SELECT -->', renderFrontSelect(fronts));
+  html = html.replace('<!-- CBE:HOME-FRONTS -->', renderHomeFronts(fronts));
+  html = html.replace('<!-- CBE:HOME-FRONT-OPTIONS -->', renderHomeOptions(fronts));
   if (preview) {
     html = html.replace('</head>', '  <meta name="robots" content="noindex, nofollow">\n</head>');
     html = html.replace(/(<main\b[^>]*>)/, '$1\n<div class="area-preview-note" role="note">Prévia interna: inclui frentes em rascunho. Use o build normal para publicar.</div>');
@@ -52,8 +57,8 @@ for (const page of pages) {
       address: { '@type': 'PostalAddress', streetAddress: 'R. Carmo Gifoni, 951, Martins', addressLocality: 'Uberlândia', addressRegion: 'MG', postalCode: '38400-358', addressCountry: 'BR' }
     };
     const front = fronts.find(front => front.pagina === page);
-    const shareImage = front?.imagem?.src || 'contents/images/hero-cbe-final-1440.webp';
-    const shareAlt = front?.imagem?.alt || 'Quadros elétricos da Corrêa Barbosa Engenharia';
+    const shareImage = front?.imagem?.src || (page === 'index.html' ? 'assets/logo/logo-cbe-principal.webp' : 'contents/images/hero-cbe-final-1440.webp');
+    const shareAlt = front?.imagem?.alt || (page === 'index.html' ? 'Corrêa Barbosa Engenharia — engenharia elétrica, quadros e energia solar' : 'Quadros elétricos da Corrêa Barbosa Engenharia');
     const structured = front?.tipo === 'servico' ? { '@context': 'https://schema.org', '@type': 'Service', name: front.nome, description: front.resumo, url: canonical, provider: business } : business;
     html = html.replace('</head>', `  <link rel="canonical" href="${escape(canonical)}">\n  <meta property="og:url" content="${escape(canonical)}">\n  <meta property="og:image" content="${escape(new URL(shareImage, site).href)}">\n  <meta property="og:image:alt" content="${escape(shareAlt)}">\n  <script type="application/ld+json">${JSON.stringify(structured).replaceAll('<', '\\u003c')}</script>\n</head>`);
   }

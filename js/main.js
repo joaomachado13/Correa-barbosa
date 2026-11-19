@@ -204,11 +204,12 @@ function initSwupTransitions() {
  * Atualiza o link ativo no menu de navegação
  */
 function updateActiveNavigation() {
-  const quoteHref = document.getElementById('swup')?.dataset.quoteHref || 'orcamento.html';
-  document.querySelectorAll('.site-header .nav-actions > a.cbe-btn, .site-header .drawer-quote-btn').forEach(link => {
+  const quoteHref = document.getElementById('swup')?.dataset.quoteHref || 'contato.html#contact-engineering-form';
+  document.querySelectorAll('.site-header [data-quote-link]').forEach(link => {
     link.setAttribute('href', quoteHref);
   });
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const leaf = window.location.pathname.split('/').filter(Boolean).pop();
+  const currentPath = !leaf ? 'index.html' : leaf.endsWith('.html') ? leaf : `${leaf}.html`;
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     const href = link.getAttribute('href');

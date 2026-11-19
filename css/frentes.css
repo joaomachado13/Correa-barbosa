@@ -17,6 +17,12 @@
 .area-contact h2 { margin-bottom: 1rem; }
 .area-contact p { max-width: 700px; margin-bottom: 1.5rem; }
 .area-preview-note { background: #FFF1D6; color: #563500; padding: 1rem 1.5rem; border-bottom: 1px solid #CDA35D; }
+.service-faq { background: var(--cbe-bg-surface); }
+.service-faq h2 { margin-bottom: 2rem; }
+.service-faq details { max-width: 52rem; border-bottom: 1px solid var(--cbe-border); }
+.service-faq summary { cursor: pointer; padding-block: 1.25rem; color: var(--cbe-blue-dark); font-weight: 600; }
+.service-faq details p { padding-bottom: 1.25rem; }
+.service-faq a { text-decoration: underline; }
 @media (max-width: 760px) {
   .area-row { grid-template-columns: minmax(0, 1fr); }
   .area-row .area-photo { max-height: 340px; }

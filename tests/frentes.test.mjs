@@ -4,6 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { validateFronts, selectFronts, renderSolutions, renderFront, renderFrontSelect, pageShell } from '../scripts/frentes.mjs';
+import { renderHomeFronts, renderHomeOptions } from '../scripts/home.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const registry = () => JSON.parse(readFileSync(new URL('../assets/data/frentes.json', import.meta.url)));
@@ -22,6 +23,7 @@ test('cadastro mantém quadros ativos e só inclui outras frentes na prévia', (
   assert.deepEqual(selectFronts(data).map(front => front.id), ['quadros-eletricos']);
   assert.equal(selectFronts(data, { preview: true }).length, 6);
   assert.doesNotMatch(renderSolutions(selectFronts(data)), /projetos-e-laudos\.html/);
+  assert.doesNotMatch(renderHomeFronts(selectFronts(data)), /projetos-e-laudos\.html/);
 });
 
 test('uma frente pode ser ativada isoladamente depois de completar seu conteúdo', () => {
@@ -39,6 +41,8 @@ test('uma frente pode ser ativada isoladamente depois de completar seu conteúdo
   const html = renderFront(next);
   assert.match(html, /contato\.html\?frente=projetos-e-laudos#contact-engineering-form/);
   assert.match(renderFrontSelect(published), /value="projetos-e-laudos"/);
+  assert.match(renderHomeFronts(published), /data-home-front="projetos-e-laudos"/);
+  assert.match(renderHomeOptions(published), /value="projetos-e-laudos"/);
 });
 
 test('validação rejeita colisão de páginas, caminhos e estados incorretos', () => {
@@ -47,6 +51,7 @@ test('validação rejeita colisão de páginas, caminhos e estados incorretos', 
     data => { data.frentes[1].id = 'contato'; },
     data => { data.frentes[1].pagina = 'index.html'; },
     data => { data.frentes[1].status = 'publicado'; },
+    data => { data.frentes[0].homeTitulo = ''; },
     data => { data.frentes[1].imagem = { src: 'assets/images/../../package.json', alt: 'Inválido' }; },
     data => { data.frentes[0].imagem.width = '960" onload="alert(1)'; },
     data => { data.frentes.push(structuredClone(data.frentes[0])); }
@@ -65,6 +70,9 @@ test('template escapa texto editorial e usa layout compartilhado', () => {
   assert.match(html, /&quot;Conteúdo&quot; &amp; detalhes/);
   assert.match(html, /id="main-nav-menu"/);
   assert.match(html, /id="whatsapp-widget"/);
+  front.homeTitulo = 'Laudos <script>alert(1)</script>';
+  assert.doesNotMatch(renderHomeFronts([front]), /<script>alert/);
+  assert.match(renderHomeFronts([front]), /Laudos &lt;script&gt;/);
 });
 
 test('prévia gera rascunhos com noindex sem colocar as páginas no build público', () => {

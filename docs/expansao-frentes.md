@@ -81,6 +81,7 @@ O comando acrescenta um registro em rascunho. Preencha seus textos, imagem e gru
 ## Arquitetura
 
 - `assets/data/frentes.json`: fonte editorial e estado de cada frente.
+- `scripts/home.mjs`, `templates/home-main.html` e `css/home.css`: entrada institucional com acessos para todas as frentes ativas. O build mantém os cartões e as opções do formulário sincronizados com o cadastro. `homeTitulo` é um título curto opcional para a entrada.
 - `scripts/frentes.mjs`: validação, seleção, renderização e opções do contato.
 - `scripts/frentes-cli.mjs`: comandos de cadastro e validação.
 - `templates/frente.html`: layout das novas páginas. Cabeçalho, rodapé e widget vêm do layout institucional existente em `sobre.html`, mantendo a identidade.

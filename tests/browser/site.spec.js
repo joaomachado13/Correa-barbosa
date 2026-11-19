@@ -30,7 +30,7 @@ for (const width of [1440, 901, 390, 320]) {
         expect(await page.locator('label').first().evaluate(el => getComputedStyle(el).color)).not.toBe('rgb(255, 255, 255)');
         expect(await page.locator('.form-channel-note').evaluate(el => getComputedStyle(el).color)).not.toBe('rgb(255, 255, 255)');
       }
-      if (route === 'index') expect(await page.locator('.cta-form-card h3').evaluate(el => getComputedStyle(el).color)).not.toBe('rgb(255, 255, 255)');
+      if (route === 'index') expect(await page.locator('.home-contact-form h3').evaluate(el => getComputedStyle(el).color)).not.toBe('rgb(255, 255, 255)');
     }
     expect(errors).toEqual([]);
     expect(failed).toEqual([]);
@@ -68,7 +68,7 @@ test('formulário prepara a mensagem, rejeita telefone inválido e preserva os d
 
 test('orçamento técnico, formulário da home e catálogo geram o conteúdo correto', async ({ page }) => {
   const cases = [
-    { route: 'index', fields: { nome_cta: 'Teste', email_cta: 'teste@example.com', tel_cta: '34999227667', desc_cta: 'Diagrama e proteção' }, select: { tipo_cta: 'CCM' } },
+    { route: 'index', fields: { nome_cta: 'Teste', email_cta: 'teste@example.com', tel_cta: '34999227667', desc_cta: 'Sistema solar para residência' }, select: { home_frente: 'energia-fotovoltaica' }, expected: 'Sistema solar para residência' },
     { route: 'quadros-eletricos', fields: { 'cat-nome': 'Teste', 'cat-telefone': '34999227667', 'cat-detalhes': 'Diagrama e proteção' } },
     { route: 'orcamento', fields: { tec_nome: 'Teste', tec_email: 'teste@example.com', tec_telefone: '34999227667', tec_observacoes: 'Diagrama e proteção' }, select: { tec_tipo_quadro: 'CCM', tec_tensao: '380/220V' } }
   ];
@@ -79,7 +79,9 @@ test('orçamento técnico, formulário da home e catálogo geram o conteúdo cor
     const form = page.locator('form:visible').first();
     await form.locator('[type=submit]').click();
     await expect(form.locator('.form-feedback')).toBeVisible();
-    expect(new URL(await form.locator('.whatsapp-continue').getAttribute('href')).searchParams.get('text')).toContain('Diagrama e proteção');
+    const message = new URL(await form.locator('.whatsapp-continue').getAttribute('href')).searchParams.get('text');
+    expect(message).toContain(item.expected || 'Diagrama e proteção');
+    if (item.route === 'index') expect(message).toContain('Energia solar fotovoltaica');
   }
 });
 
@@ -156,15 +158,12 @@ test('menu móvel retém foco, fecha com Escape e widget continua funcionando ap
   }
 });
 
-test('redução de movimento desativa introdução/autoplay; controles manuais permanecem úteis', async ({ page }) => {
+test('redução de movimento mantém a home estável e permite escolher uma frente', async ({ page }) => {
   await open(page, 'index');
   await expect(page.locator('#cbe-splash-screen')).toHaveCount(0);
-  const before = await page.locator('.active-card h3').innerText();
-  await page.waitForTimeout(4200);
-  await expect(page.locator('.active-card h3')).toHaveText(before);
   expect(await page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running').length)).toBe(0);
-  await page.locator('.depth-next-btn').click();
-  await expect(page.locator('.active-card h3')).not.toHaveText(before);
+  await page.locator('[data-home-front="energia-fotovoltaica"]').click();
+  await expect(page.locator('h1')).toContainText('Painéis solares');
 });
 
 test('conteúdo e contato alternativo permanecem disponíveis sem JavaScript', async ({ browser }) => {
@@ -173,6 +172,7 @@ test('conteúdo e contato alternativo permanecem disponíveis sem JavaScript', a
   await page.goto('/index.html');
   await expect(page.locator('#cbe-splash-screen')).toBeHidden();
   await expect(page.locator('h1')).toBeVisible();
+  await expect(page.locator('[data-home-front]')).toHaveCount(fronts.filter(front => front.status === 'publicada').length);
   await expect(page.locator('.nojs-nav')).toBeVisible();
   await expect(page.locator('form noscript a')).toBeVisible();
   await expect(page.locator('form button[type=submit]')).toBeDisabled();

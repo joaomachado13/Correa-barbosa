@@ -25,6 +25,7 @@ export function validateFronts(registry, root) {
     if (!['rascunho', 'publicada'].includes(front.status)) fail('status deve ser rascunho ou publicada.');
     if (!['existente', 'servico'].includes(front.tipo)) fail('tipo deve ser existente ou servico.');
     if (typeof front.nome !== 'string' || !front.nome.trim()) fail('informe o nome.');
+    if (front.homeTitulo !== undefined && (typeof front.homeTitulo !== 'string' || !front.homeTitulo.trim())) fail('homeTitulo deve ser um texto não vazio.');
     if (!['resumo', 'introducao'].every(field => typeof front[field] === 'string')) fail('resumo e introducao devem ser textos.');
     if (!Array.isArray(front.grupos) || front.grupos.some(group => typeof group.titulo !== 'string' || !Array.isArray(group.itens) || group.itens.some(item => typeof item !== 'string' || !item.trim()))) fail('grupos devem conter titulo e itens de texto.');
     if (!Array.isArray(front.origens)) fail('origens deve ser uma lista de referências.');
@@ -109,7 +110,7 @@ export function renderFrontSelect(fronts) {
     ${fronts.map(front => `<option value="${escapeHTML(front.id)}">${escapeHTML(front.nome)}</option>`).join('\n')}</select></div>`;
 }
 
-export function pageShell(root, main, title, description, quoteHref = 'orcamento.html') {
+export function pageShell(root, main, title, description, quoteHref = 'contato.html#contact-engineering-form') {
   // The existing institutional page is the shared shell for new fronts.
   // Its established header/footer/widget keep the brand and existing interactions.
   const base = readFileSync(path.join(root, 'sobre.html'), 'utf8');
@@ -120,7 +121,7 @@ export function pageShell(root, main, title, description, quoteHref = 'orcamento
   if (!header || !footer || !widget || !nojs) throw new Error('O layout institucional de sobre.html está incompleto.');
   const values = {
     TITLE: escapeHTML(title), DESCRIPTION: escapeHTML(description), MAIN: main,
-    HEADER: header.replace('nav-link active', 'nav-link').replaceAll('href="orcamento.html"', `href="${escapeHTML(quoteHref)}"`),
+    HEADER: header.replace('nav-link active', 'nav-link').replace(/<a\b[^>]*\bdata-quote-link[^>]*>/g, tag => tag.replace(/href="[^"]*"/, `href="${escapeHTML(quoteHref)}"`)),
     QUOTE_HREF: escapeHTML(quoteHref), FOOTER: footer, WIDGET: widget, NOJS_NAV: nojs
   };
   return readFileSync(path.join(root, 'templates/frente.html'), 'utf8').replace(/\{\{(\w+)\}\}/g, (_, key) => values[key]);

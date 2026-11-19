@@ -19,6 +19,8 @@ O cadastro `assets/data/frentes.json` inclui Quadros Elétricos e Energia Solar 
 
 A primeira nova frente é `energia-fotovoltaica.html`, com seis projetos reais, perguntas frequentes e formulário específico para análise solar. Conteúdo, fontes das fotografias e conferência estão em [docs/energia-solar.md](docs/energia-solar.md).
 
+A página inicial apresenta a empresa e todas as frentes ativas com o mesmo destaque. Seu conteúdo fica em `templates/home-main.html`; `scripts/home.mjs` gera os acessos e opções do formulário a partir do cadastro. O campo opcional `homeTitulo` permite um nome curto na entrada. Novas frentes aparecem na home quando passam a `publicada`. A organização e a validação dessa mudança estão em [docs/home-institucional.md](docs/home-institucional.md).
+
 ```sh
 npm run frentes:validar
 npm run dev:rascunhos

@@ -11,7 +11,9 @@
       "introducao": "Conheça os painéis e as especificações no catálogo técnico da CBE.",
       "imagem": {
         "src": "assets/images/cbe_distribuicao_disjuntores.jpg",
-        "alt": "Quadro de distribuição montado pela CBE"
+        "alt": "Quadro de distribuição montado pela CBE",
+        "width": 757,
+        "height": 1600
       },
       "grupos": [],
       "origens": [
@@ -305,7 +307,8 @@
             "height": 960
           }
         }
-      ]
+      ],
+      "homeTitulo": "Energia solar"
     }
   ]
 }
