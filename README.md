@@ -56,6 +56,14 @@ npm run build
 
 Publicar **o conteúdo de `dist/`** na hospedagem estática. A pasta `dist-preview/` é apenas para revisão interna. O build inclui os arquivos gerados; não publique a raiz do repositório, `node_modules`, testes ou referências de trabalho.
 
+### Netlify conectado ao GitHub
+
+O arquivo `netlify.toml` configura o build com Node.js 22, o comando `npm run build` e a pasta de publicação `dist`. Com o repositório conectado à branch `main`, o próximo deploy deve usar essa configuração do código.
+
+As páginas `solucoes.html` e `energia-fotovoltaica.html` são geradas durante o build. Publicar a raiz do repositório deixa esses endereços com erro 404, mesmo que a página inicial abra. No painel do Netlify, confira se o deploy usa o commit mais recente e se o log mostra a geração de oito páginas. O diretório publicado deve ser `dist`, e as quatro frentes em rascunho devem continuar ausentes.
+
+Para uma publicação manual, execute `npm ci` e `npm run build`, depois envie somente o conteúdo de `dist/`. Um ZIP dessa pasta deve conter `index.html` diretamente na raiz do arquivo.
+
 O domínio oficial ainda não foi definido. Quando estiver disponível, executar:
 
 ```sh
