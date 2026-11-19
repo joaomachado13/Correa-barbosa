@@ -1,3 +1,14 @@
+import { initFormInteractions, initGuidedForms } from './forms.js';
+
+document.documentElement.classList.add('js-enabled');
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+let pageController = new AbortController();
+let pageCleanup = [];
+
+function onPage(target, event, callback, options = {}) {
+  target.addEventListener(event, callback, { ...options, signal: pageController.signal });
+}
+
 /**
  * CBE — CORRÊA BARBOSA ENGENHARIA
  * main.js — Lógica de Interatividade Pura (Sem Frameworks)
@@ -6,6 +17,7 @@
 // Instância Global do Smooth Scroll e Swup
 let lenisInstance = null;
 let swupInstance = null;
+let stopSmoothScroll = () => {};
 
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
@@ -18,16 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
  * Inicializa todos os módulos interativos da página ativa
  */
 function initPageScripts() {
+  pageController.abort();
+  pageCleanup.forEach(cleanup => cleanup());
+  pageCleanup = [];
+  pageController = new AbortController();
   initMobileMenu();
   initHeroEntranceAnimation();
   initHeroMouseTilt();
   initFloatingWhatsAppWidget();
   initCatalogFilters();
   initOrcamentoFlows();
+  initGuidedForms();
   initFormInteractions();
   initMouseRevealEffect();
   initPartnersMarqueeSpeed();
-  initExpositoryLookbook();
   initFlipCards();
   initCardActionPreselect();
   initSocialLinks();
@@ -40,104 +56,22 @@ function initPageScripts() {
  * 1. Splash de Entrada — Animação "Olá"
  */
 function initSplashOla() {
-  const splashEl = document.getElementById('cbe-splash-screen');
-  if (!splashEl) return;
-
-  // Verifica se o splash já foi exibido nesta sessão
-  const hasSeenSplash = sessionStorage.getItem('cbe_splash_seen');
-  if (hasSeenSplash) {
-    splashEl.remove();
+  const splash = document.getElementById('cbe-splash-screen');
+  if (!splash) return;
+  let seen = false;
+  try { seen = sessionStorage.getItem('cbe_splash_seen') === 'true'; } catch { /* Storage may be disabled. */ }
+  if (seen || motionPreference.matches) {
+    splash.remove();
     return;
   }
-
-  // Trava o scroll da página durante o splash
-  document.body.style.overflow = 'hidden';
-  if (lenisInstance) {
-    lenisInstance.stop();
-  }
-
-  const letterStrokes = Array.from(splashEl.querySelectorAll('.letter-stroke'));
-  const letterFills = Array.from(splashEl.querySelectorAll('.letter-fill'));
-
-  if (!letterStrokes.length) {
-    unlockScrollAndHideSplash();
-    return;
-  }
-
-  const lengths = letterStrokes.map(p => {
-    try {
-      return p.getTotalLength();
-    } catch (e) {
-      return 1000;
-    }
-  });
-  const progress = lengths.map(() => 0);
-
-  letterStrokes.forEach((p, i) => {
-    p.style.strokeDasharray = lengths[i];
-    p.style.strokeDashoffset = lengths[i];
-  });
-
-  // Parâmetros de ritmo do traço
-  const STEP = 0.18;        // 18% por letra (mais ágil)
-  const TICK_MS = 95;       // Intervalo do rodízio
-  let order = letterStrokes.map((_, i) => i);
-
-  function tick() {
-    order = order.filter(i => progress[i] < 1);
-
-    if (order.length === 0) {
-      finishSequence();
-      return;
-    }
-
-    const i = order.shift();
-    progress[i] = Math.min(1, progress[i] + STEP);
-    const offset = lengths[i] * (1 - progress[i]);
-    letterStrokes[i].style.transition = `stroke-dashoffset ${TICK_MS * 0.9}ms linear`;
-    letterStrokes[i].style.strokeDashoffset = offset;
-
-    if (progress[i] < 1) {
-      order.push(i);
-    }
-
-    setTimeout(tick, TICK_MS);
-  }
-
-  function finishSequence() {
-    // Preenchimento sequencial com delay
-    letterFills.forEach((fill, i) => {
-      setTimeout(() => {
-        fill.style.opacity = '1';
-      }, i * 180);
-    });
-
-    const totalFillTime = letterFills.length * 180 + 500;
-    setTimeout(() => {
-      document.dispatchEvent(new CustomEvent('splashComplete'));
-    }, totalFillTime);
-  }
-
-  document.addEventListener('splashComplete', () => {
-    sessionStorage.setItem('cbe_splash_seen', 'true');
-    unlockScrollAndHideSplash();
-  }, { once: true });
-
-  function unlockScrollAndHideSplash() {
-    splashEl.classList.add('splash-hidden');
-    document.body.style.overflow = '';
-    if (lenisInstance) {
-      lenisInstance.start();
-    }
-    setTimeout(() => {
-      if (splashEl.parentNode) {
-        splashEl.parentNode.removeChild(splashEl);
-      }
-    }, 700);
-  }
-
-  // Delay inicial de início do traço
-  setTimeout(tick, 200);
+  splash.classList.add('splash-active');
+  const finish = () => {
+    splash.remove();
+    try { sessionStorage.setItem('cbe_splash_seen', 'true'); } catch { /* Keep navigation usable. */ }
+    document.dispatchEvent(new CustomEvent('splashComplete'));
+  };
+  const timeout = setTimeout(finish, 900);
+  splash.addEventListener('click', () => { clearTimeout(timeout); finish(); }, { once: true });
 }
 
 /**
@@ -146,10 +80,10 @@ function initSplashOla() {
 function initHeroEntranceAnimation() {
   const heroContent = document.querySelector('.hero-content');
   const heroImg = document.querySelector('.hero-bg-photo') || document.querySelector('.hero-quadro-full-img') || document.querySelector('.hero-quadro-img');
-  if (!heroContent || !heroImg || typeof gsap === 'undefined') return;
+  if (!heroContent || !heroImg || typeof gsap === 'undefined' || motionPreference.matches) return;
 
   const hasSplash = document.getElementById('cbe-splash-screen');
-  const isSplashActive = hasSplash && !sessionStorage.getItem('cbe_splash_seen');
+  const isSplashActive = hasSplash?.classList.contains('splash-active');
 
   function triggerAnimation() {
     const elementsToAnimate = [
@@ -159,12 +93,13 @@ function initHeroEntranceAnimation() {
       heroContent.querySelector('.hero-actions')
     ].filter(Boolean);
 
+    pageCleanup.push(() => gsap.killTweensOf([...elementsToAnimate, heroImg]));
     const tl = gsap.timeline({
       defaults: { ease: 'power2.out' }
     });
 
     // Texto entrando com stagger de 0.15s
-    tl.fromTo(elementsToAnimate, 
+    tl.fromTo(elementsToAnimate,
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 }
     );
@@ -227,7 +162,8 @@ function initSwupTransitions() {
 
   swupInstance = new Swup({
     containers: ['#swup'],
-    animateHistoryBrowsing: true
+    animateHistoryBrowsing: true,
+    animationSelector: motionPreference.matches ? false : '[class*="transition-"]'
   });
 
   swupInstance.hooks.on('visit:start', (visit) => {
@@ -257,6 +193,9 @@ function initSwupTransitions() {
     // 3. Reinicia scripts e interatividades da nova página
     initPageScripts();
 
+    document.getElementById('swup')?.focus({ preventScroll: true });
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+
     // 4. Recalcula triggers do GSAP
   });
 }
@@ -281,33 +220,28 @@ function updateActiveNavigation() {
  * Inicializa o Scroll Suave (Smooth Scrolling de Alto Desempenho) integrado ao GSAP
  */
 function initSmoothScroll() {
-  if (typeof Lenis === 'undefined') return;
-
-  lenisInstance = new Lenis({
+  stopSmoothScroll();
+  lenisInstance = null;
+  if (typeof Lenis === 'undefined' || motionPreference.matches) return;
+  const instance = new Lenis({
     duration: 1.25,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    wheelMultiplier: 0.95,
-    touchMultiplier: 1.8,
-    infinite: false,
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical', smoothWheel: true, wheelMultiplier: 0.95,
+    touchMultiplier: 1.8
   });
-
-  // Sincroniza o Lenis com o GSAP ScrollTrigger
+  lenisInstance = instance;
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
-    lenisInstance.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      lenisInstance.raf(time * 1000);
-    });
+    instance.on('scroll', ScrollTrigger.update);
+    const tick = time => instance.raf(time * 1000);
+    gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
+    stopSmoothScroll = () => { gsap.ticker.remove(tick); instance.destroy(); };
   } else {
-    function raf(time) {
-      lenisInstance.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    let frame;
+    const tick = time => { instance.raf(time); frame = requestAnimationFrame(tick); };
+    frame = requestAnimationFrame(tick);
+    stopSmoothScroll = () => { cancelAnimationFrame(frame); instance.destroy(); };
   }
 }
 
@@ -329,7 +263,7 @@ function initPartnersMarqueeSpeed() {
 function initMouseRevealEffect() {
   const partnerCards = document.querySelectorAll('.partner-card');
   partnerCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
+    onPage(card, 'mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -343,67 +277,53 @@ function initMouseRevealEffect() {
  * Menu Mobile com Drawer Animado, Backdrop e Bloqueio de Scroll
  */
 function initMobileMenu() {
-  const toggleBtn = document.getElementById('mobile-toggle-btn');
-  const navMenu = document.getElementById('main-nav-menu');
+  const toggle = document.getElementById('mobile-toggle-btn');
+  const menu = document.getElementById('main-nav-menu');
+  if (!toggle || !menu) return;
   let backdrop = document.getElementById('mobile-nav-backdrop');
-
   if (!backdrop) {
     backdrop = document.createElement('div');
     backdrop.id = 'mobile-nav-backdrop';
     backdrop.className = 'mobile-nav-backdrop';
-    document.body.appendChild(backdrop);
+    document.body.append(backdrop);
   }
-
-  if (!toggleBtn || !navMenu) return;
-
-  function openMenu() {
-    navMenu.classList.add('mobile-open');
-    toggleBtn.classList.add('is-active');
-    toggleBtn.setAttribute('aria-expanded', 'true');
-    backdrop.classList.add('is-visible');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    navMenu.classList.remove('mobile-open');
-    toggleBtn.classList.remove('is-active');
-    toggleBtn.setAttribute('aria-expanded', 'false');
+  const background = [document.getElementById('swup'), document.querySelector('footer'), document.getElementById('whatsapp-widget')].filter(Boolean);
+  const isOpen = () => menu.classList.contains('mobile-open');
+  function close(restoreFocus = false) {
+    menu.classList.remove('mobile-open');
+    toggle.classList.remove('is-active');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir Menu');
     backdrop.classList.remove('is-visible');
+    background.forEach(element => { element.inert = false; });
     document.body.style.overflow = '';
+    if (restoreFocus) toggle.focus();
   }
-
-  function toggleMenu() {
-    const isOpen = navMenu.classList.contains('mobile-open');
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+  function open() {
+    menu.classList.add('mobile-open');
+    toggle.classList.add('is-active');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Fechar Menu');
+    backdrop.classList.add('is-visible');
+    background.forEach(element => { element.inert = true; });
+    document.body.style.overflow = 'hidden';
+    menu.querySelector('a')?.focus();
   }
-
-  toggleBtn.onclick = (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  };
-
-  backdrop.onclick = () => {
-    closeMenu();
-  };
-
-  const navLinks = navMenu.querySelectorAll('a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMenu();
-    });
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 992 && navMenu.classList.contains('mobile-open')) {
-      closeMenu();
+  onPage(toggle, 'click', () => isOpen() ? close(true) : open());
+  onPage(backdrop, 'click', () => close(true));
+  onPage(menu, 'click', event => { if (event.target.closest('a')) close(); });
+  onPage(document, 'keydown', event => {
+    if (!isOpen()) return;
+    if (event.key === 'Escape') { event.preventDefault(); close(true); }
+    if (event.key === 'Tab') {
+      const controls = [...menu.querySelectorAll('a[href]'), toggle].filter(el => el.getClientRects().length);
+      const first = controls[0], last = controls.at(-1);
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
   });
-
-  document.addEventListener('swup:visit:start', closeMenu);
+  onPage(window, 'resize', () => { if (window.innerWidth > 992) close(); });
+  pageCleanup.push(() => close());
 }
 
 /**
@@ -419,8 +339,10 @@ function initCatalogFilters() {
     filterBtns.forEach(b => {
       if (b.getAttribute('data-filter') === filterValue) {
         b.classList.add('active');
+        b.setAttribute('aria-pressed', 'true');
       } else {
         b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
       }
     });
 
@@ -438,7 +360,8 @@ function initCatalogFilters() {
   }
 
   filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
+    onPage(btn, 'click', () => {
       const filterValue = btn.getAttribute('data-filter');
       applyFilter(filterValue);
     });
@@ -447,8 +370,9 @@ function initCatalogFilters() {
   // Interatividade nos Cards de Famílias do Topo
   const familyCards = document.querySelectorAll('.family-guide-card');
   familyCards.forEach(card => {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', () => {
+    const action = card.querySelector('.family-action-link');
+    if (!action) return;
+    onPage(action, 'click', () => {
       const explicitCat = card.getAttribute('data-category-target');
       const text = card.innerText.toLowerCase();
       let targetCat = explicitCat || 'all';
@@ -466,92 +390,11 @@ function initCatalogFilters() {
         if (lenisInstance) {
           lenisInstance.scrollTo(targetGrid, { offset: -90 });
         } else {
-          targetGrid.scrollIntoView({ behavior: 'smooth' });
+          targetGrid.scrollIntoView({ behavior: motionPreference.matches ? 'instant' : 'smooth' });
         }
       }
     });
   });
-}
-
-/**
- * Catálogo Técnico Expositivo — Modo Lookbook, Modal de Inspeção e Impressão
- */
-function initExpositoryLookbook() {
-  const btnLookbook = document.getElementById('btn-view-lookbook');
-  const btnGrid = document.getElementById('btn-view-grid');
-  const lookbookContainer = document.getElementById('lookbook-container');
-  const gridContainer = document.getElementById('grid-container');
-  const printBtn = document.getElementById('btn-print-catalog');
-
-  // Alternância entre Modo Lookbook (Lâminas) e Modo Grade
-  if (btnLookbook && btnGrid && lookbookContainer && gridContainer) {
-    btnLookbook.addEventListener('click', () => {
-      btnLookbook.classList.add('active');
-      btnGrid.classList.remove('active');
-      lookbookContainer.style.display = 'flex';
-      gridContainer.style.display = 'none';
-    });
-
-    btnGrid.addEventListener('click', () => {
-      btnGrid.classList.add('active');
-      btnLookbook.classList.remove('active');
-      gridContainer.style.display = 'grid';
-      lookbookContainer.style.display = 'none';
-    });
-  }
-
-  // Ação de Impressão / Exportação PDF
-  if (printBtn) {
-    printBtn.addEventListener('click', () => {
-      window.print();
-    });
-  }
-
-  // Modal de Inspeção em Alta Resolução (Showroom)
-  const modalBackdrop = document.getElementById('inspection-modal');
-  const modalImg = document.getElementById('modal-inspect-img');
-  const modalTitle = document.getElementById('modal-inspect-title');
-  const modalSerial = document.getElementById('modal-inspect-serial');
-  const modalDesc = document.getElementById('modal-inspect-desc');
-  const modalClose = document.getElementById('modal-inspect-close');
-
-  if (modalBackdrop && modalClose) {
-    const triggerElements = document.querySelectorAll('.trigger-inspect-modal');
-    triggerElements.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const plate = trigger.closest('.expository-plate') || trigger.closest('.catalog-card');
-        if (!plate) return;
-
-        const imgSrc = plate.querySelector('img') ? plate.querySelector('img').src : '';
-        const title = plate.querySelector('.plate-main-title') ? plate.querySelector('.plate-main-title').innerText : (plate.querySelector('.catalog-card-title') ? plate.querySelector('.catalog-card-title').innerText : 'Painel Elétrico CBE');
-        const serial = plate.querySelector('.plate-serial-badge') ? plate.querySelector('.plate-serial-badge').innerText : (plate.querySelector('.catalog-category-name') ? plate.querySelector('.catalog-category-name').innerText : 'CBE INDUSTRIAL');
-        const desc = plate.querySelector('.plate-desc-text') ? plate.querySelector('.plate-desc-text').innerText : (plate.querySelector('.catalog-card-desc') ? plate.querySelector('.catalog-card-desc').innerText : '');
-
-        if (modalImg) modalImg.src = imgSrc;
-        if (modalTitle) modalTitle.innerText = title;
-        if (modalSerial) modalSerial.innerText = serial;
-        if (modalDesc) modalDesc.innerText = desc;
-
-        modalBackdrop.classList.add('active');
-      });
-    });
-
-    modalClose.addEventListener('click', () => {
-      modalBackdrop.classList.remove('active');
-    });
-
-    modalBackdrop.addEventListener('click', (e) => {
-      if (e.target === modalBackdrop) {
-        modalBackdrop.classList.remove('active');
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
-        modalBackdrop.classList.remove('active');
-      }
-    });
-  }
 }
 
 /**
@@ -565,9 +408,10 @@ function initOrcamentoFlows() {
   if (!optionCards.length || !flowTecnico || !flowGuiado) return;
 
   optionCards.forEach(card => {
-    card.addEventListener('click', () => {
-      optionCards.forEach(c => c.classList.remove('active'));
+    onPage(card, 'click', () => {
+      optionCards.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
       card.classList.add('active');
+      card.setAttribute('aria-pressed', 'true');
 
       const selectedFlow = card.getAttribute('data-flow');
 
@@ -583,100 +427,32 @@ function initOrcamentoFlows() {
 }
 
 /**
- * 7. Manipulação de Formulários e Feedbacks de Envio (Home, Catálogo, Contato, Orçamento)
- */
-function initFormInteractions() {
-  const forms = document.querySelectorAll('form');
-  if (!forms.length) return;
-
-  // Interatividade dos Chips de Assunto em contato.html
-  const topicChips = document.querySelectorAll('.topic-chip');
-  const subjectSelect = document.getElementById('ct_assunto');
-  if (topicChips.length && subjectSelect) {
-    topicChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        topicChips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const topic = chip.getAttribute('data-topic');
-        if (topic) {
-          subjectSelect.value = topic;
-          subjectSelect.dispatchEvent(new Event('change'));
-        }
-      });
-    });
-
-    subjectSelect.addEventListener('change', () => {
-      topicChips.forEach(c => {
-        if (c.getAttribute('data-topic') === subjectSelect.value) {
-          c.classList.add('active');
-        } else {
-          c.classList.remove('active');
-        }
-      });
-    });
-  }
-
-  forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalHtml = submitBtn ? submitBtn.innerHTML : '';
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.85';
-        submitBtn.innerHTML = `<span>Processando envio...</span>`;
-      }
-
-      setTimeout(() => {
-        let feedbackBox = form.querySelector('.form-success-feedback');
-        if (!feedbackBox) {
-          feedbackBox = document.createElement('div');
-          feedbackBox.className = 'form-success-feedback';
-          form.appendChild(feedbackBox);
-        }
-
-        feedbackBox.innerHTML = `
-          <div style="background: rgba(49, 78, 138, 0.08); border: 1px solid var(--cbe-blue); color: var(--cbe-blue-dark); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.25rem; font-size: 0.9375rem; line-height: 1.5; text-align: center;">
-            <strong style="display: block; font-family: var(--font-heading); font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--cbe-blue-dark);">Solicitação Enviada com Sucesso</strong>
-            Nossos engenheiros eletricistas receberam sua demanda técnica e retornarão em até 24 horas úteis.
-          </div>
-        `;
-
-        if (submitBtn) {
-          submitBtn.innerHTML = `<span>Enviado com Sucesso</span>`;
-          submitBtn.style.background = '#15803D';
-          submitBtn.style.borderColor = '#15803D';
-        }
-
-        form.reset();
-        topicChips.forEach(c => c.classList.remove('active'));
-
-        setTimeout(() => {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalHtml;
-            submitBtn.style.background = '';
-            submitBtn.style.borderColor = '';
-            submitBtn.style.opacity = '1';
-          }
-        }, 5000);
-      }, 700);
-    });
-  });
-}
-
-/**
  * Flip Cards 3D — Interatividade e Alternância por Clique/Toque
  */
 function initFlipCards() {
-  const flipCards = document.querySelectorAll('.cbe-compact-card, .cbe-flip-card');
-  flipCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Se clicou em um link ou botão dentro do card, permite a navegação normal
-      if (e.target.closest('a') || e.target.closest('button')) return;
-      card.classList.toggle('is-flipped');
+  document.querySelectorAll('.cbe-compact-card').forEach((card, index) => {
+    const front = card.querySelector('.cbe-compact-front');
+    const back = card.querySelector('.cbe-compact-back');
+    const open = card.querySelector('.cbe-flip-cue');
+    const close = card.querySelector('.flip-return');
+    if (!front || !back || !open || !close) return;
+    back.id = `card-specifications-${index}`;
+    open.setAttribute('aria-controls', back.id);
+    open.setAttribute('aria-label', `Ver especificações: ${card.querySelector('.panel-title').textContent}`);
+    function flip(expanded) {
+      card.classList.toggle('is-flipped', expanded);
+      open.setAttribute('aria-expanded', String(expanded));
+      front.inert = expanded;
+      back.inert = !expanded;
+      front.setAttribute('aria-hidden', String(expanded));
+      back.setAttribute('aria-hidden', String(!expanded));
+      (expanded ? close : open).focus({ preventScroll: true });
+    }
+    onPage(open, 'click', () => flip(true));
+    onPage(close, 'click', () => flip(false));
+    onPage(back, 'keydown', event => { if (event.key === 'Escape') flip(false); });
+    onPage(card, 'click', event => {
+      if (!event.target.closest('button,a')) flip(!card.classList.contains('is-flipped'));
     });
   });
 }
@@ -687,29 +463,21 @@ function initFlipCards() {
 function initFloatingWhatsAppWidget() {
   const widget = document.getElementById('whatsapp-widget');
   const trigger = document.getElementById('toggle-whatsapp-widget');
-  const closeBtn = document.getElementById('close-whatsapp-card');
+  const close = document.getElementById('close-whatsapp-card');
   if (!widget || !trigger) return;
-
-  // Alterna abertura/fechamento ao clicar no botão
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    widget.classList.toggle('is-open');
-  });
-
-  // Botão de fechar do card
-  if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      widget.classList.remove('is-open');
-    });
+  function setOpen(open, restore = false) {
+    widget.classList.toggle('is-open', open);
+    trigger.setAttribute('aria-expanded', String(open));
+    if (open) close?.focus();
+    else if (restore) trigger.focus();
   }
-
-  // Fecha ao clicar fora
-  document.addEventListener('click', (e) => {
-    if (!widget.contains(e.target)) {
-      widget.classList.remove('is-open');
-    }
+  onPage(trigger, 'click', () => setOpen(!widget.classList.contains('is-open')));
+  if (close) onPage(close, 'click', () => setOpen(false, true));
+  onPage(document, 'click', event => { if (!widget.contains(event.target)) setOpen(false); });
+  onPage(document, 'keydown', event => {
+    if (event.key === 'Escape' && widget.classList.contains('is-open')) setOpen(false, true);
   });
+  pageCleanup.push(() => setOpen(false));
 }
 
 /**
@@ -721,7 +489,7 @@ function initCardActionPreselect() {
   const selectCtaHome = document.getElementById('tipo_cta');
 
   cardCtaBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    onPage(btn, 'click', (e) => {
       const card = btn.closest('.cbe-compact-card, .catalog-card, .expository-plate');
       const tipo = btn.getAttribute('data-tipo') || (card ? card.getAttribute('data-category') : '');
       const href = btn.getAttribute('href') || '';
@@ -736,7 +504,7 @@ function initCardActionPreselect() {
           if (lenisInstance) {
             lenisInstance.scrollTo(orcamentoSection, { offset: -40 });
           } else {
-            orcamentoSection.scrollIntoView({ behavior: 'smooth' });
+            orcamentoSection.scrollIntoView({ behavior: motionPreference.matches ? 'instant' : 'smooth' });
           }
         }
       }
@@ -760,7 +528,7 @@ function initCardActionPreselect() {
 function applyCategoryToSelect(selectEl, categoryCode) {
   if (!selectEl) return;
   const val = categoryCode.toLowerCase();
-  
+
   for (let i = 0; i < selectEl.options.length; i++) {
     const opt = selectEl.options[i];
     const optVal = opt.value.toLowerCase();
@@ -793,7 +561,7 @@ function initHeroMouseTilt() {
   const heroImg = document.getElementById('hero-main-img') || document.querySelector('.hero-bg-photo');
   if (!heroSection || !heroImg) return;
 
-  if (window.innerWidth <= 900) return;
+  if (window.innerWidth <= 900 || motionPreference.matches) return;
 
   let mouseX = 0;
   let mouseY = 0;
@@ -801,19 +569,20 @@ function initHeroMouseTilt() {
   let currentY = 0;
   let isHovering = false;
   let rafId = null;
+  pageCleanup.push(() => { if (rafId) cancelAnimationFrame(rafId); });
 
-  heroSection.addEventListener('mouseenter', () => {
+  onPage(heroSection, 'mouseenter', () => {
     isHovering = true;
     if (!rafId) updateTilt();
   });
 
-  heroSection.addEventListener('mousemove', (e) => {
+  onPage(heroSection, 'mousemove', (e) => {
     const rect = heroSection.getBoundingClientRect();
     mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
   });
 
-  heroSection.addEventListener('mouseleave', () => {
+  onPage(heroSection, 'mouseleave', () => {
     isHovering = false;
     mouseX = 0;
     mouseY = 0;
@@ -864,8 +633,21 @@ function initDepthCarousel() {
   const spread = 75; // translateX step %
   const falloff = 0.2; // scale falloff
   const maxBlur = 11; // blur px step
-  let isAutoplay = true;
+  let isAutoplay = !motionPreference.matches;
   let autoplayTimer = null;
+  const pauseBtn = document.querySelector('.depth-pause-btn');
+  if (pauseBtn) {
+    pauseBtn.textContent = isAutoplay ? 'Pausar' : 'Reproduzir';
+    pauseBtn.setAttribute('aria-pressed', String(!isAutoplay));
+    onPage(pauseBtn, 'click', () => {
+      isAutoplay = !isAutoplay;
+      pauseBtn.textContent = isAutoplay ? 'Pausar' : 'Reproduzir';
+      pauseBtn.setAttribute('aria-pressed', String(!isAutoplay));
+      clearInterval(autoplayTimer);
+      if (isAutoplay) startAutoplay();
+    });
+  }
+  pageCleanup.push(() => clearInterval(autoplayTimer));
 
   // Cria indicadores de paginação
   if (indicatorsContainer) {
@@ -874,7 +656,7 @@ function initDepthCarousel() {
       const dot = document.createElement('button');
       dot.className = `depth-dot ${idx === 0 ? 'active' : ''}`;
       dot.setAttribute('aria-label', `Ir para o Case ${idx + 1}`);
-      dot.addEventListener('click', () => {
+      onPage(dot, 'click', () => {
         goToIndex(idx);
         resetAutoplay();
       });
@@ -884,7 +666,7 @@ function initDepthCarousel() {
 
   function updateCards() {
     const dots = document.querySelectorAll('.depth-dot');
-    
+
     cards.forEach((card, index) => {
       // Calcula o deslocamento relativo cíclico mais curto
       let offset = index - activeIndex;
@@ -917,6 +699,7 @@ function initDepthCarousel() {
       card.style.transform = `translateX(${translateX}%) translateZ(${translateZ}px) scale(${scale})`;
       card.style.filter = blurVal > 0.5 ? `blur(${blurVal.toFixed(1)}px)` : 'none';
 
+      card.setAttribute('aria-hidden', String(absOffset !== 0));
       if (absOffset === 0) {
         card.classList.add('active-card');
       } else {
@@ -927,6 +710,7 @@ function initDepthCarousel() {
     if (dots.length) {
       dots.forEach((dot, idx) => {
         dot.classList.toggle('active', idx === activeIndex);
+        dot.setAttribute('aria-current', String(idx === activeIndex));
       });
     }
   }
@@ -945,14 +729,14 @@ function initDepthCarousel() {
   }
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
+    onPage(prevBtn, 'click', () => {
       prevCard();
       resetAutoplay();
     });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
+    onPage(nextBtn, 'click', () => {
       nextCard();
       resetAutoplay();
     });
@@ -960,7 +744,7 @@ function initDepthCarousel() {
 
   // Clique direto no card para centralizá-lo
   cards.forEach((card, idx) => {
-    card.addEventListener('click', () => {
+    onPage(card, 'click', () => {
       if (idx !== activeIndex) {
         goToIndex(idx);
         resetAutoplay();
@@ -970,7 +754,7 @@ function initDepthCarousel() {
 
   // Autoplay suave com pausa em hover
   function startAutoplay() {
-    if (!isAutoplay) return;
+    if (!isAutoplay || !stage.isConnected) return;
     clearInterval(autoplayTimer);
     autoplayTimer = setInterval(() => {
       nextCard();
@@ -982,23 +766,26 @@ function initDepthCarousel() {
     startAutoplay();
   }
 
-  stage.addEventListener('mouseenter', () => {
+  onPage(stage, 'mouseenter', () => {
     clearInterval(autoplayTimer);
   });
 
-  stage.addEventListener('mouseleave', () => {
+  onPage(stage, 'mouseleave', () => {
     startAutoplay();
   });
+
+  onPage(stage, 'focusin', () => clearInterval(autoplayTimer));
+  onPage(stage, 'focusout', () => startAutoplay());
 
   // Suporte a swipe no mobile
   let touchStartX = 0;
   let touchEndX = 0;
 
-  stage.addEventListener('touchstart', (e) => {
+  onPage(stage, 'touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
 
-  stage.addEventListener('touchend', (e) => {
+  onPage(stage, 'touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 40) {
@@ -1037,7 +824,7 @@ function initFaqAccordion() {
       collapse.style.maxHeight = '0px';
     }
 
-    btn.addEventListener('click', () => {
+    onPage(btn, 'click', () => {
       const isActive = item.classList.contains('active');
 
       // Fecha outros itens para foco limpo
@@ -1063,3 +850,10 @@ function initFaqAccordion() {
     });
   });
 }
+
+// Apply a changed system preference without requiring a reload.
+motionPreference.addEventListener('change', () => {
+  if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  initSmoothScroll();
+  initPageScripts();
+});

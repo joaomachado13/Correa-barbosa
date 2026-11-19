@@ -5,20 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Corrêa Barbosa Engenharia (CBE) — Fabricação e montagem de quadros elétricos sob medida em Uberlândia/MG: QGBT, QDF, CCM, Quadros de Comando e Acionamentos. Conformidade com NBR 5410, NR-10 e IEC 61439-1/2.">
   <title>CBE — Corrêa Barbosa Engenharia | Quadros Elétricos Sob Medida</title>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="CBE — Corrêa Barbosa Engenharia">
+  <meta property="og:title" content="CBE — Corrêa Barbosa Engenharia | Quadros Elétricos Sob Medida">
+  <meta property="og:description" content="Corrêa Barbosa Engenharia (CBE) — Fabricação e montagem de quadros elétricos sob medida em Uberlândia/MG: QGBT, QDF, CCM, Quadros de Comando e Acionamentos. Conformidade com NBR 5410, NR-10 e IEC 61439-1/2.">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Fontes hospedadas localmente -->
+  <link rel="stylesheet" href="css/fonts.css">
 
   <!-- Estilos da CBE -->
-  <link rel="stylesheet" href="css/tokens.css?v=6.1">
-  <link rel="stylesheet" href="css/main.css?v=6.1">
+  <link rel="stylesheet" href="css/tokens.css?v=7">
+  <link rel="stylesheet" href="css/main.css?v=7">
+  <link rel="icon" type="image/webp" href="assets/logo/logo-cbe-principal.webp">
 </head>
 <body>
+  <a class="skip-link" href="#swup">Pular para o conteúdo</a>
 
   <!-- Splash Screen "Olá" -->
-  <div class="splash-overlay" id="cbe-splash-screen">
+  <div class="splash-overlay" id="cbe-splash-screen" aria-hidden="true">
     <svg id="ola-svg" viewBox="0 0 1600 1356" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(40, 1024) scale(1, -1)">
         <path id="letter-0" class="letter-stroke" d="M338 -14Q206 -14 128.0 58.5Q50 131 50 266V434Q50 569 128.0 641.5Q206 714 338 714Q470 714 548.0 641.5Q626 569 626 434V266Q626 131 548.0 58.5Q470 -14 338 -14ZM338 104Q412 104 453.0 147.0Q494 190 494 262V438Q494 510 453.0 553.0Q412 596 338 596Q265 596 223.5 553.0Q182 510 182 438V262Q182 190 223.5 147.0Q265 104 338 104Z"/>
@@ -35,7 +42,7 @@
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="index.html" class="brand-logo" title="CBE - Corrêa Barbosa Engenharia" data-swup-animation="circle">
-        <img src="assets/logo/logo-cbe-principal.png" alt="Corrêa Barbosa Engenharia" width="180" height="52">
+        <img src="assets/logo/logo-cbe-principal.webp" alt="Corrêa Barbosa Engenharia" width="180" height="52">
       </a>
 
       <nav>
@@ -75,7 +82,7 @@
             </svg>
           </span>
         </a>
-        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Abrir Menu" aria-expanded="false">
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Abrir Menu" aria-controls="main-nav-menu" aria-expanded="false">
           <div class="hamburger-icon">
             <span></span>
             <span></span>
@@ -85,8 +92,9 @@
       </div>
     </div>
   </header>
+  <noscript><nav class="nojs-nav" aria-label="Navegação sem JavaScript"><a href="index.html">Início</a><a href="quadros-eletricos.html">Catálogo</a><a href="sobre.html">Sobre</a><a href="orcamento.html">Orçamento</a><a href="contato.html">Contato</a></nav></noscript>
 
-  <main id="swup" class="transition-reveal">
+  <main id="swup" class="transition-reveal" tabindex="-1">
     <!-- 1. Hero da Home (Fotografia 100% na Seção) -->
     <section class="hero-section">
       <!-- A fotografia ocupa 100% de toda a seção Hero -->
@@ -208,7 +216,7 @@
 
         <!-- Grid de Cards do Catálogo Padronizado e Uniforme (ITEM 2) -->
         <div class="cbe-compact-grid cbe-portfolio-grid">
-          
+
           <!-- Card 1: Coluna Soft-Starters Industrial -->
           <div class="cbe-compact-card" data-category="ccm" title="Clique para ver especificações técnicas">
             <div class="cbe-compact-inner">
@@ -226,18 +234,19 @@
                       <span>Solicitar orçamento</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <div class="cbe-flip-cue">
-                      <span>Girar</span>
+                    <button type="button" class="cbe-flip-cue" aria-expanded="false">
+                      <span>Especificações</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="cbe-compact-back">
+              <div class="cbe-compact-back" inert aria-hidden="true">
+                <button type="button" class="flip-return">Voltar à foto</button>
                 <div>
                   <div class="back-header">
                     <span class="back-cat">Centro de Controle de Motores</span>
-                    <h4 class="back-title">Coluna CCM Soft-Starter</h4>
+                    <h3 class="back-title">Coluna CCM Soft-Starter</h3>
                   </div>
                   <ul class="back-specs-list">
                     <li><span class="spec-label">Potência:</span><span class="spec-val">Até 500 kVA</span></li>
@@ -271,18 +280,19 @@
                       <span>Solicitar orçamento</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <div class="cbe-flip-cue">
-                      <span>Girar</span>
+                    <button type="button" class="cbe-flip-cue" aria-expanded="false">
+                      <span>Especificações</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="cbe-compact-back">
+              <div class="cbe-compact-back" inert aria-hidden="true">
+                <button type="button" class="flip-return">Voltar à foto</button>
                 <div>
                   <div class="back-header">
                     <span class="back-cat">Distribuição de Força</span>
-                    <h4 class="back-title">Quadro Geral (QGBT)</h4>
+                    <h3 class="back-title">Quadro Geral (QGBT)</h3>
                   </div>
                   <ul class="back-specs-list">
                     <li><span class="spec-label">Potência:</span><span class="spec-val">350 kVA</span></li>
@@ -316,18 +326,19 @@
                       <span>Solicitar orçamento</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <div class="cbe-flip-cue">
-                      <span>Girar</span>
+                    <button type="button" class="cbe-flip-cue" aria-expanded="false">
+                      <span>Especificações</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="cbe-compact-back">
+              <div class="cbe-compact-back" inert aria-hidden="true">
+                <button type="button" class="flip-return">Voltar à foto</button>
                 <div>
                   <div class="back-header">
                     <span class="back-cat">Automação de Processos</span>
-                    <h4 class="back-title">Quadro Siemens S7</h4>
+                    <h3 class="back-title">Quadro Siemens S7</h3>
                   </div>
                   <ul class="back-specs-list">
                     <li><span class="spec-label">Fonte:</span><span class="spec-val">Sitop 24Vcc Estabilizada</span></li>
@@ -361,18 +372,19 @@
                       <span>Solicitar orçamento</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <div class="cbe-flip-cue">
-                      <span>Girar</span>
+                    <button type="button" class="cbe-flip-cue" aria-expanded="false">
+                      <span>Especificações</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="cbe-compact-back">
+              <div class="cbe-compact-back" inert aria-hidden="true">
+                <button type="button" class="flip-return">Voltar à foto</button>
                 <div>
                   <div class="back-header">
                     <span class="back-cat">Distribuição Secundária</span>
-                    <h4 class="back-title">Quadro de Tomadas QDF</h4>
+                    <h3 class="back-title">Quadro de Tomadas QDF</h3>
                   </div>
                   <ul class="back-specs-list">
                     <li><span class="spec-label">Capacidade:</span><span class="spec-val">150 kVA</span></li>
@@ -406,18 +418,19 @@
                       <span>Solicitar orçamento</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <div class="cbe-flip-cue">
-                      <span>Girar</span>
+                    <button type="button" class="cbe-flip-cue" aria-expanded="false">
+                      <span>Especificações</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="cbe-compact-back">
+              <div class="cbe-compact-back" inert aria-hidden="true">
+                <button type="button" class="flip-return">Voltar à foto</button>
                 <div>
                   <div class="back-header">
                     <span class="back-cat">Acionamento & Recalque</span>
-                    <h4 class="back-title">Quadro de Bombeamento</h4>
+                    <h3 class="back-title">Quadro de Bombeamento</h3>
                   </div>
                   <ul class="back-specs-list">
                     <li><span class="spec-label">Capacidade:</span><span class="spec-val">Até 300 kVA</span></li>
@@ -450,18 +463,19 @@
                       <span>Solicitar orçamento</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <div class="cbe-flip-cue">
-                      <span>Girar</span>
+                    <button type="button" class="cbe-flip-cue" aria-expanded="false">
+                      <span>Especificações</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="cbe-compact-back">
+              <div class="cbe-compact-back" inert aria-hidden="true">
+                <button type="button" class="flip-return">Voltar à foto</button>
                 <div>
                   <div class="back-header">
                     <span class="back-cat">Quadros Especiais</span>
-                    <h4 class="back-title">Barramentos de Cobre C11000</h4>
+                    <h3 class="back-title">Barramentos de Cobre C11000</h3>
                   </div>
                   <ul class="back-specs-list">
                     <li><span class="spec-label">Capacidade:</span><span class="spec-val">1000 kVA / 1600A</span></li>
@@ -489,7 +503,7 @@
           <span class="section-subtitle section-subtitle-red">Atendimento Direto</span>
           <h2>Solicite cotação técnica com memorial e diagrama.</h2>
           <p>
-            Envie sua lista de cargas ou unifilar. Nossos engenheiros retornam com proposta dimensionada em até 24h úteis.
+            Envie sua lista de cargas ou unifilar. Primeiro retorno em até 24h úteis; a proposta é preparada conforme os dados do projeto.
           </p>
         </div>
 
@@ -497,33 +511,33 @@
           <div class="cta-form-header-row">
             <div>
               <h3>Solicitar Orçamento</h3>
-              <p class="form-subtitle">Retorno técnico em até 24h úteis:</p>
+              <p class="form-subtitle">Primeiro retorno em até 24h úteis:</p>
             </div>
             <div class="form-sla-badge">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Retorno em 24h</span>
+              <span>Primeiro retorno em 24h</span>
             </div>
           </div>
 
-          <form class="quick-form">
+          <form class="quick-form" data-contact-form="um orçamento de quadro elétrico">
             <div class="form-group">
               <label for="nome_cta">Nome Completo</label>
-              <input type="text" id="nome_cta" class="form-input-line" placeholder="Seu nome ou responsável técnico" required>
+              <input type="text" id="nome_cta" class="form-input-line" placeholder="Seu nome ou responsável técnico" required name="nome_cta" autocomplete="name" maxlength="240">
             </div>
 
             <div class="form-group">
               <label for="email_cta">E-mail Profissional</label>
-              <input type="email" id="email_cta" class="form-input-line" placeholder="seuemail@empresa.com.br" required>
+              <input type="email" id="email_cta" class="form-input-line" placeholder="seuemail@empresa.com.br" required name="email_cta" autocomplete="email" maxlength="240">
             </div>
 
             <div class="form-group">
               <label for="tel_cta">Telefone / WhatsApp</label>
-              <input type="tel" id="tel_cta" class="form-input-line" placeholder="(34) 99999-9999" required>
+              <input type="tel" id="tel_cta" class="form-input-line" placeholder="(34) 99999-9999" required name="tel_cta" autocomplete="tel" inputmode="tel" maxlength="32">
             </div>
 
             <div class="form-group">
               <label for="tipo_cta">Aplicação do Painel</label>
-              <select id="tipo_cta" class="form-select-line" required>
+              <select id="tipo_cta" class="form-select-line" required name="tipo_cta">
                 <option value="">Selecione a categoria...</option>
                 <option value="QGBT">QGBT — Geral de Baixa Tensão</option>
                 <option value="QDF">QDF — Distribuição de Força</option>
@@ -537,18 +551,27 @@
 
             <div class="form-group">
               <label for="desc_cta">Parâmetros Principais</label>
-              <input type="text" id="desc_cta" class="form-input-line" placeholder="Ex: 150 kVA, 380V, disjuntor de 400A">
+              <input type="text" id="desc_cta" class="form-input-line" placeholder="Ex: 150 kVA, 380V, disjuntor de 400A" name="desc_cta" maxlength="240">
             </div>
 
-            <button type="submit" class="cbe-btn cbe-btn-red" style="width: 100%; justify-content: center; margin-top: 1.25rem;">
-              <span>Enviar para Engenharia</span>
+            <button type="submit" class="cbe-btn cbe-btn-red" style="width: 100%; justify-content: center; margin-top: 1.25rem;" disabled>
+              <span>Preparar mensagem no WhatsApp</span>
               <span class="icon-wrap">
                 <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"/>
                 </svg>
               </span>
             </button>
-          </form>
+
+              <p class="form-channel-note">Revise seus dados e confirme o envio no WhatsApp da CBE. Você poderá anexar documentos na conversa. <a href="privacidade.html">Uso dos seus dados</a>.</p>
+              <div class="form-feedback" hidden>
+                <p role="status" aria-live="polite" aria-atomic="true"></p>
+                <details><summary>Revisar mensagem</summary><pre class="message-preview"></pre></details>
+                <a class="cbe-btn cbe-btn-blue whatsapp-continue" target="_blank" rel="noopener noreferrer" data-no-swup>Continuar no WhatsApp</a>
+                <p>O envio só acontece quando você confirma no aplicativo. Seus campos permanecem preenchidos aqui.</p>
+              </div>
+              <noscript><p>Para solicitar atendimento, <a href="https://wa.me/5534999227667" target="_blank" rel="noopener noreferrer">fale com a CBE pelo WhatsApp</a> ou escreva para contato@cbeengenharia.com.br.</p></noscript>
+            </form>
         </div>
       </div>
     </section>
@@ -728,6 +751,7 @@
         </div>
 
         <div class="depth-carousel-controls">
+          <button type="button" class="depth-nav-btn depth-pause-btn" aria-pressed="false">Pausar</button>
           <button class="depth-nav-btn depth-prev-btn" aria-label="Ver Case Anterior">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
@@ -744,7 +768,7 @@
       <div class="container">
         <p class="partners-title">Empresas e Parceiros que Confiam na Engenharia da CBE</p>
       </div>
-      
+
       <div class="partners-marquee-container">
         <div class="partners-track" style="animation-duration: 280s !important;">
           <!-- Bloco 1 de Logos Reais -->
@@ -902,7 +926,7 @@
     <section class="faq-section" id="faq">
       <div class="container">
         <div class="faq-layout-grid">
-          
+
           <div class="faq-sticky-intro">
             <span class="section-subtitle">Dúvidas Técnicas Frequentes</span>
             <h2>Perguntas & Respostas de Engenharia</h2>
@@ -910,7 +934,7 @@
               Esclarecimentos sobre normas técnicas, emissão de ART, prazos de montagem, ensaios dielétricos e entrega regional.
             </p>
             <div style="background: #FFFFFF; border: 1px solid var(--cbe-border); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-              <h4 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--cbe-blue-dark);">Precisa de uma análise específica?</h4>
+              <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--cbe-blue-dark);">Precisa de uma análise específica?</h3>
               <p style="font-size: 0.9rem; color: var(--cbe-text-muted); margin-bottom: 1rem;">Nossos engenheiros eletricistas estão disponíveis para avaliar seu diagrama unifilar.</p>
               <a href="orcamento.html" class="cbe-btn cbe-btn-primary" style="width: 100%; justify-content: center;">
                 <span>Solicitar Avaliação Técnica</span>
@@ -1018,7 +1042,7 @@
               <div class="faq-answer-collapse">
                 <div class="faq-answer-content">
                   <p>
-                    Sim. Aceitamos arquivos em PDF, DWG (AutoCAD), DXF ou imagens técnicas diretamente pela nossa <a href="orcamento.html" style="color: var(--cbe-blue); text-decoration: underline; font-weight: 600;">página de orçamento</a> ou via WhatsApp da Engenharia ((34) 99922-7667).
+                    Sim. Prepare sua solicitação na <a href="orcamento.html">página de orçamento</a> e continue no WhatsApp da Engenharia, (34) 99922-7667. Anexe o PDF, DWG, DXF ou imagem técnica na própria conversa, depois de revisar e enviar a mensagem.
                   </p>
                 </div>
               </div>
@@ -1038,7 +1062,7 @@
       <div class="footer-top-row">
         <div class="footer-brand">
           <a href="index.html">
-            <img src="assets/logo/logo-cbe-principal.png" alt="Corrêa Barbosa Engenharia" width="200" height="58">
+            <img src="assets/logo/logo-cbe-principal.webp" alt="Corrêa Barbosa Engenharia" width="200" height="58">
           </a>
           <p>
             Fabricação e montagem de quadros elétricos sob medida em conformidade com NBR 5410, IEC 61439 e NR-10 em Uberlândia e região.
@@ -1046,7 +1070,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Navegação</h4>
+          <h2 class="footer-heading">Navegação</h2>
           <ul class="footer-nav-list">
             <li><a href="index.html">Início</a></li>
             <li><a href="quadros-eletricos.html">Quadros Elétricos & Catálogo</a></li>
@@ -1057,7 +1081,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Fale com a Gente</h4>
+          <h2 class="footer-heading">Fale com a Gente</h2>
           <div class="footer-contact-items">
             <div class="footer-contact-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1103,7 +1127,7 @@
       </div>
 
       <div class="footer-bottom-row">
-        <span>© 2026 CBE — Corrêa Barbosa Engenharia. Todos os direitos reservados.</span>
+        <span>© 2026 CBE — Corrêa Barbosa Engenharia. Todos os direitos reservados. <a href="privacidade.html">Privacidade</a></span>
         <span>Fabricação e Montagem de Quadros Elétricos em Uberlândia / MG</span>
       </div>
     </div>
@@ -1111,7 +1135,7 @@
 
   <!-- Widget Flutuante de Atendimento WhatsApp (3D Isométrico) -->
   <div class="floating-whatsapp-widget" id="whatsapp-widget">
-    <div class="floating-whatsapp-card" id="whatsapp-card">
+    <div class="floating-whatsapp-card" id="whatsapp-card" role="region" aria-label="Contato pelo WhatsApp">
       <div class="whatsapp-card-header">
         <div class="whatsapp-card-header-info">
           <span class="whatsapp-status-dot"></span>
@@ -1144,7 +1168,7 @@
     <div class="floating-whatsapp-btn-wrap" id="whatsapp-trigger-wrap">
       <div class="floating-iso-pro">
         <span></span><span></span><span></span>
-        <button class="floating-trigger-btn" id="toggle-whatsapp-widget" aria-label="Abrir WhatsApp CBE">
+        <button class="floating-trigger-btn" id="toggle-whatsapp-widget" aria-expanded="false" aria-controls="whatsapp-card" aria-label="Abrir WhatsApp CBE">
           <svg class="svg" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
         </button>
       </div>
@@ -1152,12 +1176,12 @@
   </div>
 
   <!-- Bibliotecas de Transição, Smooth Scroll e Animações GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="https://unpkg.com/swup@4"></script>
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/lenis.min.js"></script>
+  <script defer src="assets/vendor/swup.min.js"></script>
 
   <!-- Scripts Principais -->
-  <script src="js/main.js?v=6.1"></script>
+  <script type="module" src="js/main.js?v=7"></script>
 </body>
 </html>

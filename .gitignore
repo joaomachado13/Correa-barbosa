@@ -16,3 +16,10 @@ $RECYCLE.BIN/
 *.log
 .vscode/
 .idea/
+
+node_modules/
+dist/
+test-results/
+playwright-report/
+assets/vendor/
+assets/fonts/
