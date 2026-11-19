@@ -208,16 +208,19 @@ function updateActiveNavigation() {
   document.querySelectorAll('.site-header [data-quote-link]').forEach(link => {
     link.setAttribute('href', quoteHref);
   });
-  const leaf = window.location.pathname.split('/').filter(Boolean).pop();
-  const currentPath = !leaf ? 'index.html' : leaf.endsWith('.html') ? leaf : `${leaf}.html`;
+  const pageName = pathname => pathname.split('/').filter(Boolean).pop()?.replace(/\.html$/, '') || 'index';
+  const currentPage = pageName(window.location.pathname);
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html') || (href === 'solucoes.html' && document.querySelector('[data-areas-page]'))) {
+    const targetPage = pageName(new URL(link.href, window.location.href).pathname);
+    const current = targetPage === currentPage;
+    if (current || (targetPage === 'solucoes' && document.querySelector('[data-areas-page]'))) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');
     }
+    if (current) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
   });
 }
 

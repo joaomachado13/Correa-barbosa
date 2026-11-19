@@ -17,15 +17,16 @@ O formulário prepara a mensagem para revisão, sem enviá-la ou apagar os campo
 
 Escopo: home, entrada em Quadros/Solar, cabeçalho compartilhado, formulário geral, FAQ de quadros e regressão das oito rotas públicas. Conferência visual real em Chromium, com desktop 1440×1000, mobile 390×844 e 320×844. A suíte também cobre largura de 901 px, ausência de JavaScript, teclado, retorno via Swup, contraste com axe e ampliação de texto para 200% em 390 px.
 
-`npm test`: **11 testes de lógica/build e 20 testes de navegador passaram**. Os testes conferem as duas frentes na primeira tela, seleção de solar e orientação geral na mensagem, preservação de dados, inclusão futura de uma frente, escape editorial e exclusão de rascunhos. O build normal gera oito páginas e duas frentes. Também foram executados `npm run frentes:validar` e `git diff --check`.
+`npm test`: **11 testes de lógica/build e 21 testes de navegador passaram**. Os testes conferem as duas frentes na primeira tela, seleção de solar e orientação geral na mensagem, preservação de dados, inclusão futura de uma frente, escape editorial, exclusão de rascunhos e reconhecimento da página ativa quando a hospedagem simplifica URLs. O build normal gera oito páginas e duas frentes. Também foram executados `npm run frentes:validar` e `git diff --check`. Uma falha de carregamento de imagens foi simulada: os nomes e acessos das duas frentes permanecem disponíveis.
 
-Evidências locais em `/workspace/cbe-home-evidence/`: `antes-desktop.png`, `antes-mobile.png`, `depois-desktop.png`, `depois-390.png`, `depois-320.png`, `institucional-desktop.png`, `contato-desktop.png` e `mensagem-mobile.png`. As fotografias já pertenciam ao projeto/portfólio documentado. A documentação da frente solar mantém as fontes das instalações fotovoltaicas.
+Evidências locais em `/workspace/cbe-home-evidence/`: `antes-desktop.png`, `antes-mobile.png`, `depois-desktop.png`, `depois-390.png`, `depois-320.png`, `institucional-desktop.png`, `contato-desktop.png`, `mensagem-mobile.png` e `foco-mobile.png`. A home foi conferida também no endereço público do Netlify, com capturas `publicada-desktop.png` e `publicada-mobile.png`. As fotografias já pertenciam ao projeto/portfólio documentado. A documentação da frente solar mantém as fontes das instalações fotovoltaicas.
 
 | Achado | Critérios | Impacto | Correção e revalidação |
 | --- | --- | --- | --- |
 | Início apresentava somente quadros, embora o site já oferecesse energia solar | V2-06, V2-07, V2-09, V2-10 | A segunda frente ficava distante da entrada principal | Cartões equivalentes na primeira tela, conferidos em quatro larguras e no fluxo de navegação. |
 | Formulário e atalhos institucionais partiam de um pedido de quadro elétrico | V2-02, V2-10, C-01 | Demanda solar ou geral começava com contexto incorreto | Área de interesse, opção de orientação e mensagem geral; botão de orçamento acompanha a página. |
 | Alteração do destino padrão do cabeçalho afetou o link solar sem JS na primeira execução dos testes | C-02 | Atalho solar levava ao contato geral nesse estado | Marcadores `data-quote-link` permitem ao gerador aplicar o destino correto sem depender do href anterior; regressão sem JS passou. |
+| URLs simplificadas pelo Netlify deixavam o menu sem indicação da página atual | C-03, V2-10 | Orientação visual inconsistente entre as páginas | Normalização do endereço atual e dos destinos dos links; teste com reescrita simulada e `aria-current` na página correspondente. |
 
 ## Matriz visual
 

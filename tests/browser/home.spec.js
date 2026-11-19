@@ -47,3 +47,20 @@ test('contato da home aceita orientação geral, preserva dados e funciona com t
   await page.evaluate(() => document.documentElement.style.fontSize = '200%');
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
 });
+
+test('menu reconhece a página ativa quando a hospedagem simplifica URLs e links', async ({ page }) => {
+  await page.addInitScript(() => {
+    document.addEventListener('DOMContentLoaded', () => {
+      const simplify = path => path.replace(/index\.html$/, '').replace(/\.html$/, '');
+      history.replaceState({}, '', simplify(location.pathname));
+      document.querySelectorAll('.nav-link').forEach(link => { link.href = simplify(new URL(link.href).pathname); });
+    }, { once: true });
+  });
+  await page.goto('/index.html', { waitUntil: 'networkidle' });
+  const home = page.locator('.nav-link').filter({ hasText: 'Início' });
+  await expect(home).toHaveClass(/active/);
+  await expect(home).toHaveAttribute('aria-current', 'page');
+  await page.goto('/energia-fotovoltaica.html', { waitUntil: 'networkidle' });
+  await expect(page.locator('.nav-link').filter({ hasText: 'Áreas de atuação' })).toHaveClass(/active/);
+  await expect(home).not.toHaveClass(/active/);
+});
